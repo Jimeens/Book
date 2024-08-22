@@ -1,0 +1,60 @@
+\babel@toc {portuguese}{}\relax 
+\contentsline {chapter}{\itshape Prefácio}{ii}{chapter*.1}%
+\contentsline {chapter}{\itshape Abreviações e notações}{iv}{chapter*.2}%
+\contentsline {part}{I\hspace {1em}Fundamentos básicos}{1}{part.1}%
+\contentsline {chapter}{\numberline {1}\hspace {0.8cm}Introdução à mecânica quântica}{3}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Espaço de Hilbert}{4}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Base ortonormal em um espaço vetorial euclidiano}{5}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Notação de Dirac e o espaço de bra-kets}{8}{subsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.3}Definição do espaço de Hilbert}{13}{subsection.1.1.3}%
+\contentsline {subsection}{\numberline {1.1.4}Bases contínuas}{17}{subsection.1.1.4}%
+\contentsline {subsubsection}{Produto escalar em estados contínuos}{17}{subsubsection*.4}%
+\contentsline {subsubsection}{Vetor de estado e projeção para estados contínuos}{17}{subsubsection*.5}%
+\contentsline {subsubsection}{Introdução ao espaço de posições e a função de onda}{17}{subsubsection*.6}%
+\contentsline {subsubsection}{Condição de quadrado integrável}{17}{subsubsection*.7}%
+\contentsline {section}{\numberline {1.2}Mudança de base}{17}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Operadores em Mecânica Quântica}{21}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Medidas em Mecânica Quântica}{22}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}Operadores hermitianos}{25}{subsection.1.3.2}%
+\contentsline {subsection}{\numberline {1.3.3}Medidas simultâneas}{28}{subsection.1.3.3}%
+\contentsline {section}{\numberline {1.4}Operadores de posição e momento}{35}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}O operador de posição}{35}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.4.2}O operador de momento}{36}{subsection.1.4.2}%
+\contentsline {subsection}{\numberline {1.4.3}O comutador posição--momento}{36}{subsection.1.4.3}%
+\contentsline {section}{\numberline {1.5}Mudança de base de representação}{37}{section.1.5}%
+\contentsline {section}{\numberline {1.6}Evolução temporal}{37}{section.1.6}%
+\contentsline {subsection}{\numberline {1.6.1}Descrição de Schrödinger}{37}{subsection.1.6.1}%
+\contentsline {subsection}{\numberline {1.6.2}Descrição de Heisenberg}{37}{subsection.1.6.2}%
+\contentsline {section}{\numberline {1.7}Relação de incerteza entre energia--tempo}{37}{section.1.7}%
+\contentsline {section}{\itshape Leitura complementar}{37}{section.1.7}%
+\contentsline {section}{\itshape Exercícios}{37}{section.1.7}%
+\contentsline {chapter}{\numberline {2}\hspace {0.8cm}Aplicações dos conceitos básicos}{39}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Experimento de Stern--Gerlach}{39}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Operadores de dipolo magnético}{39}{subsection.2.1.1}%
+\contentsline {section}{\numberline {2.2}Detecção de neutrinos}{39}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Experimento de Reines--Cowan (1953)}{39}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Experimento de Homestake (1953)}{39}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Super--K e SNO (2001)}{39}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Mundo simplificado: 2 tipos de neutrinos}{39}{subsection.2.2.4}%
+\contentsline {section}{\numberline {2.3}O oscilador harmônico}{39}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Oscilador harmônico clássico}{39}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Oscilador harmônico quântico}{39}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}A função de onda}{40}{subsection.2.3.3}%
+\contentsline {section}{\itshape Leitura complementar}{40}{subsection.2.3.3}%
+\contentsline {section}{\itshape Exercícios}{40}{subsection.2.3.3}%
+\contentsline {part}{II\hspace {1em}Fundamentos Intermediários}{41}{part.2}%
+\contentsline {chapter}{\numberline {3}\hspace {0.8cm}Mecânica Quântica em 3D}{43}{chapter.3}%
+\contentsline {chapter}{\numberline {4}\hspace {0.8cm}Sistemas de partículas idênticas}{45}{chapter.4}%
+\contentsline {chapter}{\numberline {5}\hspace {0.8cm}Teoria de perturbação}{47}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Independente do tempo}{47}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Dependente do tempo}{47}{section.5.2}%
+\contentsline {part}{III\hspace {1em}Fundamentos Avançados}{49}{part.3}%
+\contentsline {chapter}{\numberline {6}\hspace {0.8cm}Mecânica quântica relativística}{51}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Sistemas de unidades naturais}{52}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Recordando relatividade restrita}{54}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Transformações de Lorentz}{55}{subsection.6.2.1}%
+\contentsline {section}{\numberline {6.3}A equação de Klein--Fock--Gordon}{59}{section.6.3}%
+\contentsline {section}{\numberline {6.4}A equação de Dirac}{64}{section.6.4}%
+\contentsline {part}{IV\hspace {1em}Desenhos (Apagar isso)}{73}{part.4}%
+\contentsfinish 
+\contentsline {chapter}{Bibliografia}{81}{chapter*.9}%

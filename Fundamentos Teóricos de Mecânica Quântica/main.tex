@@ -1,0 +1,254 @@
+\documentclass{header}
+
+\begin{document}
+
+\capa{Fundamentos Teóricos de Mecânica Quântica}{Lucas R. Ximenes}{Felipe Gimenez S.}{Alexandre A. Suaide}
+
+\bintro{Fundamentos Teóricos de Mecânica Quântica} % Título do Livro
+{1\textordfeminine\ Ed.} % Edição
+{Com o propósito de proporcionar uma introdução inicial à mecânica quântica, este livro didático aborda de forma abrangente os conceitos fundamentais da disciplina. Partindo desde os princípios básicos, como espaços de Hilbert, e avançando para ferramentas mais avançadas, como a teoria de perturbação (independente e dependente do tempo), teoria de espalhamento e um breve capítulo sobre mecânica quântica relativística. O texto abrange desde resultados teóricos cruciais até exemplos experimentais da teoria, como o Experimento de Stern-Gerlach e experimentos relacionados à detecção de neutrinos.
+
+Dirigindo-se a estudantes que tenham uma compreensão de nível de graduação em física, este livro busca ser acessível a uma ampla gama de leitores interessados em explorar o campo da mecânica quântica.
+
+O livro oferece uma variedade de exemplos ao longo do texto e inclui inúmeros exercícios e leituras adicionais ao final de cada capítulo. Isso permite aos estudantes aprimorar e praticar os métodos apresentados. Baseando-se em cursos de graduação em mecânica quântica, os autores se esforçam para apresentar os conceitos de maneira didática, mantendo o formalismo e a elegância da teoria. Isso atende às necessidades dos alunos que desejam aprender, seja de forma independente ou como parte de um curso de mecânica quântica.} % Uma breve introdução sobre o que o livro aborda
+{Descrição do Jimeens de 3 ou 4 linhas.} % Uma breve descrição do Jimeens
+{Descrição do Felps de 3 ou 4 linhas.} % Uma breve descrição do Felps
+{Descrição do Suaide de 3 ou 4 linhas.} % Uma breve descrição do Jimeens
+{Fundamentos Teóricos de\\ \medskip Mecânica Quântica}
+
+
+\pagenumbering{roman}
+
+\frontmatter
+
+\pagestyle{toc}
+
+\tableofcontents
+
+
+% \thispagestyle{fancy}
+\addcontentsline{toc}{chapter}{\itshape Prefácio}
+\chapter*{\hspace{0.8cm}Prefácio}
+
+    \lipsum[1-6]
+
+\addcontentsline{toc}{chapter}{\itshape Abreviações e notações}
+\chapter*{\hspace{0.8cm}Abreviações e notações}
+
+    \begin{itemize}
+        \item Vetores são escritos em \textbf{negrito}: $\vb{v}$
+        \item Vetores unitários (versores) são denotados por $\vb{e}_{i}$
+        \item Produtos internos (fora da notação de Dirac) são escritos por $\expval{\cdot,\cdot}$
+        \item Operadores são sempre escritos com um acento circunflexo: $\hat{\mathcal{A}}$
+        \item Operador ou matriz unitária é da forma $\boldone$, em particular, algumas vezes enfatiza-se a dimensão $d$ por $\boldone_{d\times d}$
+        \item O conjunto dos naturais é $\mathbb{N} = \{1,2,3,...\}$ e o conjunto dos naturais incluindo o zero é denotado por $\mathbb{N}_{0}$
+        \item Produtos vetoriais e cartesianos são denotados com $\times$
+        \item Produtos tensoriais são denotados com $\otimes$
+        \item Coordenadas cartesianas são denotadas por $(x,y,z)$
+        \item Coordenadas cilíndricas são denotadas por $(r,\phi,z)$
+        \item Coordenadas esféricas são denotadas por $(r,\phi,\theta)$
+        \item Complexos conjugados são denotados por $z^{\ast}$
+        \item O símbolo de Levi--Civita é $\epsilon_{ijk} = \begin{cases}
+            +1 &, \text{ permutação par de }ijk \\
+            -1&, \text{ permutação ímpar de }ijk \\
+            0 &, \text{ índices iguais}
+        \end{cases}$
+        \item O delta de Kronecker é $\delta_{ij} = \begin{cases}
+            +1 &, i = j \\
+            0  &, i \neq j
+        \end{cases}$
+        \item O delta de Dirac é $\delta(x-x') = \begin{cases}
+            \infty &, x=x' \\
+            0 &, x\neq x'
+        \end{cases}$
+        \item Equivalências são denotadas por $\equiv$
+        \item Definições são denotadas por $\coloneqq$
+        \item Mapeamentos entre elementos de um conjunto são denotados por $\mapsto$
+        \item Mapeamentos entre conjuntos são denotados por $\rightarrow$
+        \item Valores esperados são denotados por $\expval{\cdot}$
+        \item Alguns fatores de conversão de unidades:
+            \begin{itemize}
+                \item 1 eV $= 1.602\cdot 10^{-19}$ J
+                \item 1 J $= 6.242\cdot 10^{18}$ eV
+                \item 1 \AA\ $= 10^{-10}$ m
+            \end{itemize}
+        \item Alguns valores de constantes físicas:
+            \begin{itemize}
+                \item $c = 2.998\cdot 10^{8}$ m/s 
+                \hfill (velocidade da luz no vácuo)
+                \item $e = 1.602\cdot 10^{-19}$ C 
+                \hfill (carga do elétron)
+                \item $h = 6.626\cdot 10^{-34}$ J$\cdot$s 
+                \hfill (constante de Planck) 
+                \item $\hbar = h/2\pi$\hfill (constante de Planck reduzida) \\
+                $\phantom{\hbar} = 1.055\cdot 10^{-34}$ J$\cdot$s \\ $\phantom{\hbar} = 0.658\cdot 10^{-15}$ eV$\cdot$s 
+                \item $k_{b} = 1.381\cdot 10^{-23}$ J/K
+                \hfill (constante de Boltzmann) \\
+                $\phantom{k_{b}} = 8.617 \cdot 10^{-5}$ eV/K
+                \item $m_{e} = 9.109\cdot 10^{-31}$ kg 
+                \hfill (massa de repouso do elétron) \\
+                $\phantom{m_{e}} = 0.511$ MeV/$c^2$
+                \item $m_{p} = 1.672\cdot 10^{-27}$ kg 
+                \hfill (massa de repouso do próton) \\
+                $\phantom{m_{p}} = 938.3$ MeV/$c^2$
+                \item $m_{n} = 1.675\cdot 10^{-27}$ kg 
+                \hfill (massa de repouso do nêutron) \\
+                $\phantom{m_{n}} = 939.6$ MeV/$c^2$
+                \item $\varepsilon_{0} = 8.854\cdot 10^{-12}$ C$^2$/Nm$^2$
+                \hfill (permissividade elétrica do vácuo)
+            \end{itemize}
+    \end{itemize}
+
+\mainmatter
+
+\pagenumbering{arabic}
+\setcounter{page}{0}
+\thispagestyle{empty}
+
+\part{Fundamentos básicos}
+
+    
+    \chapter{\hspace{0.8cm}Introdução à mecânica quântica}
+        \input{Partes/Parte 2/Capítulos/Introdução I}
+    
+        \section{Espaço de Hilbert}
+            \input{Partes/Parte 2/Capítulos/Seções/Espaço de Hilbert}
+        
+            \subsection{Base ortonormal em um espaço vetorial euclidiano}
+                \input{Partes/Parte 2/Capítulos/Seções/Subseções/Base ortonormal em um espaço vetorial euclidiano.tex}
+
+            \subsection{Notação de Dirac e o espaço de bra-kets}
+                \input{Partes/Parte 2/Capítulos/Seções/Subseções/Notação de Dirac e o espaço de bra-kets}
+
+            \subsection{Definição do espaço de Hilbert}
+                \input{Partes/Parte 2/Capítulos/Seções/Subseções/Definição do espaço de Hilbert}
+
+            \subsection{Bases contínuas}
+                \input{Partes/Parte 2/Capítulos/Seções/Subseções/Bases contínuas}
+
+                \subsubsection{Produto escalar em estados contínuos}
+                    \input{Partes/Parte 2/Capítulos/Seções/Subseções/Subsubseção/Produto escalar em estados contínuos}
+
+                \subsubsection{Vetor de estado e projeção para estados contínuos}
+                    \input{Partes/Parte 2/Capítulos/Seções/Subseções/Subsubseção/Vetor de estado e projeção para estados contínuos}
+
+                \subsubsection{Introdução ao espaço de posições e a função de onda}
+                    \input{Partes/Parte 2/Capítulos/Seções/Subseções/Subsubseção/Introdução ao espaço de posições e a função de onda.tex}
+
+                \subsubsection{Condição de quadrado integrável}
+                    \input{Partes/Parte 2/Capítulos/Seções/Subseções/Subsubseção/Condição de quadrado integrável.tex}
+
+        \section{Mudança de base}
+            \input{Partes/Parte 2/Capítulos/Seções/Mudança de base}
+
+        \section{Operadores em Mecânica Quântica}
+            \input{Partes/Parte 2/Capítulos/Seções/Operadores em MQ}
+
+            \subsection{Medidas em Mecânica Quântica}
+                \input{Partes/Parte 2/Capítulos/Seções/Subseções/Medidas em MQ}
+        
+            \subsection{Operadores hermitianos}
+                \input{Partes/Parte 2/Capítulos/Seções/Subseções/Operadores hermitianos}
+
+            \subsection{Medidas simultâneas}
+                \input{Partes/Parte 2/Capítulos/Seções/Subseções/Medidas simultâneas}
+
+        \section{Operadores de posição e momento}
+            \input{Partes/Parte 2/Capítulos/Seções/Operadores de posição e momento}
+
+            \subsection{O operador de posição}
+                \input{Partes/Parte 2/Capítulos/Seções/Subseções/O operador de posição}
+
+            \subsection{O operador de momento}
+
+            \subsection{O comutador posição--momento}
+
+        \section{Mudança de base de representação}
+
+        \section{Evolução temporal}
+
+            \subsection{Descrição de Schrödinger}
+
+            \subsection{Descrição de Heisenberg}
+
+        \section{Relação de incerteza entre energia--tempo}
+
+        \addcontentsline{toc}{section}{\itshape Leitura complementar}
+        \subsubsection*{Leitura complementar}
+
+        \addcontentsline{toc}{section}{\itshape Exercícios}
+        \subsubsection*{Exercícios}
+
+    \chapter{\hspace{0.8cm}Aplicações dos conceitos básicos}
+
+        \section{Experimento de Stern--Gerlach}
+    
+            \subsection{Operadores de dipolo magnético}
+    
+        \section{Detecção de neutrinos}
+    
+            \subsection{Experimento de Reines--Cowan (1953)}
+    
+            \subsection{Experimento de Homestake (1953)}
+    
+            \subsection{Super--K e SNO (2001)}
+    
+            \subsection{Mundo simplificado: 2 tipos de neutrinos}
+    
+        \section{O oscilador harmônico}
+    
+            \subsection{Oscilador harmônico clássico}
+    
+            \subsection{Oscilador harmônico quântico}
+    
+            \subsection{A função de onda}
+    
+        \addcontentsline{toc}{section}{\itshape Leitura complementar}
+        \subsubsection*{Leitura complementar}
+    
+        \addcontentsline{toc}{section}{\itshape Exercícios}
+        \subsubsection*{Exercícios}
+    
+\part{Fundamentos Intermediários}
+    
+    \chapter{\hspace{0.8cm}Mecânica Quântica em 3D}
+    
+    \chapter{\hspace{0.8cm}Sistemas de partículas idênticas}
+    
+    \chapter{\hspace{0.8cm}Teoria de perturbação}
+
+        \section{Independente do tempo}
+
+        \section{Dependente do tempo}
+
+\part{Fundamentos Avançados}
+
+    \chapter{\hspace{0.8cm}Mecânica quântica relativística}
+        \input{Partes/Parte 4/Capítulos/Mecânica quântica relativística}
+
+        \section{Sistemas de unidades naturais}
+            \input{Partes/Parte 4/Capítulos/Seções/Sistemas de unidades naturais}
+
+        \section{Recordando relatividade restrita}
+            \input{Partes/Parte 4/Capítulos/Seções/Recordando relatividade restrita}
+
+            \subsection{Transformações de Lorentz}
+                \input{Partes/Parte 4/Capítulos/Seções/Subseções/Subsubseções/Transformações de Lorentz}
+
+        \section{A equação de Klein--Fock--Gordon}
+            \input{Partes/Parte 4/Capítulos/Seções/A equação de Klein-Fock-Gordon}
+
+        \section{A equação de Dirac}
+            \input{Partes/Parte 4/Capítulos/Seções/A equação de Dirac}
+
+
+
+
+\part{Desenhos (Apagar isso)}
+
+\input{Desenhos/Desenhos2}
+
+
+\nocite{*}
+
+\end{document}

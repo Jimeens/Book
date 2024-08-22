@@ -1,0 +1,263 @@
+\begin{center}
+% Stern - Gerlach
+    \begin{tikzpicture}[scale = 0.3846]
+        \draw[fill = myLLColor!20] (19,8) -- (25,6) -- (25,11) -- (19,13) -- (19,8);
+        \draw[->] (22,6) -- (22,13) node[right]{$z$};
+        \draw[] (22-1/3,8+1/9) -- (22+1/3,8-1/9) node[right, rotate = -18.43]{$\mu_{-}$};
+        \draw[] (22-1/3,11+1/9) -- (22+1/3,11-1/9) node[right, rotate = -18.43]{$\mu_{+}$};
+
+    
+        \draw[fill = myLColor!60] (6,3.66) -- (15,6.66) -- (14,7) -- (5,4) -- (6,3.66) -- cycle;
+        \draw[fill = myLColor!80] (6,3.66) -- (15,6.66) -- (15,5.33) -- (6,2.33) -- (6,3.66) -- cycle;
+        \draw[fill = myLColor!60] (6,2.33) -- (15,5.33) -- (16,5) -- (7,2) -- (6,2.33) -- cycle;
+        
+        \draw[fill = myLColor!80] (8,0) -- (17,3) -- (17,6) -- (8,3) -- (8,1) -- cycle;
+        
+        \draw[] (15,6.1) -- (22,8);
+        \draw[] (15,6.1) -- (22,11);
+
+        \draw[fill = myLLColor!90, xshift = -0.5 cm, yshift = -0.7cm] (6,7) -- (9,6) -- (18,9) -- (15,10) -- (6,7) -- cycle;
+        \draw[fill = myLLColor!70, xshift = -0.5 cm, yshift = -0.7cm] (18,8.33) -- (9,5.33) -- (9,6) -- (18,9) -- (18,8.33) -- cycle;
+        \draw[fill = myLLColor, xshift = -0.5 cm, yshift = -0.7cm] (7,4) -- (16,7) -- (18,8.33) -- (9,5.33) -- (7,4) -- cycle;
+        \draw[fill = myLLColor!90, xshift = -0.5 cm, yshift = -0.7cm] (7,4) -- (6,6.33) -- (6,7) -- (9,6) -- (9,5.33) -- (7,4) -- cycle;
+        
+        \draw[fill = myLColor!60] (7,3.33) -- (8,3) -- (17,6) -- (16,6.33) -- (7,3.33) -- cycle;
+        \draw[fill = myLColor!80] (5,4) -- (5,1) -- (8,0) -- (8,3) -- (7,3.33) -- (7,2) -- (6,2.33) -- (6,3.66) -- (5,4) -- cycle;
+
+        \node[rotate = -18.43] at (6.75,5){S};
+        \node[rotate = -18.43, white] at (6.4,1.5){N};
+
+        \draw[->] (0,1) -- (1,1.33);
+        \draw[->] (1,2) -- (2,2.33);
+        \draw[->] (1,1) -- (2,1.33);
+        \draw[->] (2,2) -- (3,2.33);
+        
+        \draw[fill = myLColor] (0,1) circle (2pt);
+        \draw[fill = myLColor] (1,2) circle (2pt);
+        \draw[fill = myLColor] (1,1) circle (2pt);
+        \draw[fill = myLColor] (2,2) circle (2pt);
+    \end{tikzpicture}
+\end{center}
+
+\divider
+
+\begin{center}
+    \begin{tikzpicture}
+        \draw[thick] (0,0) ellipse (2cm and 0.6cm);
+
+        \draw[->, myLLColor, thick] (0,-0.6) -- (2,-0.6) node[right]{$I$};
+        \draw[->, myLColor!50, thick] (0,0) -- (0,1.5) node[right]{$\vb{\mu}$};
+        \draw[<->] (0,0) -- (2,0) node[midway, above]{$R$};
+    \end{tikzpicture}
+\end{center}
+
+\divider
+
+\begin{center}
+    \begin{tikzpicture}
+        \draw[fill = myLLColor] plot[domain=0:1, samples = 300] (\x,{1.5*exp(-6.5*((\x - 1)^2)}) -- (6,1.5) -- plot[domain=6:7, samples = 300](\x,{1.5*exp(-6.5*((\x - 6)^2)});
+        \draw[fill = myLColor!50] plot[domain=0:7, samples = 300](\x,{4*exp(-70*0.4*((\x - 1)^2))});
+        \draw[fill = myLColor!50] plot[domain=0:7, samples = 300](\x,{4*exp(-70*0.4*((\x - 6)^2))});
+        \draw[step = 0.5cm, draw opacity = 0.15] (0,0) grid (7,4);
+        \draw[<->] (0,4) node[above]{n° de partículas} |- (7,0) node[right]{$z$};
+        \node[below] at (1,0){$\mu_{-}$};
+        \node[below] at (6,0){$\mu_{+}$};
+
+        \node[below] at (3.5,1.5){Curva esperada};
+        \node[below] at (3.5,3.5){Curva obtida};
+        \draw[->] (4.75,3.25) -- (5.5,3.25);
+        \draw[<-] (1.5,3.25) -- (2.25,3.25);
+    \end{tikzpicture}
+\end{center}
+
+\divider
+
+\begin{center}
+    \begin{tikzpicture}
+        \draw[fill = myLColor!50] (0,0) rectangle (1.2,1.2);
+        \node[] at (0.6,0.6){$x$};
+        \node[above] at (0.6,1.2){Medidor de $\hat{\mu}_{x}$};
+
+        \draw[fill = myLColor!50, xshift = 4cm] (0,0) rectangle (1.2,1.2);
+        \node[, xshift = 4cm] at (0.6,0.6){$y$};
+        \node[above, xshift = 4cm] at (0.6,1.2){Medidor de $\hat{\mu}_{y}$};
+
+        \draw[fill = myLColor!50, xshift = 8cm] (0,0) rectangle (1.2,1.2);
+        \node[, xshift = 8cm] at (0.6,0.6){$z$};
+        \node[above, xshift = 8cm] at (0.6,1.2){Medidor de $\hat{\mu}_{z}$};
+    \end{tikzpicture}
+\end{center}
+
+\divider
+
+\begin{center}
+    \begin{tikzpicture}
+        \draw[fill = myLColor!50] (0,0) rectangle (1.2,1.2);
+        \node[] at (0.6,0.6){$z$};
+
+        \draw[->] (-2,0.6) -- (0,0.6) node[midway, above]{$\ket{\psi} =~ ?$};
+        \draw[->] (1.2,0.3) -- (3.2,0.3) node[midway, below]{$50\%~ \ket{-}_{z}$};
+        \draw[->] (1.2,0.9) -- (3.2,0.9) node[midway, above]{$50\%~ \ket{+}_{z}$};
+    \end{tikzpicture}
+\end{center}
+
+\divider
+
+\begin{center}
+    \begin{tikzpicture}
+        \draw[fill = myLColor!50] (0,0) rectangle (1.2,1.2);
+        \node[] at (0.6,0.6){$z$};
+
+        \draw[->] (-2,0.6) -- (0,0.6) node[midway, above]{$\ket{\psi} =~ ?$};
+        \draw[->] (1.2,0.3) -- (3.2,0.3) node[midway, below]{$50\%~ \ket{-}_{z}$};
+        \draw[->] (1.2,0.9) -- (3.4,0.9) node[midway, above]{$50\%~ \ket{+}_{z}$};
+
+        \draw[fill = myLColor] (3.2,0) rectangle (3.3,0.6);
+
+        \draw[fill = myLColor!50] (3.4,0) rectangle (4.6,1.2);
+        \node[] at (4,0.6){$z$};
+    \end{tikzpicture}
+\end{center}
+
+\divider 
+
+\begin{center}
+    \begin{tikzpicture}
+        \draw[fill = myLColor!50] (0,0) rectangle (1.2,1.2);
+        \node[] at (0.6,0.6){$z$};
+
+        \draw[->] (-2,0.6) -- (0,0.6) node[midway, above]{$\ket{\psi} =~ ?$};
+        \draw[->] (1.2,0.3) -- (3.2,0.3) node[midway, below]{$50\%~ \ket{-}_{z}$};
+        \draw[->] (1.2,0.9) -- (3.4,0.9) node[midway, above]{$50\%~ \ket{+}_{z}$};
+
+        \draw[fill = myLColor] (3.2,0) rectangle (3.3,0.6);
+
+        \draw[fill = myLColor!50] (3.4,0) rectangle (4.6,1.2);
+        \node[] at (4,0.6){$z$};
+
+        \draw[->] (4.6,0.6) -- (6.6,0.6) node[midway, above]{$100\%~ \ket{+}_{z}$};
+    \end{tikzpicture}
+\end{center}
+
+\divider
+
+\begin{center}
+    \begin{tikzpicture}
+        \draw[fill = myLColor!50] (0,0) rectangle (1.2,1.2);
+        \node[] at (0.6,0.6){$z$};
+
+        \draw[->] (-2,0.6) -- (0,0.6) node[midway, above]{$\ket{\psi} =~ ?$};
+        \draw[->] (1.2,0.3) -- (3.2,0.3) node[midway, below]{$50\%~ \ket{-}_{z}$};
+        \draw[->] (1.2,0.9) -- (3.4,0.9) node[midway, above]{$50\%~ \ket{+}_{z}$};
+
+        \draw[fill = myLColor] (3.2,0) rectangle (3.3,0.6);
+
+        \draw[fill = myLColor!50] (3.4,0) rectangle (4.6,1.2);
+        \node[] at (4,0.6){$x$};
+
+        \draw[->] (4.6,0.3) -- (6.6,0.3) node[midway, below]{$50\%~ \ket{-}_{x}$};
+        \draw[->] (4.6,0.9) -- (6.6,0.9) node[midway, above]{$50\%~ \ket{+}_{x}$};
+    \end{tikzpicture}
+\end{center}
+
+\divider
+
+\begin{center}
+    \begin{tikzpicture}
+        \foreach \y in {1,0.6,...,-1}{
+        \draw[->, myDColor](0,\y) node[left]{$\overline{\nu}$} -- (1,\y);
+    }
+    
+    \draw[fill = myDColor!20] (1.5,-2) rectangle (6.8,2);
+    
+    \foreach \y in {1.8,1.6,...,-1.8}{
+        \draw[ball color = myDColor!50] (1.5,\y) circle (2pt);
+        \draw[ball color = myDColor!50] (6.8,\y) circle (2pt);
+    }
+    
+    \draw[->] (2.2,0) -- (3,0);
+    
+    \node[myDColor!50] at (4.0,0){(1)};
+    
+    \draw[ball color = blue!10!black] (3.2,0) circle (2pt) node[below]{$p$};
+    
+    \draw[->,] (3.4,0.1) -- (4,1);
+    \draw[->,] (3.4,-0.1) -- (4,-1);
+    
+    \draw[ball color = blue!50!black] (4.1,1.1) circle (1pt) node[above]{$e^{+}$};
+    \draw[ball color = blue!40!black] (4.1,-1.2) circle (2pt) node[below]{$n$};
+    
+    \draw[myDColor!80, dotted] (4.33,2) -- (4.33,-2);
+    
+    \draw[->] (4.4,1.1) -- (5.1,1.1) node[midway, below, myDColor!50]{(2)};
+    \draw[ball color = blue!50!black] (5.3,1.1) circle (1pt) node[above]{$e^{-}$};
+    
+    \draw[->] (4.4,-1.2) -- (5.1,-1.2) node[midway, above, myDColor!50]{(3)};
+    \draw[ball color = blue!40!black] (5.3,-1.2) circle (5pt) node[below=2.5]{\footnotesize{$^{108}\textrm{Cd}$}};
+    
+    \draw[decorate, decoration=snake, myLLColor!70!myLColor, ->,]  (5.5,1.0) - - (6.6,0.4) node[midway, below=0.1] {$\gamma$};
+    \draw[decorate, decoration=snake, myLLColor!70!myLColor, ->,]  (5.5,1.2) - - (6.6,1.8) node[midway, above=0.1] {$\gamma$};
+    \draw[decorate, decoration=snake, myLLColor!70!myLColor, ->,]  (5.5,-1.2) - - (6.7,-1.2) node[midway, below=0.1] {$\gamma$};
+    
+    \draw[->] (5.3,-1.0) -- (5.3, -0.4);
+    
+    \draw[ball color = blue!40!black] (5.3, -0.2) circle (5pt) node[right=2]{$^{109}\textrm{Cd}$};
+    
+    \foreach \y in {1.8,1.6,...,-1.8}{
+        \draw[] (1.43,\y) -- (1.3,\y) -- (1.3,\y-0.2);
+        \draw[] (6.87,\y) -- (7.02,\y) -- (7.02,\y-0.2);
+    }
+    
+    \draw[arrow inside, myLLColor!70!myLColor, thick] (6.87,1.8) -- (7.02,1.8) -- (7.02,0.4);
+    \draw[arrow inside, myLLColor!70!myLColor, thick] (6.87,0.4) -- (7.02,0.4) -- (7.02,-1.2);
+    
+    \draw[ball color = blue!40!black] (2,0) circle (0.5pt) node[below]{$\overline{\nu}$};
+    
+    \draw[] (1.3,-2) -- (1.3,-2.2) -- (7.02,-2.2) -- (7.02,-2);
+    
+    \draw[->, myDColor!50] (1.58,-1.8) -- (1.72,-1.8) node[right]{\footnotesize{fotomultiplicador}};
+    
+    \draw[arrow inside, myLLColor!70!myLColor, thick] (6.87,-1.2) -- (7.02,-1.2) -- (7.02,-2.2);
+    \draw[arrow inside, myLLColor!70!myLColor, thick] (7.033,-2.2) -- (4.6,-2.2) node[midway,below]{$i$};
+    
+    \foreach \y in {1.8,0.4,-1.2}{
+        \draw[ball color = green!40] (6.8,\y) circle (2pt);
+    }
+    
+    \draw[fill = myDColor!50] (4,-2.3) rectangle (4.6,-2.1) node[midway,below=0.1]{Analisador};
+    
+    \node[right] (r1) at (7.2,1.8){(1) $\overline{\nu} + p \rightarrow n + e^{+}$};
+    \node[right] (r2) at (7.2,0){(2) $e^{+} + e^{-} \rightarrow \gamma + \gamma$};
+    \node[right] (r3) at (7.2,-1.8){(3) $n + ^{108}\textrm{Cd} \rightarrow ^{109}\textrm{Cd} + \gamma$};
+    \end{tikzpicture}
+\end{center}
+
+\divider
+
+\begin{center}
+    \begin{tikzpicture}
+        \draw[step = 0.5 cm, draw opacity = 0.15] (0,0) grid (5.5,5.5);
+        \draw[<->] (0,5.5) node[above]{$\mathds{P}$} |- (5.5,0) node[right]{$t$};
+
+        \draw[myLColor!50] plot[domain=0:5.5, samples=300](\x,{2.5*(sin(\x r))^2}) node[right]{$\mathds{P}(\nu_{\mu})$};
+        \draw[myLLColor] plot[domain=0:5.5, samples=300](\x,{2.5*(cos(\x r))^2 + 2.5}) node[right]{$\mathds{P}(\nu_{e})$};
+
+        \draw[dotted, thick] (0,2.5) node[left]{$(sc)^2$} -- (5.5,2.5);
+        \node[left] at (0,5){$1$};
+    \end{tikzpicture}
+\end{center}
+
+\divider
+
+\begin{center}
+    \begin{tikzpicture}
+        \draw[step = 0.5cm, draw opacity = 0.15] (0,1.5) grid (6,-4.5);
+        \draw[->] (0,-4.5) -- (0,1.5) node[left]{$V(x)$};
+        \draw[->] (0,0) -- (6,0) node[right]{$x$};
+
+        \draw[myLColor!50] plot[domain=1.38:6, samples=300](\x,{4*4*( (1.4/(\x))^(12) - (1.4/(\x))^(6) )});
+        \draw[dotted] plot[domain=1.268:1.873, samples=300](\x,{60*(\x - 1.57)^2 - 4});
+        \node[above] at (1.57,0){$\;x_{0}$};
+        \draw[] (1.57,0.12) -- (1.57,-0.12);
+    \end{tikzpicture}
+\end{center}

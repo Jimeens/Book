@@ -1,0 +1,130 @@
+Para definirmos o que chamamos de espaço de Hilbert $\mathscr{H}$ partimos do espaço de kets $\mathscr{V}$ (e seu dual) da última seção, isto é, um espaço vetorial linear complexo cuja dimensão é arbitrária. Impomos os seguintes postulados para que $\mathscr{V}$ seja um espaço de Hilbert $\mathscr{H}$.
+            
+\begin{definition}
+    \label{def: Hilbert space}
+    Seja $\mathscr{H}$ um espaço vetorial sobre $\mathbb{C}$ com as características da Definição~\ref{def: ket space}, e cujo seu dual $\mathscr{H}^{\ast}$ satisfaz a Definição~\ref{def: bra space}. Sejam $\ket{\psi},\ket{\phi}\in\mathscr{H}$ quaisquer. Para que $\mathscr{H}$ seja um espaço de Hilbert, as seguintes propriedades devem ser satisfeitas:
+    \begin{enumerate}
+        \item A norma $\norm{\ket{\psi}} \coloneqq \sqrt{\braket{\psi}}$ deve ser real e bem definida (finita);
+        \item O produto interno $\braket{\psi}{\phi}$ deve ser bem definido (finito), positivo e possuir valores em $\mathbb{C}$;
+        \item Para cada $\ket{\psi}\in\mathscr{H}$, existe uma sequência de Cauchy $\{\ket{\psi_{n}}\}_{n\in\mathbb{N}}\in\mathscr{H}$ tal que para todo $\varepsilon > 0$, existe pelo menos um elemento $\ket{\psi_{k}}$ da sequência que satisfaz $\norm{\ket{\psi} - \ket{\psi_{k}}} < \varepsilon$;
+        \item O conjunto dos elementos de $\mathscr{H}$ é um espaço vetorial completo, ou seja, toda sequência de Cauchy $\{\ket{\psi_{n}}\}_{n\in\mathbb{N}}\in\mathscr{H}$ converge para um elemento do próprio $\mathscr{H}$. 
+    \end{enumerate}
+\end{definition}
+
+Tendo definido o espaço de Hilbert, podemos esboçar um pouco da sua importância para a construção matemática da mecânica quântica. Ao tratarmos da mecânica clássica, todas as propriedades do estado de um sistema de $n$-partículas são completamente determinadas através de um único ponto $P = (x_{1},...,x_{3n};p_{1},...,p_{3n})$ em um espaço de fase $\Omega$ de dimensão $6n$, onde $x_{i}$ e $p_{i}$ são as coordenadas e os momentos das partículas, respectivamente. No entanto, na mecânica quântica essa abordagem não é válida. 
+
+Tratando-se de um estado quântico, ele possui características únicas que diferem-se de $P$. Um fato é que o estado quântico não está diretamente ligado à realidade, isto é, dada uma expressão matemática para descrever o estado (como por exemplo uma função de onda, que veremos mais a frente), não teremos um objeto com significado físico, mas sim teremos uma ferramenta para fazer predições estatísticas sobre o comportamento do estado quântico. Pode não ser tão claro a primeira vista o que de fato queremos transmitir, mas esta é uma das características fundamentais da mecânica quântica! Os estados devem pertencer a um espaço arbitrário, que satisfaz condições únicas e que melhor descreve as propriedades e comportamentos dos sistemas quânticos, e este espaço é o espaço de Hilbert.
+% Ainda acho que não consegui explicar o motivo de usarmos espaços de Hilbert...
+
+\begin{note}{}
+    Chamaremos, a partir de agora, os vetores $\ket{\psi}\in\mathscr{H}$ de \textit{estados quânticos}.
+\end{note}
+
+\begin{note}{}
+    A grosso modo, uma sequência de Cauchy é toda sequência $\{a_{n}\}_{n\in\mathbb{N}}$, tal que para dois termos arbitrários da sequência $a_{k}$ e $a_{m}$, vale que $\displaystyle\lim_{k,m\to \infty}\norm{a_{k} - a_{m}}\to 0$ (repare aqui que a notação de norma define a distância entre os elementos, se os elementos forem reais, $\norm{a_{k} - a_{m}} = \abs{a_{k} - a_{m}}$). 
+    
+    Um exemplo de sequência de Cauchy é a sequência $\qty{\frac{1}{n}}_{n\in\mathbb{N}}$, em que 
+    \begin{equation*}
+        \abs{\frac{1}{2} - \frac{1}{3}} = \frac{1}{6} > 
+        \abs{\frac{1}{3} - \frac{1}{4}} = \frac{1}{12} > ... > 
+        \lim_{k,m\to\infty}\abs{\frac{1}{k} - \frac{1}{m}} = 0
+    \end{equation*}
+\end{note}
+
+Nos atentaremos ao longo desta seção principalmente para o postulado fundamentais (a), dado sua importância física (para mais detalhes sobre as demais condições leia o apêndice ao final do capítulo). O postulado (a) nos diz que $\braket{\psi}{\psi}$ além de pertencer aos reais, deve ser finita e não negativa, isto é 
+\begin{equation*}
+    0 \leq \braket{\psi}{\psi} < \infty. 
+\end{equation*}
+Essa restrição, essencialmente sobre a norma de $\ket{\psi}$, nos permite atribuir, do ponto de vista físico,  uma interpretação probabilística da mecânica quântica. Matematicamente temos que as probabilidades $\{P_n\}$ ($n =1, 2,\dots, \ N)$ de eventos $\{\varepsilon_n\}$ ocorrerem devem respeitar duas propriedades \footnote{Note que podemos estender essas propriedades para o caso em que $N\to \infty$.}:
+\begin{myitemize}
+    \item Todas as probabilidades devem ser positivas e maiores ou iguais a $0$ e menor ou igual a $1$:
+    \begin{equation*}
+        0\leq P_n \leq 1, \ \forall\ n
+    \end{equation*}
+    \item A soma de todas as probabilidades deve ser $1$ ($100\%$):
+    \begin{equation*}
+        \sum_i^{N}P_n = 1
+    \end{equation*}
+\end{myitemize}
+Como $\norm{\ket{\psi}} = \sqrt{\braket{\psi}{\psi}}$ é estritamente positiva e finita, podemos relaciona-la ao conceito de probabilidade dado que seja feita uma normalização apropriada. Sendo $\ket{\psi^\prime} = \ket{\psi}/\sqrt{\braket{\psi}{\psi}}$ a versão normalizada de $\ket{\psi}$ (em que $\ket{\psi}$ não admite o estado nulo) teremos que
+\begin{equation*}
+    \braket{\psi'}{\psi'} = 1 \implies \norm{\ket{\psi^\prime}}= \sqrt{\braket{\psi^\prime}{\psi^\prime}} = 1
+\end{equation*}
+Se expandirmos o produto $\braket{\psi'}{\psi'}$ conforme visto na última seção (sendo $\{\ket{e_i}\}\in \mathscr{H}$ uma base ortonormal),
+\begin{equation*}
+    \ket{\psi'} = \sum_{i}\psi_{i}'\ket{e_{i}}
+\end{equation*}
+podemos escrever o produto $\braket{\psi'}{\psi'}$ como
+\begin{equation*}
+    \braket{\psi'}{\psi'} = \sum_i \abs{\psi_i'}^2 = 1
+\end{equation*}
+como a soma dos termos $\abs{\psi_i'}^2$ deve somar $1$, temos aqui que cada elemento $\abs{\psi_i'}^2$ representa\footnote{Em linguagem estatística o termo não representa a probabilidade em si, mas sim a densidade de probabilidade discreta.} uma probabilidade do estado $\ket{\psi'}$ ser um estado em particular (analogamente à definição de probabilidade comentada anteriormente nesta seção). Conforme o que vimos na seção anterior
+\begin{equation*}
+    \braket{e_i}{\psi'} = \psi_i' \implies \abs{\braket{e_i}{\psi'}}^2 = \abs{\psi_i'}^2
+\end{equation*}
+logo os possíveis estados de $\ket{\psi'}$ são os elementos da base $\{\ket{e_1}, \ket{e_2}, \dots\}$ e a probabilidade de $\ket{\psi'}$ atingir um estado $\ket{e_i}$ é dada pela projeção de $\ket{\psi'}$ sobre o elemento $\ket{e_i}$. Na expansão do estado $\ket{\psi'}$ os coeficientes $\psi_i'$ estão relacionados às probabilidades de atingir o estado $i$ e $\ket{e_i}$ é o possível estado.
+
+Perceba que ainda não estamos tratando da evolução de $\ket{\psi}$ no tempo, os estados $\{\ket{e_i}\}$ formam todas as possibilidades do estado $\ket{\psi}$ dentro de um instante fixo. Essa é a ideia de superposição da mecânica quântica.
+
+\begin{note}{}
+        Note que caso a norma não fosse finita não poderíamos normalizar o estado dado que 
+        \begin{equation*}
+            \ket{\psi^\prime} = \frac{\ket{\psi}}{\sqrt{\braket{\psi}{\psi}}}
+        \end{equation*}
+        não seria definido caso a norma fosse infinita. Se fossem admitidos números complexos ou negativos por parte de $\braket{\psi}{\psi}$, perderíamos a interpretação probabilística da norma quadrada de $\ket{\psi'}$. 
+\end{note}
+
+Estamos por enquanto tratando da interpretação probabilística de maneira superficial. Estamos tratando somente de estados discretos, precisamos ainda nos abranger aos estados contínuos. Não associamos ainda um sentido físico à esses possíveis estados, para isso precisamos introduzir os conceitos de operadores, autovalores e autoestados. Esta seção tem o propósito de unicamente associar a norma a uma interpretação probabilística, que nos servirá de alicerce quando tratarmos do assunto aliado a um sentido físico. Finalizaremos está seção com um exemplo puramente ilustrativo de como pensamos em termos de probabilidade a partir de um estado $\ket{\psi}$ aplicado a uma moeda justa (sem trapaças em sua constituição):
+
+\begin{example}[Estados de uma moeda (versão discreto)]{}
+    % Conferir nas notas do Tablet
+
+    Realizaremos um exemplo de caráter puramente didático de forma a esboçar a relação do vetor de estado à ideia de probabilidade. Considere o experimento de um arremesso de uma moeda justa. Consideraremos que cada face desse nosso "sistema" representa um estado possível. Imagine um cenário em que os dois possíveis estados estivessem de fato em superposição após o arremesso, não sendo portanto possível distinguir em qual lado a moeda caiu. 
+    
+    Como sabemos, a probabilidade do evento cair cara é de $50\%$ e o de cair corôa também $50\%$. Por praticidade, utilizaremos a base canônica como a base ortonormal, isto é, os estados
+    \begin{equation*}
+    \{\ket{e_i}\} = \{\ket{e_1}, \ket{e_2}\}
+    \left\{
+    \begin{bmatrix}
+        1 \\
+        0
+    \end{bmatrix}, \ 
+    \begin{bmatrix}
+        0 \\
+        1
+    \end{bmatrix}
+    \right\}
+    \end{equation*}
+    como deve ser de conhecimento do leitor, essa base é ortonormal. Sendo o vetor de estado dado por 
+    \begin{equation*}
+        \ket{\psi} = 
+        \begin{bmatrix}
+        \psi_1 \\
+        \psi_2
+        \end{bmatrix}
+    \end{equation*}
+    temos que a projeção do vetor da base $\ket{e_1}$ sobre o vetor de estado resulta em
+    \begin{equation*}
+        \braket{e_1}{\psi} = 
+        \begin{bmatrix}
+            1 & 0
+        \end{bmatrix}
+        \cdot
+        \begin{bmatrix}
+        \psi_1 \\
+        \psi_2
+        \end{bmatrix}
+        = \psi_1
+    \end{equation*}
+    como dito anteriormente ao longo desta seção, associamos as probabilidades de cada estado à grandeza $\abs{\psi_i}^2$, sendo assim (note que a possibilidade negativa é descartada):
+    \begin{equation*}
+        \abs{\psi_1}^2 = \abs{\psi_2}^2 = \frac{1}{2} \implies \psi_1 = \psi_2 = \frac{1}{\sqrt{2}}
+    \end{equation*}
+    Temos portanto que o vetor de estado dessa nossa versão quântica da moeda seria
+    \begin{equation*}
+        \ket{\psi} = \sum_i \psi_i \ket{e_i} = \frac{1}{\sqrt{2}}\ket{e_1} + \frac{1}{\sqrt{2}}\ket{e_2}
+    \end{equation*}
+    em que $\ket{e_1}$ seleciona um dos estados (digamos o cara por exemplo) cuja probabilidade é fornecida pelo coeficiente $\psi_1$ pois $\abs{\psi_1}^2 = 1/2$ e o estado $\ket{e_2}$ seleciona o outro (digamos que o corôa) cuja probabilidade é fornecida pelo coeficiente $\psi_2$ pois $\abs{\psi_2}^2 = 1/2$. Note que como já associamos diretamente as probabilidades à $\abs{\psi_1}^2$ e $\abs{\psi_2}^2$, não havia necessidade de normalização, já partimos desde o princípio de que $\abs{\psi_1}^2 + \abs{\psi_2}^2 = 1$, o que não é a maneira como resolvemos os problemas de mecânica quântica, usualmente a probabilidade de cada estado será o que descobriremos ao final e necessitaremos realizar uma normalização.
+    
+    Vale ressaltar que uma moeda pertencente ao nosso ambiente macroscópico não pode representar um sistema quântico, dado que de forma mecanicista poderíamos prever o movimento a partir das condições iniciais de arremesso e obter com certeza qual dos lados ela teria caído. Ao desenvolvermos conceitos fundamentais como operadores nos próximos capítulos, seremos capazes de resolver um problema de caráter mais realista em mecânica quântica.
+\end{example}

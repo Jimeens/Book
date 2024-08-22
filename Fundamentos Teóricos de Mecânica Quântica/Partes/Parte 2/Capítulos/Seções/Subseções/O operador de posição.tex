@@ -1,0 +1,32 @@
+    Denotemos o operador de posição por $\hat{x}$, em que ele é hermitiano e seus autoestados e autovalores satisfazem a equação:
+        \begin{answer}\label{eq: autoestados e autovalores de x}
+            \hat{x}\ket{x} = x\ket{x}
+        \end{answer}
+    
+    É importante salientar que a base de autoestados é contínua, ou seja, cada elemento desta é contínuo, de modo que se usarmos a definição de posição da mecânica clássica, podemos nos locomover uma distância tão pequena quanto se queira que ainda estaremos no mesmo espaço, portanto as equações passarão do discreto para o contínuo:
+        \begin{align*}
+            \ket{\psi} = \sum_{i}\psi_{i}\ket{a_{i}} &\rightarrow \ket{\psi} = \int \psi(x')\ket{x'}\dd{x'} \\
+            \psi_{i} = \braket{a_{i}}{\psi} &\rightarrow \psi(x) = \braket{x}{\psi} \\ \\
+            \braket{a_{i}}{a_{j}} = \delta_{ij} &\rightarrow \braket{x'}{x''} = \delta(x'-x'')
+        \end{align*}
+    
+    Podemos demonstrar a segunda equação de forma simples:
+        \begin{align*}
+            \braket{x}{\psi} &\eq \bra{x}\int\psi(x')\ket{x'}\dd{x'} \\
+            &\eq \int\psi(x')\braket{x}{x'}\dd{x'} \\
+            &\eq \int\psi(x')\delta(x-x')\dd{x'} = \psi(x)
+        \end{align*}
+
+    Mesmo sendo uma demonstração simples, note a relevância deste resultado. Essencialmente o que estamos dizendo é que a função de onda $\psi(x)$ representa a projeção de um estado $\ket{\psi}$ qualquer no estado $\ket{x}$. Isto nos permite tratar muitas situações, como veremos mais adiante, com mais simplicidade e clareza, tendo em mente que nem sempre é fácil lidar com as funções de onda de forma direta.
+    
+    Além disto, conseguimos tirar como consequência que $\abs{\psi(x)}^2\dd{x}$ se relaciona diretamente com a probabilidade de encontrar o estado $\ket{\psi}$ na posição $x$. Isso devido ao fato de que se o vetor de estado estiver normalizado:
+        \begin{align*}
+            \braket{\psi}{\psi} = 1 &\eq \int\psi^{\ast}(x')\bra{x'}\dd{x'} \int\psi(x'')\ket{x''}\dd{x'}' \\
+            &\eq \int\int\psi^{\ast}(x')\psi(x'')\braket{x'}{x''}\dd{x'}\dd{x'}' \\
+            &\eq \int\int\psi^{\ast}(x')\psi(x'')\delta(x'-x'')\dd{x'}\dd{x'}' \\
+            &\eq \int\psi^{\ast}(x')\psi(x')\dd{x'} \\
+            &\eq \int\abs{\psi(x')}^2\dd{x'}
+        \end{align*}
+    
+    Logo, se $\bra{\psi} \mapsto \bra{x}$, temos a probabilidade de encontrar o estado $\ket{\psi}$ na posição $x$.
+    

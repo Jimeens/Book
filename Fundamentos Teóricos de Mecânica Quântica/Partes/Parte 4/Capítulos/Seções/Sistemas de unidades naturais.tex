@@ -1,0 +1,77 @@
+Em suma, podemos descrever as unidades naturais como uma representação numérica de grandezas, ou seja, este sistema vai estabelecer que as constantes físicas universais serão unitárias, adimensionais e independentes da escala humana, o que não é verdade para os sistemas de unidades SI, CGS, etc. Vale salientar que estamos tratando de \textit{sistemas}, ou seja, não existe apenas um único sistema de unidades naturais, de modo que cada um é utilizado dependendo do contexto físico em que se está trabalhando para simplificar as contas e conseguir absorver melhor como a teoria está de fato sendo desenvolvida.
+
+Escolheremos em particular um sistema introduzido por \textcite{Planck4} e modificadas por \textcite{Sorkin} através de uma normalização diferente, onde temos o que foi nomeada como ``sistema de unidades naturais de Planck racionalizada'' (ou para fins de praticidade, SN), caracterizada por:
+    \begin{answer*}
+        \hbar = c = k_{\text{B}} = \varepsilon_{0} = 4\pi G = 1
+    \end{answer*}
+
+Neste sistema , a única unidade que de fato precisamos e utilizamos é o elétron-volt (eV), de modo que grande parte das unidades, como por exemplo a temperatura, serão expressas em unidades de energia. Com base nisto, as coisas se simplificam bastante, alguns exemplos disso são: a equação de Schrödinger
+    \begin{equation*}
+        -\dfrac{\hbar^2}{2m}\nabla^2\psi + V(\psi) = i\hbar\pdv{\psi}{t} \Rightarrow 
+        -\dfrac{1}{2m}\nabla^2\psi + V(\psi) = i\pdv{\psi}{t}, 
+    \end{equation*}
+a relação entre massa e energia
+    \begin{equation*}
+        E^2 = m^2 c^4 + p^2 c^2 \Rightarrow E^2 = m^2 + p^2
+    \end{equation*}
+e até mesmo o princípio da incerteza
+    \begin{equation*}
+        \Delta x \Delta p \geqslant \dfrac{\hbar}{2} \Rightarrow 
+        \Delta x \Delta p \geqslant \dfrac{1}{2}
+    \end{equation*}
+
+Além de ver como funcionam as equações neste sistema, é conveniente e importante determinar como são as unidades nele, o que não é muito complicado de se ver. Através da relação entre massa e energia, tem-se que como $[E] = \text{eV}$:
+    \begin{equation*}
+        E^2 = m^2 + p^2 \Rightarrow [E]^2 = [m]^2 + [p]^2 \Rightarrow [E] = [m] = [p] = \text{eV}
+    \end{equation*}
+
+De forma similar, para determinar a unidade de comprimento, pode-se utilizar o princípio da incerteza:
+    \begin{equation*}
+        \Delta x \Delta p \geqslant \dfrac{1}{2} \Rightarrow [x] [p] = \text{qtd. adimensional} \Rightarrow [x] = [p]^{-1} = \text{eV}^{-1}
+    \end{equation*}
+e através do princípio da incerteza entre energia e tempo, tem-se
+    \begin{equation*}
+        \Delta E \Delta p \geqslant \dfrac{1}{2} \Rightarrow [E] [t] = \text{qtd. adimensional} \Rightarrow [t] = [E]^{-1} = \text{eV}^{-1}
+    \end{equation*}
+ou seja, tempo e espaço têm a mesma dimensão! Tendo em mente que nesse sistema de unidades $c = 1$ é uma quantidade adimensional, toda e qualquer velocidade também será adimensional e em particular teremos
+    \begin{equation*}
+        0 \leqslant v \leqslant 1
+    \end{equation*}
+
+Por fim, é conveniente também determinar a dimensão da carga elétrica, tendo em mente que em mecânica quântica esta quantidade se faz sempre presente, e para isso, partimos da constante de estrutura fina, que é uma quantidade adimensional:
+    \begin{equation*}
+        \alpha = \dfrac{e^2}{4 \pi \epsilon_{0} \hbar c} \Rightarrow \alpha = \dfrac{e^2}{4\pi} \Rightarrow e = \sqrt{4\pi\alpha} \approx 0.303\ (\text{qtd. adimensional})
+    \end{equation*}
+implicando que no SN a carga elétrica é também uma quantidade adimensional. Nota-se claramente que coisas são simplificadas teoricamente, pois as constantes que eventualmente aparecem são sempre iguais a 1 e adimensionais, tornando a matemática mais simples de ser trabalhada, no entanto, há a necessidade de saber converter as unidades do SN para o SI, por exemplo, o que não é difícil de ser feito.
+    \begin{example}
+        Se quisermos determinar o fator de conversão do tempo entre o SN e o SI, podemos fazer uso da constante de Planck reduzida:
+            \begin{equation*}
+                \hbar = 1 = 0.658 \cdot 10^{-15}\ \mathrm{eV\cdot s} \Rightarrow 
+                1\ \mathrm{eV}^{-1} = 0.658\cdot 10^{-15}\ \text{s}
+            \end{equation*}
+    \end{example}
+
+    \begin{example}
+        De forma análoga ao exemplo anterior, podemos determinar o fator de conversão da posição entre os dois sistemas:
+            \begin{equation*}
+                \hbar c = 1 = 0.658\cdot 10^{-15} \cdot 2.998\cdot 10^{8}\ \mathrm{eV\cdot m} = 1.972 \cdot 10^{-7}\ \mathrm{eV\cdot m}
+            \end{equation*}
+        implicando portanto em
+            \begin{equation*}
+                1\ \text{eV}^{-1} = 1.972\cdot 10^{-7}\ \text{m}
+            \end{equation*}
+    \end{example}
+
+    \begin{example}
+        Um exemplo prático de como as contas se simplificam pode ser visto a partir da determinação do estado fundamental do átomo de hidrogênio, isto por que a expressão para determinar as energias fica bem mais simples
+            \begin{equation*}
+                E_{n} = -\qty(\dfrac{\mathcal{Z}e^2}{4\pi\varepsilon_{0}})^2\dfrac{m_{e}}{2\hbar^2}\dfrac{1}{n^2} \Rightarrow E_{n} = -\qty(\dfrac{\mathcal{Z}e^2}{4\pi})^2\dfrac{m_{e}}{2n^2} \overset{\mathcal{Z}=1}{=} -\dfrac{e^4 m_{e}}{32\pi^2n^2}
+            \end{equation*}
+
+        Segue que para o estado fundamental ($n=1$), utilizamos a massa do elétron (0.511 MeV) e o valor da carga elétrica (0.303) para obter
+            \begin{equation*}
+                E_{1} = -\dfrac{(0.303)^4 \cdot 0.511 \cdot 10^{6}}{32 \pi^2} = -13.6\ \text{eV}
+            \end{equation*}
+    \end{example}
+
+    A partir deste ponto, usaremos em sua grande maioria este sistema de unidades naturais afim de simplificar as equações e suas interpretações.

@@ -1,0 +1,88 @@
+    Finalmente definiremos o que são operadores e o porque dessa ferramenta ser tão útil no desenvolvimento de toda teoria quântica. Grande parte de sua importância se dá pelo fato de que muita informação pode ser armazenada em um único operador e mesmo assim nenhuma propriedade essencial do sistema estudado é perdida quando desenvolvemos as contas com eles.
+    
+    \begin{definition}\label{def: operators}
+        
+        (\textbf{Operadores}) Um operador é um objeto matemático que age sobre o vetor de estado do sistema e produz outro vetor de estado. Para ser preciso, se denotarmos um operador por $\hat{\mathcal{A}}$ e $\ket{\psi}$ um elemento do espaço de Hilbert do sistema, então
+            \begin{answer*}
+                \hat{\mathcal{A}}\ket{\psi} = \ket{\phi}
+            \end{answer*}
+        onde o vetor de estado $\ket{\phi}$ também pertence ao mesmo espaço de Hilbert.
+    \end{definition}
+    
+    É importante notar que $\bra{\phi'}$ não necessariamente é o vetor dual de $\ket{\phi}$! É fácil ver que isso é verdade:
+    
+    \begin{example}\label{example 1.5}
+        Consideremos o vetor de estado $\ket{\psi}$ e o operador $\hat{\mathcal{A}}\in\mathbb{R}^2$ como sendo
+            \begin{equation*}
+                \ket{\psi} = \begin{pmatrix}
+                    x \\ y
+                \end{pmatrix} \qquad \& \qquad 
+                \hat{\mathcal{A}} = \begin{pmatrix}
+                    a & b \\ c & d
+                \end{pmatrix}.
+            \end{equation*}
+        
+        Temos então
+            \begin{equation*}
+                \hat{\mathcal{A}}\ket{\psi} = 
+                    \begin{pmatrix}
+                        a & b \\ c & d
+                    \end{pmatrix}
+                    \begin{pmatrix}
+                        x \\ y
+                    \end{pmatrix} = 
+                    \begin{pmatrix}
+                        ax + by \\ cx + dy
+                    \end{pmatrix} \coloneqq \ket{\phi},
+            \end{equation*}
+        de modo que transformamos o vetor coluna $\ket{\psi}$ em outro vetor coluna $\ket{\psi}$. De forma análoga
+            \begin{equation*}
+                \bra{\psi}\hat{\mathcal{A}} = 
+                \begin{pmatrix}
+                    x^{\ast} & y^{\ast}
+                \end{pmatrix}
+                \begin{pmatrix}
+                    a & b \\ c & d
+                \end{pmatrix} = 
+                \begin{pmatrix}
+                    x^{\ast}a + y^{\ast}c & x^{\ast}b + y^{\ast}d    
+                \end{pmatrix} \coloneqq \bra{\phi'}
+            \end{equation*}
+        em que também transformamos um \Acomment{bra} em outro \Acomment{bra}. Note então que o dual de $\ket{\phi}$ é
+            \begin{equation*}
+                \bra{\phi} = 
+                \begin{pmatrix}
+                    a^{\ast}x^{\ast} + b^{\ast}y^{\ast} & c^{\ast}x^{\ast} + d^{\ast}y^{\ast}
+                \end{pmatrix},
+            \end{equation*}
+        portanto, podemos concluir que
+            \begin{equation*}
+                \bra{\phi} \neq \bra{\phi'}.
+            \end{equation*}
+    \end{example}
+    
+    Dessa forma, vemos que $\bra{\phi}\hat{\mathcal{A}}$ não é o vetor dual de $\hat{\mathcal{A}}\ket{\psi}$. Podemos mostrar então que o vetor dual de $\hat{\mathcal{A}}\ket{\psi}$ é dado por $\bra{\psi}\hat{\mathcal{A}}^{\dagger}$.
+    \begin{note}{}
+        Muitas vezes o termo $\hat{\mathcal{A}}^{\dagger}$ é denotado por \Acomment{operador adjunto de $\hat{\mathcal{A}}$}.
+    \end{note}
+    
+    Como os operadores são matrizes, temos que as propriedades básicas dos operadores são as mesmas das matrizes ou seja
+    \begin{myitemize}
+        \item A soma de operadores é comutativa e associativa. $\textrm{Dados }\hat{\mathcal{A}}, \hat{\mathcal{B}}, \hat{\mathcal{C}}$:
+            \begin{equation*}
+                \hat{\mathcal{A}} + \hat{\mathcal{B}} + \hat{\mathcal{C}} = (\hat{\mathcal{A}} + \hat{\mathcal{B}}) + \hat{\mathcal{C}} = \hat{\mathcal{A}} + (\hat{\mathcal{B}} + \hat{\mathcal{C}}) = \hat{\mathcal{C}} + \hat{\mathcal{A}} + \hat{\mathcal{B}}
+            \end{equation*}
+        \item O produto é associativo, mas em geral não é comutativo. Dados $\hat{\mathcal{A}},\hat{\mathcal{B}},\hat{\mathcal{C}}$:
+            \begin{equation*}
+                \hat{\mathcal{A}}\hat{\mathcal{B}}\hat{\mathcal{C}} = (\hat{\mathcal{A}} \hat{\mathcal{B}}) \hat{\mathcal{C}} = \hat{\mathcal{A}} (\hat{\mathcal{B}} \hat{\mathcal{C}}) \neq \hat{\mathcal{C}} \hat{\mathcal{A}} \hat{\mathcal{B}}
+            \end{equation*}
+    \end{myitemize}
+    
+    O fato dos operadores não serem comutativos, nos induz a introduzir uma operação que nos mostra se os operadores são ou não comutativos, ou seja, se a operação der zero, diremos que eles comutam.
+    
+    \begin{definition}\label{def: commutator}
+        (\textbf{Comutador}) Dados dois operadores $\hat{\mathcal{A}}$ e $\hat{\mathcal{B}}$, definimos o \textit{comutador} como sendo
+            \begin{answer}\label{eq: commutator}
+                [\hat{\mathcal{A}},\hat{\mathcal{B}}] = \hat{\mathcal{A}}\hat{\mathcal{B}} - \hat{\mathcal{B}}\hat{\mathcal{A}}
+            \end{answer}
+    \end{definition}

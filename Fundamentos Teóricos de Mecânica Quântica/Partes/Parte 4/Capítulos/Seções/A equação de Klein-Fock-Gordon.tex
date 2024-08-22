@@ -1,0 +1,199 @@
+Ao tratarmos de mecânica quântica não--relativística, conseguimos obter uma equação de onda, que é a equação de Schrödinger, no entanto esta equação não é válida ao considerarmos situações onde as partículas possuem caráter relativísticos. Sendo assim, como podemos obter uma equação de onda relativística no ponto de vista da mecânica quântica? Para responder essa pergunta, podemos utilizar os operadores de momento e energia, e considerarmos uma onda plana, dada por
+    \begin{equation*}
+        \psi(\vb{r},t) = e^{i(\vb{p}\cdot\vb{r} - E t)},\ \text{onde} \begin{cases}\begin{aligned}
+            \vb{k} &= \dfrac{\vb{p}}{\hbar} = \vb{p}\ (\text{no SN}) \\
+            \omega &= \dfrac{E}{\hbar} = E\ (\text{no SN})
+        \end{aligned}
+        \end{cases}
+    \end{equation*}
+
+Vemos então que, em uma onda plana, os operadores de momento e energia são facilmente observados. Se utilizarmos que $\hat{p} = -i\vb{\nabla}$ e aplicarmos a $\psi(\vb{r},t)$, temos que
+    \begin{align*}
+        -i\vb{\nabla}\psi(\vb{r},t) &\eq -i(i\vb{p}) e^{i(\vb{p}\cdot\vb{r} - E t)} \\
+        &\eq \vb{p} e^{i(\vb{p}\cdot\vb{r} - E t)}
+    \end{align*}
+implicando que podemos de fato utilizar a forma usual do operador $\hat{p}$ da mecânica quântica neste caso. No caso do operador de energia, se utilizarmos que $\hat{\mathcal{H}} = i\pdv{}{t}$ e aplicarmos na onda plana, obtemos
+    \begin{align*}
+        i\pdv{\psi(\vb{r},t)}{t} &\eq i(-i E)e^{i(\vb{p}\cdot\vb{r} - E t)} \\
+        &\eq E e^{i(\vb{p}\cdot\vb{r} - E t)}
+    \end{align*}
+de modo que a forma usual do operador de energia da mecânica quântica também se aplica aqui. Recorrendo então à relação de dispersão entre energia e momento, eq. \eqref{eq: dispersion relation}, podemos fazer a mudança
+    \begin{align*}
+        E &\mapsto i\pdv{}{t} \Rightarrow E^2 = -\pdv[2]{}{t} \\
+        \vb{p} &\mapsto -i\vb{\nabla} \Rightarrow p^2 = \nabla^2
+    \end{align*}
+e através da \eqref{eq: dispersion relation} obtemos
+    \begin{equation*}
+        E^2 - p^2 = m^2 \Rightarrow -\pdv[2]{}{t} + \nabla^2 = m^2
+    \end{equation*}
+onde aqui o que obtemos o operador D'alembertiano, cujo autovalor é $-m^2$ (o sinal negativo vem por conta de que a equação acima possui os sinais trocados ao do operador). Sendo assim, ao aplicarmos este operador à onda plana, obtemos a famigerada equação de \textcite{Klein}--\textcite{Fock}--\textcite{Gordon}
+    \begin{answer}\label{eq: KFG equation 1}
+        \pdv[2]{\psi(\vb{r},t)}{t} - \nabla^2\psi(\vb{r},t) = -m^2 \psi(\vb{r},t)
+    \end{answer}
+que utilizando uma notação mais interessante se reescreve na forma
+    \begin{answer}\label{eq: KFG equation}
+        (\partial_{\mu}\partial^{\mu} + m^2)\psi(\vb{r},t) = 0
+    \end{answer}
+
+Em mecânica quântica não--relativística, temos a densidade de probabilidade $\rho$ sendo dada por $\rho = \psi^{\ast}\psi = |\psi|^2$. Se buscarmos por uma equação de continuidade, precisamos de uma quantidade $\vb{J}$ sendo uma densidade de corrente associada em que pode ser obtida através da equação de Schrödinger.
+
+Partindo então da equação de Schrödinger, temos uma equação para $\psi(\vb{r},t)\equiv\psi$ e uma análoga para $\psi^{\ast}(\vb{r},t)\equiv\psi^{\ast}$. Temos então:
+    \begin{align*}
+        \qty[
+            -\dfrac{\hbar^2}{2m} \nabla^2 + V(\vb{r})
+        ]\psi = i\hbar\pdv{\psi}{t} \qquad \& \qquad
+        \qty[
+            -\dfrac{\hbar^2}{2m} \nabla^2 + V(\vb{r})
+        ]\psi^{\ast} = -i\hbar\pdv{\psi^{\ast}}{t}
+    \end{align*}
+
+Explicitando $\nabla^2 = \vb{\nabla}\cdot\vb{\nabla}$, fica mais fácil ver quando a equação da continuidade aparecer. As equações ficam então:
+    \begin{align*}
+        -\dfrac{\hbar^2}{2m} \vb{\nabla}\cdot\vb{\nabla}\psi + V(\vb{r})\psi
+        &= i\hbar\pdv{\psi}{t} \\
+        -\dfrac{\hbar^2}{2m} \vb{\nabla}\cdot\vb{\nabla}\psi^{\ast} + V(\vb{r})\psi^{\ast}
+        &= -i\hbar\pdv{\psi^{\ast}}{t}
+    \end{align*}
+
+Multiplicando a equação de cima por $\psi^{\ast}$ pela esquerda, e multiplicando por $\psi$ na equação de baixo pela direita:
+    \begin{align*}
+        -\dfrac{\hbar^2}{2m} \vb{\nabla}\cdot[\psi^{\ast}(\vb{\nabla}\psi)] + V(\vb{r})\psi^{\ast}\psi
+        &= i\hbar\psi^{\ast}\pdv{\psi}{t} \\
+        -\dfrac{\hbar^2}{2m} \vb{\nabla}\cdot(\vb{\nabla}\psi^{\ast})\psi + V(\vb{r})\psi^{\ast}\psi
+        &= -i\hbar\pdv{\psi^{\ast}}{t}\psi
+    \end{align*}
+
+Dividindo ambas por $-i\hbar$:
+    \begin{align*}
+        \dfrac{\hbar}{2mi} \vb{\nabla}\cdot[\psi^{\ast}(\vb{\nabla}\psi)] - \dfrac{1}{i\hbar}V(\vb{r})\psi^{\ast}\psi
+        &= -\psi^{\ast}\pdv{\psi}{t} \\
+        \dfrac{\hbar}{2mi} \vb{\nabla}\cdot(\vb{\nabla}\psi^{\ast})\psi - \dfrac{1}{i\hbar}V(\vb{r})\psi^{\ast}\psi
+        &= \pdv{\psi^{\ast}}{t}\psi
+    \end{align*}
+
+Subtraindo a da esquerda pela da direita, os termos com potencial se cancelam e obtemos:
+    \begin{equation*}
+        \vb{\nabla}\cdot \qty{
+            \dfrac{\hbar}{2mi}\qty[
+                (\vb{\nabla}\psi^{\ast}) \psi - \psi^{\ast}(\vb{\nabla}\psi)
+            ]
+        } = 
+        \pdv{\psi^{\ast}}{t}\psi + \psi^{\ast}\pdv{\psi}{t}
+    \end{equation*}
+
+É fácil ver que:
+    \begin{equation*}
+        \pdv{\psi^{\ast}}{t}\psi + \psi^{\ast}\pdv{\psi}{t} = \pdv{(\psi^{\ast}\psi)}{t}
+    \end{equation*}
+
+Portanto, podemos escrever uma equação de continuidade para $\psi^{\ast}\psi$:
+    \begin{equation*}
+        \pdv{(\psi^{\ast}\psi)}{t} + \vb{\nabla}\cdot\qty{
+            \dfrac{\hbar}{2mi}\qty[
+                \psi^{\ast}(\vb{\nabla}\psi) - (\vb{\nabla}\psi^{\ast})\psi
+            ]
+        } = 0
+    \end{equation*}
+
+Em que a densidade de corrente associada $\vb{J}$ é definida por
+    \begin{answer}\label{eq: current density}
+        \vb{J} \coloneqq \dfrac{\hbar}{2mi}\qty[
+                \psi^{\ast}(\vb{\nabla}\psi) - (\vb{\nabla}\psi^{\ast})\psi
+            ]
+    \end{answer}
+ou seja, podemos escrever em mecânica quântica não--relativística que
+    \begin{answer}\label{eq: continuity equation}
+        \pdv{|\psi|^2}{t} + \vb{\nabla}\cdot\vb{J} = 0
+    \end{answer}
+
+A pergunta que surge após este desenvolvimento, dado que partimos da equação de Schrödinger, é se $\rho \overset{?}{=} |\psi|^2$ se mantém ao partirmos da equação de Klein--Fock--Gordon para encontrar uma equação de continuidade.
+
+Pela equação de Klein--Fock--Gordon, temos duas formas:
+    \begin{align*}
+        \pdv[2]{\psi(\vb{r},t)}{t} - \nabla^2\psi(\vb{r},t) &= -m^2 \psi(\vb{r},t) \\
+        \pdv[2]{\psi^{\ast}(\vb{r},t)}{t} - \nabla^2\psi^{\ast}(\vb{r},t) &= -m^2 \psi^{\ast}(\vb{r},t)
+    \end{align*}
+
+Multiplicando a primeira equação por $-i\psi^{\ast}$ e a de baixo por $i\psi$, ficamos com
+    \begin{align*}
+        i\pdv[2]{\psi}{t}\psi^{\ast} - i(\vb{\nabla}^2\psi)\psi^{\ast} &= -im^2|\psi|^2 \\
+        -i\pdv[2]{\psi^{\ast}}{t}\psi + i(\vb{\nabla}^2\psi^{\ast})\psi &= im^2|\psi|^2
+    \end{align*}
+
+Somando as duas,
+    \begin{equation}\label{eq: summing two equations}
+        i\qty[\pdv[2]{\psi}{t} \psi^{\ast} - \pdv[2]{\psi^{\ast}}{t}\psi] - i\qty[(\nabla^2\psi)\psi^{\ast} - (\nabla^2\psi^{\ast})\psi] = 0
+    \end{equation}
+
+Note que o primeiro termo da equação pode ser representado de uma forma mais interessante, de modo que ao somarmos e subtrairmos a quantidade
+    \begin{equation*}
+        \pdv{\psi^{\ast}}{t} \pdv{\psi}{t} = \pdv{\psi}{t} \pdv{\psi^{\ast}}{t}
+    \end{equation*}
+teremos
+    \begin{align}
+        \pdv[2]{\psi}{t} \psi^{\ast} - \pdv[2]{\psi^{\ast}}{t}\psi &\eq 
+        \pdv[2]{\psi}{t}\psi^{\ast} + \pdv{\psi}{t} \pdv{\psi^{\ast}}{t} - \pdv[2]{\psi^{\ast}}{t}\psi - \pdv{\psi}{t} \pdv{\psi^{\ast}}{t} \nonumber \\
+        &\eq \pdv{}{t}\qty(\pdv{\psi}{t}\psi^{\ast} - \pdv{\psi^{\ast}}{t}\psi) \label{eq: another way to write 1}
+    \end{align}
+e de forma similar, podemos somar e subtrair no segundo termo a quantidade
+    \begin{equation*}
+        \vb{\nabla}\psi^{\ast} \cdot \vb{\nabla}\psi = \vb{\nabla}\psi \cdot \vb{\nabla}\psi^{\ast}
+    \end{equation*}
+ficamos com
+    \begin{align}
+        (\vb{\nabla}^2\psi)\psi^{\ast} - (\vb{\nabla}^2\psi^{\ast})\psi 
+        &\eq (\nabla^2\psi)\psi^{\ast} + \vb{\nabla}\psi \cdot \vb{\nabla}\psi^{\ast} - (\nabla^2\psi^{\ast})\psi - \vb{\nabla}\psi^{\ast} \cdot \vb{\nabla}\psi \nonumber \\
+        &\eq \vb{\nabla}\cdot \qty[(\vb{\nabla}\psi)\psi^{\ast} - (\vb{\nabla}\psi^{\ast})\psi] \label{eq: another way to write 2}
+    \end{align}
+
+Então ao substituirmos \eqref{eq: another way to write 1} e \eqref{eq: another way to write 2} na equação \eqref{eq: summing two equations} chegamos na equação
+    \begin{equation*}
+        \pdv{}{t}\qty[i\qty(\pdv{\psi}{t}\psi^{\ast} - \pdv{\psi^{\ast}}{t}\psi)] + \vb{\nabla}\cdot \qty{-i\qty[(\vb{\nabla}\psi)\psi^{\ast} - (\vb{\nabla}\psi^{\ast})\psi]} = 0
+    \end{equation*}
+que se uma equação de continuidade ao considerarmos que 
+    \begin{equation*}
+        \rho \coloneqq i\qty(\pdv{\psi}{t}\psi^{\ast} - \pdv{\psi^{\ast}}{t}\psi) \qquad \& \qquad 
+        \vb{J} \coloneqq -i\qty[(\vb{\nabla}\psi)\psi^{\ast} - (\vb{\nabla}\psi^{\ast})\psi]
+    \end{equation*}
+ou seja, a densidade de probabilidade $\rho$ não é mais $|\psi|^2$ como no caso anterior.
+
+Uma forma mais elegante de se escrever esta equação de continuidade é a partir do quadrivetor fluxo, construído na forma $j^{\mu} = (\rho,\vb{J})$ e definido por
+    \begin{equation*}
+        j^{\mu} = i[(\partial^{\mu}\psi)\psi^{\ast} - (\partial^{\mu}\psi^{\ast})\psi]
+    \end{equation*}
+de tal forma que a equação de continuidade fica
+    \begin{answer}\label{eq: continuity equation by KFG}
+        \partial_{\mu}j^{\mu} = 0
+    \end{answer}
+
+Mas o que significa $\rho \neq |\psi|^2$? Qual o impacto dese resultado? O fato de $\rho = i\qty(\pdv{\psi}{t}\psi^{\ast} - \pdv{\psi^{\ast}}{t}\psi)$ faz com que esse valor passa, inclusive, assumir valores negativos. Dessa forma, a grandeza não pode ser interpretada com uma densidade de probabilidade e a quantidade
+    \begin{equation*}
+        \mathds{P} = \int \rho\dd{\vb{r}} = \text{constante}
+    \end{equation*}
+também não pode ser interpretada como uma probabilidade. Mas por quê não podemos fazer este tipo de interpretação? Como, então, interpretaremos tais grandezas? Para responder isso, tomemos um caso simples de uma partícula livre descrita por uma onda plana da forma $\psi = Ne^{i(\vb{p}\cdot\vb{r} - Et)}$. A partir das definições de $\rho$ e $\vb{J}$, temos para este caso que
+    \begin{align*}
+        \rho &= i\qty[(-iE)|N|^2 - iE |N|^2] = 2E|N|^2 \\
+        \vb{J} &= -i\qty[(i\vb{p})|N|^2 + i\vb{p}|N|^2] = 2\vb{p}|N|^2
+    \end{align*}
+
+Mas pela relação de dispersão \eqref{eq: dispersion relation} temos que
+    \begin{equation*}
+        E^2 = m^2 + p^2 \Rightarrow E = \pm \sqrt{m^2 + p^2}
+    \end{equation*}
+implicando na possibilidade de $E < 0$ e portanto possibilitando que $\rho$ possa ser negativo. Com isso em mente, se energias positivas e negativas são soluções da equação de Klein--Fock--Gordon, logo, a combinação linear delas também é solução. Logo, uma forma mais geral de escrever $\psi$ é através da forma
+    \begin{equation*}
+        \psi = N\qty[a e^{i(\vb{p}\cdot\vb{r} - |E|t)} + b e^{i(\vb{p}\cdot\vb{r} + |E|t)}]
+    \end{equation*}
+com a primeira parte sendo relativa à energias $E > 0$, a segunda para $E < 0$ e os fatores $a$ e $b$ são constantes de normalização. Com esta forma e através da definição de $\rho$, obtemos agora
+    \begin{answer}
+        \rho = 2|E| |N|^2 (|a|^2 - |b|^2)
+    \end{answer}
+
+Isso indica que a equação de Klein--Fock--Gordon não trada da solução para uma única partícula, mas sim para uma par de partículas, uma com $E>0$ e outra com $E<0$, cada uma com uma amplitude de probabilidade que depende de $|a|^2$ e $|b|^2$. 
+Apesar deste resultado ser muito interessante, alguns problemas surgem em relação a $E<0$ e $\rho < 0$. O primeiro é o fato de que para $E<0$, ocorrem transições espontâneas e infinitos estados, em segundo lugar qual é o significado de $\rho < 0$? Pergunta esta que só foi respondida por \textcite{Dirac}. 
+
+% Outro problema ocorre para partículas de spin 0, pois neste caso onde $p = 0$ temos que a energia mínima assume os valores
+%     \begin{equation*}
+%         E_{\text{min}} = \pm\sqrt{m^2 + 0^2} = \pm m
+%     \end{equation*}
+% ou seja, para partículas sem spin, a energia possui um limite inferior e superior, no entanto, não há limite superior para o momento, o que indica que não há limite superior negativo ou positivo da energia

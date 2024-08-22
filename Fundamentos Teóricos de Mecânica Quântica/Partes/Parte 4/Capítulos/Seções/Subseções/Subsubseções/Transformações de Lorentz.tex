@@ -1,0 +1,169 @@
+Consideremos dois referenciais $S$ e $S'$ tais que $S'$ se move em relação à $S$ com velocidade $v = v_{z} = \beta$, onde $\beta \coloneqq \dfrac{v}{c}$, mas como $c=1$ no sistema de unidades naturais, temos apenas $\beta = v$. Lembrando que o fator de Lorentz é definido por
+    \begin{equation*}
+        \gamma = \dfrac{1}{\sqrt{1 - \beta^2}}
+    \end{equation*}
+temos que as transformações de Lorentz para este caso são 
+    \begin{align*}
+        t' &= \gamma(t - \beta z) &
+        x' &= x &
+        y' &= y &
+        z' &= \gamma(z - \beta t)
+    \end{align*}
+
+Com estas equações, podemos construir uma matriz que será responsável por armazenar todas as quantidades relacionadas às contrações espaciais e dilatações temporais:
+    \begin{equation}\label{eq: transformations}
+        \begin{pmatrix}
+            t' \\ x' \\ y' \\ z'
+        \end{pmatrix} = 
+        \begin{pmatrix}
+            \gamma & 0 & 0 & -\beta \gamma \\
+            0 & 1 & 0 & 0 \\
+            0 & 0 & 1 & 0 \\
+            -\beta \gamma & 0 & 0 & \gamma
+        \end{pmatrix} 
+        \begin{pmatrix}
+            t \\ x \\ y \\ z
+        \end{pmatrix}
+    \end{equation}
+de modo que a partir desta construção, definimos um quadrivetor contravariante na forma
+    \begin{equation*}
+        x^{\mu} \coloneqq(x^{0}, x^{1}, x^{2}, x^{3}) \equiv  (t, x, y, z) = (x^{0}, \vb{r})
+    \end{equation*}
+e a matriz na verdade é a forma matricial do tensor de Lorentz, o que escrevemos nesta situação por
+    \begin{equation*}
+        (\tensor{\Lambda}{^{\mu}_{\nu}}) \coloneqq 
+        \begin{pmatrix}
+            \gamma & 0 & 0 & -\beta \gamma \\
+            0 & 1 & 0 & 0 \\
+            0 & 0 & 1 & 0 \\
+            -\beta \gamma & 0 & 0 & \gamma
+        \end{pmatrix} 
+    \end{equation*}
+
+Com estas duas definições, podemos reescrever a equação \eqref{eq: transformations} em termos do quadrivetor e do tensor de Lorentz:
+    \begin{equation*}
+        x^{\prime \mu} = \sum_{\nu=0}^{3} \tensor{\Lambda}{^{\mu}_{\nu}}x^{\nu}
+    \end{equation*}
+o que ainda pode ser simplificado ao utilizar-se a notação de Einstein, que nos diz que se houver os mesmos índices covariantes e contravariantes, a somatória é subentendida na conta, ou seja
+    \begin{equation*}
+        x^{\prime \mu} = \sum_{\nu=0}^{3} \tensor{\Lambda}{^{\mu}_{\nu}}x^{\nu} = \tensor{\Lambda}{^{\mu}_{\nu}}x^{\nu}
+    \end{equation*}
+
+Como nas transformações de Galileu, que nos diz que valores espaciais não mudam de tamanho com mudanças de referencial, os quadrivetores não mudam de tamanho por transformações de Lorentz. Definimos o produto escalar entre dois quadrivetores $x^{\mu}$ e $y^{\mu}$ por 
+    \begin{equation}\label{eq: produto escalar}
+        A \coloneqq x^{0}y^{0} - \vb{x}\cdot\vb{y} = x^{0}y^{0} - x^{1}y^{1} - x^{2}y^{2} - x^{3}y^{3}
+    \end{equation}
+
+Desta forma, o ``tamanho'' de um quadrivetor é determinado simplesmente por
+    \begin{equation*}
+        A = x^{0}x^{0} - \vb{x}\cdot\vb{x}
+    \end{equation*}
+
+Com estas relações em mente, podemos mudar de referencial através das transformações de Lorentz e verificar se os quadrivetores são mesmo invariantes por transformações de Lorentz.
+    \begin{align*}
+        A' &\eq x^{\prime 0}x^{\prime 0} - \vb{x}^{\prime}\cdot\vb{x}^{\prime} \\
+        &\eq \gamma(t - \beta z)\gamma(t - \beta z) - x^2 - y^2 - \gamma(z - \beta t)\gamma(z - \beta t) \\
+        &\eq \gamma^2(t^2 - 2\beta t z + \beta^2z^2) - x^2 - y^2 - \gamma^2(z^2 - 2\beta t z + \beta^2 t^2) \\
+        &\eq \dfrac{1}{1 - \beta^2}(t^2 - 2\beta tz + \beta^2 z^2 - z^2 + 2\beta t z - \beta^2 t^2) - x^2 - y^2 \\
+        &\eq \dfrac{1}{1 - \beta^2}(t^2 - \beta^2 t^2 - z^2 + \beta^2 z^2) - x^2 - y^2 \\
+        &\eq \dfrac{1}{1 - \beta^2}\Big[(1 - \beta^2)t^2 - (1 - \beta^2)z^2\Big] - x^2 - y^2 \\
+        &\eq t^2 - x^2 - y^2 - z^2 \\
+        &\eq x^{0}x^{0} - \vb{x}\cdot\vb{x} = A
+    \end{align*}
+concluindo o que queríamos mostrar. Agora analisando a expressão para o produto escalar, somos influenciados a olhar para o sinal negativo presente em \eqref{eq: produto escalar} e pensar que de alguma forma, podemos definir outro quadrivetor para mudar este sinal, o que será chamado de quadrivetor covariante, definido por
+    \begin{equation*}
+        x_{\mu} \coloneqq (x_{0}, -x_{1}, -x_{2}, -x_{3}) \equiv (t, -x, -y, -z) = (x_{0}, -\vb{r})
+    \end{equation*}
+de tal forma que o produto escalar entre 2 quadrivetores possa ser escrito como
+    \begin{align*}
+        x^{\mu}y_{\mu} &\eq \sum_{\mu=0}^{3} x^{\mu}y_{\mu} = x^{0}y_{0} + x^{1}y_{1} + x^{2}y_{2} + x^{3}y_{3} \\
+        &\eq x^{0}y^{0} - x^{1}y^{1} - x^{2}y^{2} - x^{3}y^{3}
+    \end{align*}
+
+Tendo então as formas covariante e contravariante em mãos, precisamos de uma forma de escrever uma em relação a outra, e para isso utilizamos o tensor métrico de Minkowski\footnote{Hermann Minkowski (1864--1909).} dado por
+    \begin{equation}\label{eq: Minkowski metric}
+        (g_{\mu\nu}) \coloneqq 
+        \begin{pmatrix}
+            1 & 0 & 0 & 0 \\
+            0 &-1 & 0 & 0 \\
+            0 & 0 &-1 & 0 \\
+            0 & 0 & 0 &-1
+        \end{pmatrix} = (g^{\mu\nu})
+    \end{equation}
+
+\begin{note}{}
+    Em muitos livros, infelizmente, utiliza-se um outra convenção para o tensor métrico, que ao invés de possuir $\diag{g_{\mu\nu}} = (+ - - -)$, inverte os sinais para ficar com $\diag{g_{\mu\nu}} = (- + + +)$, porém esta convenção tende a ser problemática em relação a algumas interpretações, o que não é muito conveniente.
+\end{note}
+
+Utilizando então este tensor métrico, podemos passar da notação covariante para a contravariante (e vice-versa) através das relações
+    \begin{equation*}
+        x_{\mu} = g_{\mu\nu}x^{\nu} \qquad \& \qquad 
+        x^{\mu} = g^{\mu\nu}x_{\nu}
+    \end{equation*}
+e com isso, podemos escrever o produto escalar entre 2 quadrivetores por
+    \begin{equation*}
+        A = x^{\mu}g_{\mu\nu}y^{\nu} = x_{\mu}g^{\mu\nu}y_{\nu}
+    \end{equation*}
+
+Uma outra propriedade importante relativa ao tensor métrico é o fato de que como $g_{\mu\nu} = g^{\mu\nu}$, temos que
+    \begin{equation*}
+        g_{\mu\nu}g^{\nu\rho} = \boldone = \tensor{\delta}{_{\mu}^{\rho}}
+    \end{equation*}
+
+Através de tais conversões e propriedades, somos capazes agora de encontrar relações entre as velocidades. Consideremos uma partícula de massa $m$ se movendo com velocidade $v$ em um referencial, de tal forma que as coordenadas desta partícula neste referencial assumem a forma
+    \begin{equation*}
+        \dd{\vb{r}} = v\dd{t},
+    \end{equation*}
+tal que o quadrivetor $(\dd{t}, \dd{x}, \dd{y}, \dd{z})$ se transformam com as transformações de Lorentz e portanto seu comprimento é invariante sob elas, isto é
+    \begin{equation*}
+        \dd{x^{\mu}} = (\dd{t},\dd{\vb{r}})
+    \end{equation*}
+é invariante e a quantidade
+    \begin{align*}
+        \dd{\tau^2} &\eq \dd{x^{\mu}}\dd{x_{\mu}} = \dd{t}^2 - \dd{\vb{r}}^2 \\
+        &\eq \dd{t}^2 - v^2 \dd{t}^2 \\
+        &\eq (1 - v^2)\dd{t^2} \\
+        &\eq \dfrac{1}{\gamma^2}\dd{t}^2
+    \end{align*}
+é também invariante. O tempo $\tau$, definido na forma $\dd{\tau}^2 = \dd{t}^2(1-v^2)$ é denominado de ``tempo prórpio''. Então se $\dd{x}^{\mu}$ e $\dd{\tau}$ são invariantes, o quadrivetor construído por
+    \begin{equation*}
+        u^{\mu} \coloneqq \dv{x^{\mu}}{\tau} = \qty(\gamma \dv{t}{t}, \gamma \dv{x}{t}, \gamma \dv{y}{t}, \gamma\dv{z}{t})
+    \end{equation*}
+é também invariante e é denominado ``quadrivetor velocidade'', que comumente é escrito no forma
+    \begin{equation*}
+        u^{\mu} = (\gamma, \gamma\vb{v})
+    \end{equation*}
+
+Com esta forma, temos
+    \begin{equation*}
+        u^{\mu}u_{\mu} = \gamma^2 - (\gamma \vb{v})\cdot (\gamma \vb{v}) = \gamma^2 - \gamma^2 v^2 = \gamma^2(1 - v^2) = \dfrac{\gamma^2}{\gamma^2} = 1
+    \end{equation*}
+o que fora do sistema de unidades naturais seria $u^{\mu}u_{\mu} = c^2$. Dado então que $u^{\mu}$ é o quadrivetor velocidade e é invariante, o quadrivetor $mu^{\mu}$ também será invariante, pois a massa se mantém invariante, de modo que defini-se o quadrivetor momento por
+    \begin{equation*}
+        p^{\mu} \coloneqq (\gamma m, \gamma m\vb{v}) \equiv (E, \vb{p})
+    \end{equation*}
+quer é de fato invariante por construção, além de que
+    \begin{equation*}
+        p^{\mu}p_{\mu} = (\gamma m)(\gamma m) - (\gamma m \vb{v})\cdot(\gamma m \vb{v}) = \gamma^2 m^2 - \gamma^2 m^2 v^2 = m^2\gamma^2(1-v^2) = m^2
+    \end{equation*}
+
+Este último desenvolvimento nos dá uma importante relação a ser salientada e enfatizada, que é chamada de relação de dispersão entre energia e momento
+    \begin{answer}\label{eq: dispersion relation}
+        p^{\mu}p_{\mu} = E^2 - p^2 = m^2 
+    \end{answer}
+
+Além dos quadrivetores posição, velocidade, momento, etc, podemos extrapolar a notação quadrivetorial para derivadas parciais, isto é, ao escrevermos
+    \begin{equation*}
+        \partial^{\mu} \coloneqq \pdv{}{x_{\mu}} \equiv \qty(\pdv{}{t}, -\vb{\nabla}) \qquad \& \qquad 
+        \partial_{\mu} \coloneqq \pdv{}{x^{\mu}} \equiv \qty(\pdv{}{t}, \vb{\nabla})
+    \end{equation*}
+de modo que $\partial^{\mu}$ se comporta como um quadrivetor contravariante, mesmo que utilizemos em $\pdv{}{x_{\mu}}$ uma notação covariante no ``denominador''. De forma similar o contrário vai ocorrer com $\partial_{\mu}$, que se comporta como um quadrivetor covariante, mas se escreve por $\pdv{}{x^{\mu}}$. Com essas notações, temos
+    \begin{align*}
+        \partial_{\mu}\partial^{\mu} &\eq \pdv{}{x^{0}}\pdv{}{x_{0}} - \pdv{}{x^{1}}\pdv{}{x_{1}} - \pdv{}{x^{2}}\pdv{}{x_{2}} - \pdv{}{x^{3}}\pdv{}{x_{3}} \\
+        &\eq \pdv[2]{}{t} - \vb{\nabla}^2
+    \end{align*}
+
+O operador $\partial_{\mu}\partial^{\mu}$ é chamado ``operador D'alambertiano''.
+    \begin{note}{}
+        Em muitos livros, podem-se encontrar diferentes notações para este operador, uma das mais comuns é representá-lo por $\square$ ou $\square^2$, que possui um sentido por trás, que é o fato de que por estarmos numa representação quadridimensional, o quadrado seria um análogo ao $\nabla^2$, que trata das derivadas em 3 dimensões, ou seja, como o quadrado tem 4 lados, seria uma boa ideia representar uma derivada em 4 dimensões com ele, já que o laplaciano é em 3 dimensões e é representado por um triângulo. Da mesma forma, representar $\square$ ou $\square^2$ varia de gosto pra gosto, pois a primeira forma é simples e contém as informações necessárias, já a segunda forma, faz questão de enfatizar que as derivadas dentro do D'alembertiano são de segunda ordem, e por isso são elevadas ao quadrado. Uma última maneira de representar este operador, utilizada bastante em TQC, é a forma $\partial^2$, que leva em conta simplesmente o fato de que $\partial_{\mu}\partial^{\mu}$ é como um produto de dois objetos ``iguais''.
+    \end{note}

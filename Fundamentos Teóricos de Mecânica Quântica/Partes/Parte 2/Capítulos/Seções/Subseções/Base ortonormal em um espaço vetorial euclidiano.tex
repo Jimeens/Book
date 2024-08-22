@@ -1,0 +1,376 @@
+Comecemos relembrando rapidamente o funcionamento de um espaço vetorial euclidiano. Por definição, um espaço vetorial é da seguinte forma:
+\begin{definition}
+\label{def: vector space}
+    Um espaço vetorial $\mathbb{V}$ sobre um corpo $\mathbb{K}$ (exemplos de corpos são $\mathbb{C}$, $\mathbb{R}$, $\mathbb{Q}$ e muitos outros) é um conjunto de elementos, chamados de \textit{vetores}, dotado de uma operação de \textit{soma vetorial} $+:\mathbb{V}\times\mathbb{V}\to\mathbb{V}$ e um \textit{produto por escalar} $\cdot: \mathbb{K}\times\mathbb{V}\to\mathbb{V}$ tal que:
+    \begin{enumerate}
+        \item Para cada par de vetores $\vb{v},\vb{u}\in\mathbb{V}$, associa-se um elemento de soma $(\vb{v} + \vb{u}) \in \mathbb{V}$ com as seguintes propriedades:
+            \begin{enumerate}[(a)]
+                \item Comutatividade: a soma é comutativa para todo $\vb{v},\vb{u}\in\mathbb{V}:\ \vb{v} + \vb{u} = \vb{u} + \vb{v}$;
+                \item Associatividade: a soma é associativa para todo $\vb{v},\vb{u},\vb{w}\in\mathbb{V}:\ \vb{v} + (\vb{u} + \vb{w}) = (\vb{v} + \vb{u}) + \vb{w}$;
+                \item Vetor nulo: existe um único vetor $\vb{0}$ denominado vetor nulo, tal que para todo $\vb{v}\in \mathbb{V}:\ \vb{v} + \vb{0} = \vb{v}$;
+                \item Vetor simétrico: Para cada $\vb{v}\in\mathbb{V}$, existe um único elemento $-\vb{v}\in\mathbb{V}$ tal que $\vb{v} + (-\vb{v}) = \vb{0}$.
+            \end{enumerate}
+        \item Para cada par $\alpha \in\mathbb{K}$ e $\vb{v}\in\mathbb{V}$, existe um vetor associado $\alpha\cdot\vb{v}\in\mathbb{V}$, chamado de produto por escalar, com as seguintes propriedades:
+            \begin{enumerate}[(a)]
+                \item Associatividade: o produto por escalares é associativo para todo $\alpha,\beta\in\mathbb{K}$ e $\vb{v}\in\mathbb{V}:\ \alpha\cdot(\beta\cdot\vb{v}) = (\alpha\cdot\beta)\cdot\vb{v}$;
+                \item Elemento unitário: existe um elemento unitário $1\in\mathbb{K}$ tal que para todo $\vb{v}\in\mathbb{V}:\ 1\cdot\vb{v} = \vb{v}$;
+                \item Distributividade vetorial: para todo $\alpha\in\mathbb{K}$ e $\vb{v},\vb{u}\in\mathbb{K}$, o produto por escalares é distributivo em relação à soma de vetores: $\alpha\cdot(\vb{v} + \vb{u}) = \alpha\cdot\vb{v} + \alpha\cdot\vb{u}$;
+                \item Distributividade escalar: para todo $\alpha,\beta\in\mathbb{K}$ e $\vb{v}\in\mathbb{V}$, o produto por escalares é ditributivo em relação à soma de escalares: $(\alpha + \beta)\cdot\vb{v} = \alpha\cdot\vb{v} + \beta\cdot\vb{v}$.
+            \end{enumerate}
+    \end{enumerate}
+\end{definition}
+
+Para termos um espaço vetorial euclidiano é necessário que o espaço vetorial seja finito, real e tenha nele definido um produto interno. Um primeiro conceito fundamental num espaço vetorial $\mathbb{V}$ é sua base, o conjunto de vetores linearmente dependente $\{\vb{v}_1, \vb{v}_2 \dots, \vb{v}_n\} \in \mathbb{V}$ que gera esse espaço:
+    \begin{equation*}
+        \vb{v} = a_1 \vb{v}_1 + a_2 \vb{v}_2 + \dots + a_n\vb{v}_n,\ \ \vb{v} \in \mathbb{V}, \ \{a_1, a_2,\dots, a_n\} \in \mathbb{R}
+    \end{equation*}
+
+Um exemplo usual dessas bases se da quando consideramos um espaço euclidiano $\mathbb{R}^3$ e a representação de um vetor $\vb{v} \in \mathbb{R}^3$ qualquer neste espaço. Comumente representamos $\vb{v}$ conforme os sistemas de coordenadas (a base) que nos são convenientes, como por exemplo as coordenadas:
+    \begin{center}
+        \tcbsidebyside[
+            bicolor,
+            colframe=white,
+            colback=white,
+            before skip = 6mm,
+            after skip = 6mm,
+            colbacklower=myLColor!10,
+            coltitle=myDColor,
+            fonttitle=\bfseries\sffamily,
+            sidebyside adapt=right]{
+                \begin{align*}
+                    \text{Cartesianas: }& \vb{v} = v_{x}\vb{e_{x}} + v_{y}\vb{e_{y}} + v_{z}\vb{e_{z}} \\ \\
+                    \text{Cilíndricas: }& \vb{v} = v_{r}\vb{e_{r}} + v_{\phi}\vb{e_{\phi}} + v_{z}\vb{e_{z}} \\ \\
+                    \text{Esféricas: }& \vb{v} = v_{r}\vb{e_{r}} + v_{\theta}\vb{e_{\theta}} + v_{\phi}\vb{e_{\phi}} \\
+                \end{align*}
+        }{%
+                \begin{tikzpicture}[scale = 1.0]
+                    \draw[->] (0,0,0) -- (2,0,0) node[right]{$\vb{e}_{j}$}; % x
+                    \draw[->] (0,0,0) -- (0,2,0) node[right]{$\vb{e}_{k}$}; % y
+                    \draw[->] (0,0,0) -- (0,0,2) node[left]{$\vb{e}_{i}$};  % z
+                    
+                    \draw[->,myLColor] (0,0,0) -- (1.2,1.5,1) node[right]{$\vb{v}$};
+                    
+                    \draw[dotted] (1.2,1.5,1) -- (1.2,0,1) -- (0,0,0);
+                    \draw[dotted] (1.2,0,1) -- (1.2,0,0);
+                    \draw[dotted] (1.2,0,1) -- (0,0,1);
+                    \draw[dotted] (1.2,1.5,1) -- (0,1.5,0);
+                \end{tikzpicture}%
+                }
+    \end{center}
+
+Vale lembrar que independente do sistema de coordenadas escolhido, o vetor $\vb{v}$ é sempre o mesmo, a base forma apenas uma representação deste vetor.
+
+Nos exemplos acima, as bases utilizadas foram $\{\vb{e_{x}}, \vb{e_{y}}, \vb{e_{z}}\}$ (cartesiana), $\{\vb{e_{r}}, \vb{e_{\phi}}, \vb{e_{z}}\}$ (cilíndricas) e $\{\vb{e_{r}}, \vb{e_{\theta}}, \vb{e_{\phi}}\}$ (esféricas), os vetores que as compõem são convenientemente ortonormais, denotando-os genericamente por $\vb{e}_{i}$, isso significa que suas normas são $1$ e que são ortogonais entre si:
+    \begin{equation*}
+        \norm{\vb{e}_i} = 1 \hspace{1cm} \& \hspace{1cm} 
+        \vb{e}_{i} \perp \vb{e}_{k}
+    \end{equation*}
+
+Essas bases de representação são essencialmente o que conhecemos como versores, que variam para cada sistema de coordenadas. Bases ortonormais são mais fáceis de se trabalhar que uma base arbitrária devido às propriedades citadas acima.
+
+Dado as vantagens contempladas, suponha agora que tenhamos uma base ortonormal de vetores de um espaço euclidiano genérico $\mathbb{V}$: $\{\vb{e}_{i}\} \in \mathbb{V}$ de dimensão $\mathrm{dim}(\mathbb{V}) = n$, podemos representar um vetor $\vb{v} \in \mathbb{V}$ qualquer assim como nos exemplos em $\mathbb{R}^3$ como uma combinação linear\footnote{Utilizaremos a notação $\{\vb{e}_{i}\}$ para expressar o conjunto de vetores $\vb{e}_{i}$ que compõe a base.}:
+    \begin{equation}\label{vetor}
+        \vb{v} = \sum_{i=1}^n v_{i}\vb{e}_{i}
+    \end{equation}
+
+Podemos também definir neste exemplo o produto interno $\langle \vb{v} , \vb{u}\rangle$ entre dois vetores arbitrários $\vb{v} \in \mathbb{V}$ e $\vb{u} \in \mathbb{V}$ como o produto escalar usual (o mesmo usado em $\mathbb{R}^3$):
+\begin{equation*}
+    \langle \vb{v} , \vb{u}\rangle = \vb{v} \cdot \vb{u}
+\end{equation*}
+em que temos por definição que $\langle\vb{v},\vb{u}\rangle = 0$ se $\vb{v}\perp\vb{u}$. 
+
+Podemos constatar algumas propriedades\footnote{Reservaremos as demonstrações das propriedades para o capítulo seguinte, agora já se estendendo para um espaço vetorial complexo.} referentes ao espaço vetorial $\mathbb{V}$. Sendo $\mathbb{V}$ um espaço vetorial com um produto escalar, podemos definir nele uma norma através deste.
+
+\begin{definition}
+\label{def: norm}
+    Uma norma $\norm{\ \cdot\ }$ é uma função $\mathbb{V}\to\mathbb{R}$ com as seguintes propriedades:
+    \begin{itemize}
+        \item Para todo $\vb{v}\in\mathbb{V}$, tem-se que $\norm{\vb{v}} \geqslant 0$;
+        \item A norma $\norm{\vb{v}} = 0 \Leftrightarrow \vb{v} = \vb{0}$;
+        \item Para qualquer $\alpha\in\mathbb{C}$ e qualquer $\vb{v}\in\mathbb{B}$, vale $\norm{\alpha \vb{v}} = \abs{\alpha} \norm{\vb{v}}$;
+        \item Para quaisquer $\vb{v},\vb{u}\in\mathbb{V}$, vale $\norm{\vb{v}+\vb{u}} \leqslant \norm{\vb{v}} + \norm{\vb{u}}$.
+    \end{itemize}
+\end{definition}
+
+\begin{myitemize}
+    \item Para o espaço vetorial $\mathbb{V}$ munido de um produto escalar, podemos definir uma norma da forma $\norm{\vb{v}} = \sqrt{\expval{\vb{v},\vb{v}}}$;
+
+    \item Através da norma, podemos normalizar o vetor $\vb{v}$, tal que $\norm{\tilde{\vb{v}}} = 1$, onde $\tilde{\vb{v}} = \dfrac{\vb{v}}{\norm{\vb{v}}}$ é o vetor normalizado;
+
+    \item Através do produto escalar, podemos projetar o vetor $\vb{v}$ sobre um vetor da base $\vb{e}_{i}$, tal que obtemos a componente de $\vb{v}$ nesta compotente, ou seja: $\expval*{\vb{v},\vb{e}_{i}} = v_{i}$.
+\end{myitemize}
+Perceba que as duas últimas propriedades quando aplicadas aos vetores da base (em que $\norm{\vb{e}_i} = 1$ e $\vb{e}_{i} \perp \vb{e}_{k} \implies 0$) nos leva ao que denominamos como a função condicional delta de Kronecker\footnote{Leopold Kronecker (1823--1891).}
+\begin{equation*}
+    \langle \vb{e}_i, \vb{e}_j \rangle = \delta_{ij} = \begin{cases}
+        1,\ \textrm{se} \ i = j\\ 
+        0, \ \textrm{se} \ i \neq j
+    \end{cases}
+\end{equation*}
+
+Além da representação que estamos usando, podemos tratar dos vetores do espaço $\mathbb{V}$ na forma matricial, isto é, para $\vb{v},\vb{u}\in \mathbb{V}$:
+    \begin{equation*}
+    \vb{v} = 
+        \begin{bmatrix}
+            v_{1} \\
+            v_{2} \\
+            \vdots \\
+            v_n
+        \end{bmatrix} \hspace{1cm} \& \hspace{1cm}
+    \vb{u} = 
+        \begin{bmatrix}
+            u_{1} \\
+            u_{2} \\
+            \vdots \\
+            u_n
+        \end{bmatrix}
+\end{equation*}
+em que o produto interno passa a ser expresso por meio da operação de transposição $\mathtt{T}$:
+\begin{equation*}
+    \langle\vb{v},\vb{u}\rangle = \vb{v}^\mathtt{T}\cdot \vb{u} =
+    \begin{bmatrix}
+        v_1 & v_2 & \cdots & v_n
+    \end{bmatrix}
+    \cdot
+    \begin{bmatrix}
+        u_1 \\
+        u_2 \\
+        \vdots \\
+        u_n
+    \end{bmatrix}
+\end{equation*}
+
+
+Essas informações preliminares nos serão úteis ao passarmos para espaços vetoriais complexos e em específico o espaço de Hilbert. Antes de chegarmos no espaço de Hilbert propriamente dito, vamos definir a chamada \textit{notação de Dirac} assim como o espaço vetorial com que trabalhamos nesta notação.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% As \textit{bases de representação} são essencialmente o que conhecemos como versores, que variam para cada sistema de coordenadas. Mais genericamente eles são escritos como $\vb{e}_{i}$, de modo que, \textit{bases de representação} satisfazem
+%     \begin{equation*}
+%         |\vb{e}_i| = 1 \qquad \& \qquad 
+%         \vb{e}_{i} \perp \vb{e}_{k}.
+%     \end{equation*}
+
+% De modo geral, representamos um vetor arbitrário por uma combinação linear de suas componentes na base de representação que estamos tratando, ou seja
+%     \begin{equation}\label{eq: vbtor}
+%         \vb{v} = \sum_{i} v_{i}\vb{e}_{i}
+%     \end{equation}
+
+% Com isso em mente, temos que definir o produto escalar entre dois vetores arbitrários $\vb{v}$ e $\vb{U}$, de modo que é necessário satisfazermos:
+%     \begin{myitemize}
+%         \item Se $\vb{v}\parallel\vb{U}$: $\langle\vb{v},\vb{U}\rangle = \abs{\vb{v}}\abs{\vb{U}}$;
+%         \item Se $\vb{v}\perp\vb{U}$: $\langle\vb{v},\vb{U}\rangle = 0$.
+%     \end{myitemize}
+
+% Dessa forma, temos que nestes dois casos extremos, o produto entre os versores nada mais é do que um delta de Kronecker\footnote{Leopold Kronecker (1823--1891).} $\delta_{ik}$, definido por
+%     \begin{equation}\label{eq: Kronecker's delta}
+%         \delta_{ik} = 
+%         \begin{cases}
+%             0 &,\ \text{se }i\neq k,\\
+%             1 &,\ \text{se }i = k.
+%         \end{cases}
+%     \end{equation}
+
+% Então utilizando a forma dos vetores descrita na eq. \eqref{eq: vbtor}, temos que
+%     \begin{align*}
+%         \langle\vb{v},\vb{U}\rangle &\eq 
+%         \left( \sum_{i}v_{i}\vb{e}_{i} \right)\cdot
+%         \left( \sum_{k}u_{k}\vb{e}_{k} \right) = \sum_{i,k}v_{i}u_{k}(\vb{e}_{i}\cdot\vb{e}_{k}) \\
+%         &\eq \sum_{i,k}v_{i}u_{k}\delta_{ik} = \sum_{i}v_{i}u_{i}
+%     \end{align*}
+
+% Agora se $\vb{v}$ for um dos elementos da base, ou seja $\vb{v} = \vb{e}_{k}$, o produto escalar fica
+% \begin{align*}
+%     \langle\vb{v},\vb{U}\rangle &\eq \vb{e}_{k}\cdot\sum_{i}u_{i}\vb{e}_{i} =
+%     \sum_{i} u_{i}(\vb{e}_{i}\cdot\vb{e}_{k}) \\
+%     &\eq \sum_{i}u_{i}\delta_{ik} = u_{k}
+% \end{align*}
+
+% Ou seja, se $\vb{v}$ for o elemento de base $k$, conseguimos encontrar a componente $k$ do vetor arbitrário $\vb{U}$.
+% \begin{equation*}
+%     \langle\vb{k},\vb{U}\rangle = u_{k}
+% \end{equation*}
+
+% Além dessa representação, podemos escrever o produto escalar como um produto de matrizes, tal que as matrizes são os vetores coluna:
+% \begin{equation*}
+%     \vb{v} = 
+%         \begin{pmatrix}
+%             v_{1} \\
+%             v_{2} \\
+%             \vdots
+%         \end{pmatrix} \hspace{1cm} \& \hspace{1cm}
+%     \vb{U} = 
+%         \begin{pmatrix}
+%             u_{1} \\
+%             u_{2} \\
+%             \vdots
+%         \end{pmatrix}
+% \end{equation*}
+
+% Porém, para que o produto seja feito corretamente, precisamos que um dos vetores seja em linha, logo o produto escalar fica:
+% \begin{equation*}
+%     \langle\vb{v},\vb{U}\rangle = 
+%     \begin{pmatrix}
+%         v_{1} & v_{2} & \cdots
+%     \end{pmatrix}
+%     \begin{pmatrix}
+%         u_{1} \\
+%         u_{2} \\
+%         \vdots
+%     \end{pmatrix} = \vb{v}^{\mathtt{T}}\vb{U} = \sum_{i}v_{i}u_{i}
+% \end{equation*}
+
+% Com essas informações, podemos mudar de um simples espaço euclidiano $\mathbb{R}^3$ para espaços multidimensionais e complexos que irão definir o que são espaços de Hilbert.
+
+% \begin{note}{}
+% Para simplificar as notações, vamos definir a notação de Dirac para vetores, de tal forma que eles serão, a partir deste ponto do texto, as formas de escrever vetores em espaços de Hilbert.
+% \end{note}
+
+% A notação de Dirac consiste basicamente de duas formas simples de expressar algo que pode ser muito complexo de se analisar, além de permitir algumas manipulações muito mais facilmente do que se utilizássemos a notação usual de vetores.
+
+% Temos então os vetores que podem ser escritos como \textit{ket's} $\ket{\cdot}$ e que podem ser escritos como \textit{bra's} $\bra{\cdot}$. Essas formas de escrever se traduzem na notação usual como sendo
+%     \begin{equation*}
+%         \ket{v} \equiv \vb{v} \qquad \& \qquad  \bra{v} \equiv (\vb{v}^{\ast})^{\mathtt{T}}
+%     \end{equation*}
+
+% Note que se $\vb{v}\in\mathbb{R}^{n}$, então $\bra{v} = \vb{v}^{\mathtt{T}}$. Para mostrar que essas forma são equivalentes a representação usual de vetores, considere $\vb{v},\vb{w}\in\mathbb{R}^{n}$. Trabalhando com as componentes de cada um deles, pode se constatar que
+%     \begin{equation*}
+%         \vb{v} = \sum_{i}(\vb{v}^{\mathtt{T}}\cdot\vb{e}_{i})\vb{e}_{i} = \sum_{i} \vb{e}_{i}(\vb{e}_{i}^{\mathtt{T}}\cdot\vb{v})
+%     \end{equation*}
+% de modo que o produto escalar na notação de Dirac é dado por
+%     \begin{equation*}
+%         \vb{v}^{\mathtt{T}}\cdot\vb{w} \equiv \braket{v}{w}
+%     \end{equation*}
+% ou seja
+%     \begin{equation*}
+%         \vb{v} = \sum_{i}\ket{e_{i}}\braket{e_{i}}{v} \overset{\ast}{=} \ket{v} \Rightarrow \sum_{i}\braket{v}{e_{i}}\bra{e_{i}} = \bra{v}
+%     \end{equation*}
+
+% \begin{note}{}
+%     Veremos mais a frente, da definição do operador de projeção \eqref{eq: projection operador} que $\displaystyle\sum_{i}\ket{e_{i}}\bra{e_{i}}$ consiste de uma matriz unitária na base que se está trabalhando, e por isso resta apenas o $\ket{v}$ na tradução de notação.
+% \end{note}
+
+% Além disso, os vetores de base devem satisfazer a condição de ortonormalidade, tal que:
+%     \begin{equation*}
+%         \braket{e_{i}}{e_{j}} = \delta_{ij}
+%     \end{equation*}
+
+% Com isso, podemos verificar que o produto escalar entre dois vetores na notação de Dirac retorna ao resultado da notação usual quando ambos os vetores são completamente reais.
+%     \begin{align*}
+%         \vb{v}^{\mathtt{T}}\cdot\vb{w} &\eq 
+%         \left(\sum_{i}\braket{v}{e_{i}}\bra{e_{i}}\right)
+%         \cdot
+%         \left(\sum_{j}\ket{e_{j}}\braket{e_{j}}{w}\right) \\
+%         &\eq 
+%         \sum_{i,j}\braket{v}{e_{i}}\braket{e_{i}}{e_{j}}\braket{e_{j}}{w} \\
+%         &\eq \sum_{i,j}\delta_{ij}\braket{v}{e_{i}}\braket{e_{j}}{w} \\
+%         &\eq \sum_{i}\braket{v}{e_{i}}\braket{e_{i}}{w} \equiv \sum_{j}\braket{v}{e_{j}}\braket{e_{j}}{w} \\
+%         &\eq \braket{v}{w}
+%     \end{align*}
+
+% Com isso, a norma de um vetor é dada por:
+%     \begin{equation*}
+%         \vb{v}\cdot\vb{v} = \braket{v}{v} \Rightarrow \norm{\vb{v}} = \sqrt{\braket{v}{v}}
+%     \end{equation*}
+
+% % \subsubsection{Espaço de Hilbert}
+
+% Podemos então definir agora o que é um espaço de Hilbert $\mathscr{H}$ a partir de 4 proposições fundamentais:
+
+% \begin{myitemize}
+%     \item A norma de um vetor $\vb{\Psi}=\ket{\psi}\in\mathscr{H}$ deve ser bem determinada (finita) e real, ou seja
+%         \begin{equation*}
+%             \norm{\vb{\Psi}}\in\mathbb{R} \hspace{1cm} \& \hspace{1cm}
+%             \norm{\vb{\Psi}}<\infty
+%         \end{equation*}
+        
+%     \item O produto escalar de dois vetores $\vb{\Psi}\in\mathscr{H}$ e $\vb{\Phi}\in\mathscr{H}$ é bem definido (finito) e possui valor em $\mathbb{C}$;
+        
+%     \item O conjunto dos vetores nesse espaço vetorial é \textit{completo}, ou seja, toda sequência de Cauchy $\{\varphi_{n}\}_{n\in\mathbb{N}}\in\mathscr{H}$ converge para um elemento do próprio $\mathscr{H}$. Isto é, a sequência $\{\varphi_{n}\}_{n\in\mathbb{N}}$ é tal que $\norm{\varphi_{n} - \varphi_{\ell}}\rightarrow 0$ quando $n$ e $\ell$ tendem à infinito.
+    
+%     \item Um vetor qualquer de $\mathscr{H}$ pode ser descrito como uma combinação linear de outros vetores do mesmo espaço de Hilbert $\mathscr{H}$.
+% \end{myitemize}
+
+% \begin{note}{}
+%     De modo geral, um estado quântico é um vetor pertencente a um dado espaço de Hilbert $\mathscr{H}$.
+% \end{note}
+
+% Sejam dois vetores $\vb{\Psi}, \vb{\Phi}\in\mathscr{H}$, podemos definir uma base $\vb{e_{i}}\in\mathscr{H}$, tal que
+%     \begin{equation*}
+%         \vb{\psi} = \sum_{i}\psi_{i}\vb{e}_{i},\ \psi_{i}\in\mathbb{C} 
+%         \qquad \& \qquad
+%         \vb{\Phi} = \sum_{i}\phi_{i}\vb{e}_{i},\ \phi_{i}\in\mathbb{C}.
+%     \end{equation*}
+
+% Como $\norm{\vb{\Psi}}$ e $\norm{\vb{\Phi}}$ devem ser reais, o produto escalar $\vb{\Psi}^{\mathtt{T}}\cdot\vb{\Psi}$ e o $\vb{\Phi}^{\mathtt{T}}\cdot\vb{\Phi}$ devem ser reais e positivos. Portanto introduzimos o complexo conjugado no vetor transposto para que possamos utilizar a notação de Dirac. Como as componentes $\psi_{i},\phi_{i}\in\mathbb{C}$, garantimos que:
+%     \begin{equation*}
+%         (\vb{\Psi}^{\ast})^{\mathtt{T}}\cdot\vb{\Psi} = \braket{{\psi}}{{\psi}} = \sum_{i} \psi^{\ast}_{i} \psi_{i}\in \mathbb{R}\quad \& \quad 
+%         (\vb{\Phi}^{\ast})^{\mathtt{T}}\cdot\vb{\Phi} = \braket{\phi}{\phi} = \sum_{i} \phi^{\ast}_{i} \phi_{i}\in \mathbb{R},
+%     \end{equation*}
+% já para o produto entre os dois vetores no espaço de Hilbert, temos que o resultado deve obrigatoriamente ser complexo, o que faz com que a notação de Dirac caia como uma luva, pois enquanto um dos vetores deve ser um conjugado complexo transposto, o outro vai ser apenas complexo, garantindo que 
+%     \begin{equation*}
+%         (\vb{\Psi}^{\ast})^{\mathtt{T}}\cdot\vb{\Phi} = \braket{\psi}{\phi} = \sum_{i}\psi_{i}^{\ast}\phi_{i}\in \mathbb{C} \Rightarrow \braket{\psi}{\phi} \neq \braket{\phi}{\psi},
+%     \end{equation*}
+% ou seja, a ordem do produto entre dois vetores do mesmo espaço de Hilbert é importante e influencia diretamente no resultado que se pretende obter.
+
+% \begin{note}{}
+%     O termo $(\Psi^{\ast})^\mathtt{T} = \bra{\psi}$ corresponde ao conjunto de todos os covetores (uma transformação linear que mapeia vetores a escalares) que formam um subespaço de um espaço vetorial dual.
+% \end{note}
+
+% Para simplificar a notação, definiu-se o símbolo ``dagger'' $\dagger$ como sendo o \textbf{conjugado complexo transposto}, tal que o produto escalar se reduz a
+%     \begin{equation*}
+%         \bra{\psi} = \vb{\Psi}^{\dagger} = 
+%         \begin{pmatrix}
+%             \psi_{1}^{\ast} & \psi_{2}^{\ast} & \cdots
+%         \end{pmatrix}.
+%     \end{equation*}
+
+% Então escrevemos o produto escalar de dois vetores de estado em um espaço de Hilbert $\mathscr{H}$ como sendo simplesmente
+%     \begin{answer*}
+%         \braket{\psi}{\phi} \in \mathbb{C}.
+%     \end{answer*}
+
+% Como consequência, temos que a norma de um vetor em um espaço de Hilbert é dado por $\norm{\vb{\Psi}}^2 = \braket{\psi}{\psi} := \psi^2$. Além disso, a forma de escrever o produto escalar em espaços de Hilbert nos permite escrever
+%     \begin{equation*}
+%         \braket{\psi}{\phi} = \braket{\phi}{\psi}^{\ast}.
+%     \end{equation*}
+
+% Analogamente aos vetores no espaço euclidiano $\mathbb{R}^n$, para determinar a componente $k$ de um vetor de estado, basta que seja feito o produto entre um vetor de base e próprio vetor de estado.
+
+% \begin{example}\label{exemple 1.2}
+%     Sejam $\ket{\psi} = \ket{e_{k}}$ e $\ket{\phi} = \displaystyle\sum_{i}\phi_{i}\ket{e_{i}}$. É fácil constatar com os argumentos anteriores que podemos escrever
+%         \begin{equation}\label{eq: k-th element}
+%             \braket{e_{k}}{\phi} =
+%             \bra{e_{k}}\sum_{i}\phi_{i}\ket{e_{i}} = 
+%             \sum_{i}\phi_{i}\braket{e_{k}}{e_{i}} = \sum_{i}\phi_{i}\delta_{ki} = \phi_{k}
+%         \end{equation}
+% \end{example}

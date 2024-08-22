@@ -1,0 +1,485 @@
+O fato da equação de Klein--Fock--Gordon ser de segunda ordem no tempo faz com que $\rho$ possa assumir valores negativos, como vimos anteriormente. Ao estudar sobre a teoria relativística dos elétrons, Dirac não ficou satisfeito com esta possibilidade, mesmo que houvessem ``remendos'' interpretativos em relação ao significado de $\rho < 0$. Além disso, a equação de Klein--Fock--Gordon não explica a existência do spin do elétron.
+
+Afim de tentar solucionar estes problemas, Dirac buscou obter uma equação relativística de primeira ordem no tempo que incluísse soluções para diferentes spins do elétron. O que ele buscava era uma equação que satisfizesse as transformações de Lorentz, ou seja, se a equação é de primeira ordem no tempo, então ela também deve ser de primeira ordem no espaço, pois apenas assim as transformações serão satisfeitas.
+
+Para encontrar tal equação, Dirac postulou uma hamiltoniana que fosse linear nas derivadas espaciais, mas que mantivesse a hermiticidade que a própria equação de Schrödinger possui. Esta equação é dada por
+    \begin{equation}\label{eq: Dirac proposals}
+        \hat{\mathcal{H}}\psi(\vb{r},t) = \hat{\boldsymbol{\alpha}}\cdot\vb{p} \psi(\vb{r},t) + \hat{\beta} m \psi(\vb{r},t)
+    \end{equation}
+onde $\psi(\vb{r},t)$ é um estado quântico, $\vb{\alpha}$ e $\beta$ operadores a serem determinados que devem ser ao mesmo tempo, independentes de $(\vb{p},t)$ por linearidade e independente de $(\vb{r},t)$ pela homogeneidade do espaço-tempo e $\vb{p}$ denota o vetor momento em 3 dimensões espaciais. Além disso, os operadores a serem determinados são adimensionais e devemos respeitar a equação \eqref{eq: dispersion relation}, tal que 
+    \begin{equation}\label{eq: needs to satisfy this Dirac}
+        \hat{\mathcal{H}}^{2} \psi(\vb{r},t) = (p^{2} + m^{2})\psi(\vb{r},t)
+    \end{equation}
+
+Podemos reescrever a equação \eqref{eq: Dirac proposals} na forma
+    \begin{equation*}
+        \hat{\mathcal{H}}\psi(\vb{r},t) = \sum_{i=1}^{3}\hat{\alpha}_{i}p_{i}\psi(\vb{r},t) + \hat{\beta} m \psi(\vb{r},t)
+    \end{equation*}
+de modo que ao fazer esta equação ao quadrado, temos a expansão
+    \begin{align*}
+        \hat{\mathcal{H}}^{2}\psi(\vb{r},t) &\eq \Bigg[
+            \sum_{i=1}^{3}\hat{\alpha}_{i}^{2}p_{i}^{2} + 
+            \sum_{i=1}^{3}(\hat{\alpha}_{i}\hat{\beta} + \hat{\beta}\hat{\alpha}_{i})p_{i}m + \\
+        &\noeq
+            \sum_{i=1}^{3}\sum_{j\neq i}(\hat{\alpha}_{i}\hat{\alpha}_{j} + \hat{\alpha}_{j}\hat{\alpha}_{i})p_{i}p_{j} + 
+            \hat{\beta}^{2} m^{2}
+        \Bigg]\psi(\vb{r},t) \\
+        (\color{myLColor}\text{deve ser}) &\eq (p^{2} + m^{2})\psi(\vb{r},t)
+    \end{align*}
+
+Comparando então termo-a-termo, temos que
+    \begin{align*}
+        \sum_{i=1}^{3}\hat{\alpha}_{i}^{2}p_{i}^{2} \overset{!}{=} p^{2} &{\color{myLColor}\ \Rightarrow\ } \hat{\alpha}_{i}^{2} = 1 \\
+        \sum_{i=1}^{3}(\hat{\alpha}_{i}\hat{\beta} + \hat{\beta}\hat{\alpha}_{i})p_{i}m \overset{!}{=} 0 &{\color{myLColor}\ \Rightarrow\ } \hat{\alpha}_{i}\hat{\beta} + \hat{\beta}\hat{\alpha}_{i} = \{\hat{\alpha}_{i},\hat{\beta}\} = 0 \\
+        \sum_{i=1}^{3}\sum_{j\neq i}(\hat{\alpha}_{i}\hat{\alpha}_{j} + \hat{\alpha}_{j}\hat{\alpha}_{i})p_{i}p_{j} \overset{!}{=} 0 &{\color{myLColor}\ \Rightarrow\ } \hat{\alpha}_{i}\hat{\alpha}_{j} + \hat{\alpha}_{j}\hat{\alpha}_{i} = \{\hat{\alpha}_{i},\hat{\alpha}_{j}\} = 0 \\
+        \hat{\beta}^{2}m^{2} \overset{!}{=} m^{2} &{\color{myLColor}\ \Rightarrow\ } \hat{\beta}^{2} = 1
+    \end{align*}
+e a partir destas equações/condições, é evidente que os operadores $\hat{\alpha}_{i}$ e $\hat{\beta}$ não podem ser números, mas sim \textbf{matrizes}. Matrizes estas que satisfazem relações de anti-comutação entre $\hat{\alpha}_{1},\ \hat{\alpha}_{2},\ \hat{\alpha}_{3},\ \hat{\alpha}_{3}$ e $\hat{\beta}$, além de que
+    \begin{equation*}
+        \hat{\alpha}_{1}^{2} = \hat{\alpha}_{2}^{2} = \hat{\alpha}_{3}^{2} = \hat{\beta} = \boldone
+    \end{equation*}
+
+    Para que tais condições sejam satisfeitas, os operadores $\hat{\alpha}_{i}$ e $\hat{\beta}$ devem ser matrizes hermitianas, de traço nulo e auto-valores $\pm 1$, cuja menor dimensão possível destas matrizes é 4, onde a demonstração deste último pode ser vista em detalhes em \textcite{Schiff}. Para demonstrar as outras 3 propriedades, precisamos de uma representação para esses operadores e nestas notas, a representação que será utilizada é a representação de Dirac-Pauli, dada por
+        \begin{equation*}
+            (\hat{\boldsymbol{\alpha}}) = \begin{pmatrix}
+                0 & \hat{\boldsymbol{\sigma}} \\
+                \hat{\boldsymbol{\sigma}} & 0
+            \end{pmatrix} \qquad \& \qquad 
+            (\hat{\beta}) = \begin{pmatrix}
+                \boldone_{2\times 2} & 0 \\
+                0 & -\boldone_{2\times 2}
+            \end{pmatrix}
+        \end{equation*}
+    onde $\hat{\boldsymbol{\sigma}} = (\sigma_{1},\sigma_{2},\sigma_{3})$ são as matrizes de Pauli e $\boldone_{2\times2}$ a matriz identidade de dimensão 2.
+
+
+
+
+
+
+
+    
+
+    Agora, sabendo que podemos representar os operadores $\hat{\mathcal{H}} \mapsto i\pdv{}{t}$ e $\vb{p} = -i\vb{\nabla}$, temos que a equação \eqref{eq: Dirac proposals} se reescreve na forma
+        \begin{equation*}
+            i \pdv{\psi(\vb{r},t)}{t} = -i\hat{\boldsymbol{\alpha}}\cdot\vb{\nabla}\psi(\vb{r},t) + \beta m \psi(\vb{r},t)
+        \end{equation*}
+
+    Multiplicando ambos os lados por $\hat{\beta}$ à esquerda e usando o fato de que $\hat{\beta}^{2} = \boldone$, temos
+        \begin{equation*}
+            i\hat{\beta}\pdv{\psi(\vb{r},t)}{t} = -i\hat{\beta}\boldsymbol{\alpha}\cdot\vb{\nabla}\psi(\vb{r},t) + \boldone m\psi(\vb{r},t)
+        \end{equation*}
+    e portanto, sendo $\boldone m \mapsto m$ agora uma matriz com $\diag{m} = (m,m,m,m)$,
+        \begin{equation*}
+            \qty(i\hat{\beta}\pdv{}{t} + i\hat{\beta}\boldsymbol{\alpha}\cdot\vb{\nabla} - m)\psi(\vb{r},t) = 0
+        \end{equation*}
+
+    Definindo então o quadrivetor
+        \begin{equation*}
+            \gamma^{\mu} = (\hat{\beta}, \hat{\beta}\hat{\boldsymbol{\alpha}})
+        \end{equation*}
+    onde $\gamma^{\mu}$ será um quadrivetor com seus elementos sendo matrizes de dimensão 4, denominadas ``matrizes gamma'', podemos obter de fato a equação de Dirac em sua forma covariante:
+        \begin{answer}\label{eq: Dirac equation 1}
+            (i\gamma^{\mu}\partial_{\mu} - m)\psi(\vb{r},t) = 0
+        \end{answer}
+
+    Ou, através da notação ``slash'' de Feynman, onde ele define para um quadrivetor $A_{\mu}$ a seguinte notação: $\slashed{A} \coloneqq \gamma^{\mu}A_{\mu}$. Implicando em
+        \begin{answer}\label{eq: Dirac equation 2}
+            (i\slashed{\partial} - m)\psi(\vb{r},t) = 0
+        \end{answer}
+
+    Note então que a única forma da equação de Dirac ser satisfeita é que $\psi(\vb{r},t)$ seja um objeto de 4 componentes na forma
+        \begin{equation*}
+            \psi(\vb{r},t) \equiv \begin{pmatrix}
+                \psi_{1}(\vb{r},t) \\
+                \psi_{2}(\vb{r},t) \\
+                \psi_{3}(\vb{r},t) \\
+                \psi_{4}(\vb{r},t)
+            \end{pmatrix}
+        \end{equation*}
+
+    Com tais informações em mente, o que podemos aprender com essa equação? Uma primeira forma de responder essa pergunta é analisando a solução de um dos casos mais simples possível: partículas livres. 
+
+    Para uma partícula livre, podemos escrever simplesmente que
+        \begin{equation}\label{eq: free particle for Dirac}
+            \psi(\vb{r},t) = u e^{i(\vb{p}\cdot\vb{r} - Et)}
+        \end{equation}
+    porém, agora, $\psi(\vb{r},t)$ é um objeto com 4 componentes, o que nos dá
+        \begin{equation*}
+            \psi(\vb{r},t) = \begin{pmatrix}
+                u_{1} \\
+                u_{2} \\
+                u_{3} \\
+                u_{4}
+            \end{pmatrix} e^{i(\vb{p}\cdot\vb{r} - Et)}
+        \end{equation*}
+    onde $u$ é um objeto de 4 componentes chamado \textbf{espinor}.
+
+    Tomando como base a equação \eqref{eq: Dirac proposals} para facilitar a análise, temos
+        \begin{align*}
+            i\pdv{\psi(\vb{r},t)}{t} &\eq -i\hat{\boldsymbol{\alpha}}\cdot\vb{\nabla}\psi(\vb{r},t) + \hat{\beta}m\psi(\vb{r},t) \\
+            i(-iE)\psi(\vb{r},t) &\eq -i\hat{\boldsymbol{\alpha}}\cdot(i\vb{p})\psi(\vb{r},t) + \hat{\beta} m \psi(\vb{r},t) 
+        \end{align*}
+    e portanto
+        \begin{equation}\label{eq: eigenenergy free particle Dirac equation}
+            Eu = (\hat{\boldsymbol{\alpha}}\cdot\vb{p} + \hat{\beta} m)u
+        \end{equation}
+
+    Olhando então para soluções de partículas no limite não-relativístico, ou seja $p\ll m$, temos
+        \begin{equation*}
+            Eu = \hat{\beta} m u = 
+            \begin{pmatrix}
+                \boldone_{2\times 2} m & 0 \\
+                0 & -\boldone_{2\times 2} m
+            \end{pmatrix} u = 
+            \begin{pmatrix}
+                m & 0 & 0 & 0 \\
+                0 & m & 0 & 0 \\ 
+                0 & 0 & -m & 0 \\
+                0 & 0 & 0 & -m
+            \end{pmatrix}u
+        \end{equation*}
+
+    É evidente então o fato de que tempos 4 auto-valores de energia $E = +m,\ +m,\ -m,\ -m$ e consequentemente 4 auto-estados
+        \begin{equation*}
+            u_{1} = \begin{pmatrix}
+                1 \\ 0 \\ 0 \\ 0
+            \end{pmatrix} \qquad \& \qquad 
+            u_{2} = \begin{pmatrix}
+                0 \\ 1 \\ 0 \\ 0
+            \end{pmatrix} \qquad \& \qquad 
+            u_{3} = \begin{pmatrix}
+                0 \\ 0 \\ 1 \\ 0
+            \end{pmatrix} \qquad \& \qquad 
+            u_{4} = \begin{pmatrix}
+                0 \\ 0 \\ 0 \\ 1
+            \end{pmatrix}
+        \end{equation*}
+    onde associamos os 2 primeiros espinores $u_{1}$ e $u_{2}$ à energia $E = +m$, em que $u_{1}$ representa o espinor de uma partícula de energia $E = m$ com spin positivo e $u_{2}$ representa o espinor de uma partícula de energia $E = m$ com spin negativo. Analogamente, $u_{3}$ representa o espinor de uma partícula de energia $E = -m$ com spin positivo e $u_{4}$ o espinor de uma partícula de energia $E = -m$ com spin negativo.
+
+    Agora passando para o caso relativístico, onde $p \sim m$, temos através da equação \eqref{eq: eigenenergy free particle Dirac equation} que
+        \begin{equation*}
+            Eu = \begin{pmatrix}
+                \boldone_{2\times 2}m & \hat{\boldsymbol{\sigma}}\cdot\vb{p} \\
+                \hat{\boldsymbol{\sigma}}\cdot\vb{p} & -\boldone_{2\times 2}m
+            \end{pmatrix}u
+        \end{equation*}
+
+    Sendo então
+        \begin{equation*}
+            u = \begin{pmatrix}
+                u_{p} \\ u_{d}
+            \end{pmatrix}
+        \end{equation*}
+    podemos determinar os valores dos estados $u_{p}$ e $u_{d}$ por
+        \begin{equation*}
+            \begin{pmatrix}
+                \boldone_{2\times 2}E & 0 \\
+                0 & \boldone_{2\times 2}
+            \end{pmatrix}
+            \begin{pmatrix}
+                u_{p} \\ u_{d}
+            \end{pmatrix} = 
+            \begin{pmatrix}
+                \boldone_{2\times 2}m & \hat{\boldsymbol{\sigma}}\cdot\vb{p} \\
+                \hat{\boldsymbol{\sigma}}\cdot\vb{p} & -\boldone_{2\times 2}m
+            \end{pmatrix}
+            \begin{pmatrix}
+                u_{p} \\ u_{d}
+            \end{pmatrix}
+        \end{equation*}
+    implicando em 
+        \begin{equation*}
+            \begin{cases}
+                \boldone_{2\times 2}(E - m)u_{p} - \hat{\boldsymbol{\sigma}}\cdot \vb{p} u_{d} = 0 \\
+                -\hat{\boldsymbol{\sigma}}\cdot\vb{p}u_{p} + \boldone_{2\times 2}(E + m)u_{d} = 0
+            \end{cases}
+        \end{equation*}
+
+    A segunda equação nos dá que
+        \begin{equation}\label{eq: equation for ud}
+            u_{d} = \dfrac{\hat{\boldsymbol{\sigma}}\cdot\vb{p}}{E+m}u_{p}
+        \end{equation}
+
+    Substituindo isto na primeira equação e usando o fato de que $(\hat{\boldsymbol{\sigma}} - \vb{p})^{2} = p^{2}$, obtemos para $u_{p}$ que
+        \begin{equation*}
+            \boldone_{2\times 2}\qty[E^{2} - \qty(m^{2} + p^{2})]u_{p} = 0
+        \end{equation*}
+    onde as soluções possíveis são: o caso trivial de $u_{p} = 0$ e 
+        \begin{equation*}
+            E^{2} - (m^{2} + p^{2}) = 0 \Rightarrow E = \pm \sqrt{p^{2} + m^{2}}
+        \end{equation*}
+
+    O que é condizente com o que obtivemos utilizando a equação de Klein-Fock-Gordon! Olhando particularmente para o caso em que $E>0$ (onde o caso $E<0$ é análogo), podemos escolher por conveniência
+        \begin{equation*}
+            u_{p} = \begin{pmatrix}
+                1 \\ 0
+            \end{pmatrix} \qquad \text{ou} \qquad 
+            u_{p} = \begin{pmatrix}
+                0 \\ 1
+            \end{pmatrix}
+        \end{equation*}
+    e utilizar a equação \eqref{eq: equation for ud} para obter duas formas para $u_{d}$:
+        \begin{equation*}
+            u_{d} = \dfrac{\hat{\boldsymbol{\sigma}}\cdot\vb{p}}{E+m}\begin{pmatrix}
+                1 \\ 0
+            \end{pmatrix} \qquad \text{ou} \qquad 
+            u_{d} = \dfrac{\hat{\boldsymbol{\sigma}}\cdot\vb{p}}{E+m}\begin{pmatrix}
+                0 \\ 1
+            \end{pmatrix}
+        \end{equation*}
+    em que, como $\hat{\boldsymbol{\sigma}}\cdot\vb{p} = \sigma_{1}{p_{1}} + \sigma_{2}{p_{2}} + \sigma_{3}{p}_{3}$, temos explicitamente
+        \begin{equation*}
+            \hat{\boldsymbol{\sigma}}\cdot\vb{p} = \begin{pmatrix}
+                {p}_{3} & {p}_{1} - ip_{2} \\
+                {p}_{1} + i{p}_{2} & -{p}_{3}
+            \end{pmatrix}
+        \end{equation*}
+
+    Concluindo então que
+        \begin{equation*}
+            u_{d} = \dfrac{1}{E+m}\begin{pmatrix}
+                {p}_{3} \\
+                {p}_{1} + i{p}_{2}
+            \end{pmatrix} \qquad \text{ou} \qquad 
+            u_{d} = \dfrac{1}{E+m}\begin{pmatrix}
+                {p}_{1} - i{p}_{2} \\
+                -{p}_{3}
+            \end{pmatrix}
+        \end{equation*}
+    ou seja, as soluções de $u$ para $E > 0$ são
+        \begin{equation*}
+            u = \dfrac{1}{E+m}\begin{pmatrix}
+                E+m \\ 0 \\ p_{3} \\ p_{1} + ip_{2}
+            \end{pmatrix} \qquad \text{ou} \qquad 
+            u = \dfrac{1}{E+m}\begin{pmatrix}
+                0 \\ E+m \\ p_{1} - ip_{2} \\ -p_{3}
+            \end{pmatrix}
+        \end{equation*}
+
+    Lembrando então da equação \eqref{eq: free particle for Dirac}, temos para $E > 0$ que os estados possíveis para partícula livre são
+        \begin{equation*}
+            \psi(\vb{r},t) = \dfrac{e^{i(\vb{p}\cdot\vb{r} - Et)}}{E+m}\begin{pmatrix}
+                E+m \\ 0 \\ p_{3} \\ p_{1} + ip_{2}
+            \end{pmatrix} \qquad \text{ou} \qquad 
+            \psi(\vb{r},t) = \dfrac{e^{i(\vb{p}\cdot\vb{r} - Et)}}{E+m}\begin{pmatrix}
+                0 \\ E+m \\ p_{1} - ip_{2} \\ -p_{3}
+            \end{pmatrix}
+        \end{equation*}
+
+    No caso de $E < 0$, temos que
+        \begin{equation*}
+            u = \dfrac{1}{E-m}\begin{pmatrix}
+                p_{3} \\
+                p_{1} + ip_{2} \\
+                E-m \\
+                0
+            \end{pmatrix} \qquad \text{ou} \qquad 
+            u = \dfrac{1}{E-m}\begin{pmatrix}
+                p_{1} - ip_{2} \\
+                -p_{3} \\
+                0 \\
+                E - m
+            \end{pmatrix}
+        \end{equation*}
+    e portanto os possíveis estados possíveis para partícula livre são
+        \begin{equation*}
+            \psi(\vb{r},t) = \dfrac{e^{i(\vb{p}\cdot\vb{r} - Et)}}{E-m}\begin{pmatrix}
+                p_{3} \\
+                p_{1} + ip_{2} \\
+                E-m \\
+                0
+            \end{pmatrix} \qquad \text{ou} \qquad 
+            \psi(\vb{r},t) = \dfrac{e^{i(\vb{p}\cdot\vb{r} - Et)}}{E-m}\begin{pmatrix}
+                p_{1} - ip_{2} \\
+                -p_{3} \\
+                0 \\
+                E - m
+            \end{pmatrix}
+        \end{equation*}
+
+    Para determinar a equação da continuidade através da equação de Klein-Fock-Gordon, tomamos o conjugado complexo das equações e desenvolvemos as contas. No caso da equação de Dirac, o fato de termos matrizes e vetores, nos leva a fazer algo análogo a tomar o conjugado complexo, ou seja, tomar os hermitianos conjugados!
+
+    A partir da definição das matrizes gamma e da construção dos operadores $\hat{\alpha}_{i}$ e $\hat{\beta}$, temos que
+        \begin{equation}\label{eq: conjugated hermitian for gamma0}
+            \gamma^{0} = \beta = \begin{pmatrix}
+                \boldone_{2\times 2} & 0 \\
+                0 & -\boldone_{2\times 2}
+            \end{pmatrix} \Rightarrow (\gamma^{0})^{\dagger} = \beta = \gamma^{0}
+        \end{equation}
+        \begin{equation}
+            \gamma^{i} = \hat{\beta}\hat{\alpha}_{i} = \begin{pmatrix}
+                0 & \sigma_{i} \\
+                -\sigma_{i} & 0
+            \end{pmatrix} \Rightarrow (\gamma^{i})^{\dagger} = -\gamma^{i},\ i = 1,2,3
+        \end{equation}
+
+    Tendo então estas equações, temos primeiro que a equação de Dirac expandida é
+        \begin{equation*}
+            i\gamma^{0} \pdv{\psi(\vb{r},t)}{t} + i\sum_{k=1}^{3} \gamma^{k}\pdv{\psi(\vb{r},t)}{x^{k}} - m\psi(\vb{r},t) = 0
+        \end{equation*}
+    e em segundo que a equação de Dirac conjugada é
+        \begin{equation*}
+            -i\pdv{\psi^{\dagger}(\vb{r},t)}{t}\gamma^{0} - i\sum_{k=1}^{3} {\pdv{\psi^{\dagger}(\vb{r},t)}{t}} (-\gamma^{k}) - m\psi^{\dagger}(\vb{r},t) = 0
+        \end{equation*}
+
+    O sinal negativo em $(-\gamma^{k})$ é inconveniente se compararmos as duas equações, de modo que para resolver isso, multiplicamos por $\gamma^{0}$ pela direita e usemos o fato de que $\gamma^{k}\gamma^{0} = -\gamma^{0}\gamma^{k}$, tal que ficamos com
+        \begin{equation*}
+            -i\pdv{\psi^{\dagger}(\vb{r},t)}{t}\; \gamma^{0}\gamma^{0} - i\sum_{k=1}^{3} {\pdv{\psi^{\dagger}(\vb{r},t)}{t}}\gamma^{0}\gamma^{k} - m\psi^{\dagger}(\vb{r},t)\gamma^{0} = 0
+        \end{equation*}
+
+    Se definirmos $\bar{\psi}(\vb{r},t) \coloneqq \psi^{\dagger}(\vb{r},t)\gamma^{0}$, obtemos
+        \begin{equation*}
+            -i\pdv{\bar{\psi}(\vb{r},t)}{t}\gamma^{0} - \sum_{k=1}^{3}\pdv{\bar{\psi}(\vb{r},t)}{x^{k}}\gamma^{k} - m\bar{\psi}(\vb{r},t) = 0
+        \end{equation*}
+    que pode ser escrita de forma mais compacta como
+        \begin{equation*}
+            i\partial_{\mu}\bar{\psi}(\vb{r},t)\gamma^{\mu} + m \bar{\psi}(\vb{r},t) = 0
+        \end{equation*}
+
+    Multiplicando a equação de Dirac por $\bar{\psi}(\vb{r},t)$ e esta última equação por $\psi(\vb{r},t)$, temos, respectivamente
+        \begin{equation*}
+            i\bar{\psi}(\vb{r},t)\gamma^{\mu}\partial_{\mu}\psi(\vb{r},t) - m\bar{\psi}(\vb{r},t)\psi(\vb{r},t) = 0
+        \end{equation*}
+        \begin{equation*}
+            i\partial_{\mu}\bar{\psi}(\vb{r},t)\gamma^{\mu}\psi(\vb{r},t) + m\bar{\psi}(\vb{r},t)\psi(\vb{r},t) = 0
+        \end{equation*}
+    e somando ambas,
+        \begin{equation*}
+            \bar{\psi}(\vb{r},t)\gamma^{\mu}[\partial_{\mu}\psi(\vb{r},t)] + [\partial_{\mu}\bar{\psi}(\vb{r},t)]\gamma^{\mu}\psi(\vb{r},t) = 0
+        \end{equation*}
+
+    Se definirmos $j^{\mu} \coloneqq \bar{\psi}(\vb{r},t)\gamma^{\mu}\psi(\vb{r},t)$, temos pela regra da cadeia que
+        \begin{equation*}
+            \partial_{\mu}j^{\mu} = \bar{\psi}(\vb{r},t)\gamma^{\mu}[\partial_{\mu}\psi(\vb{r},t)] + [\partial_{\mu}\bar{\psi}(\vb{r},t)]\gamma^{\mu}\psi(\vb{r},t) 
+        \end{equation*}
+
+    Ou seja, a equação acima é uma equação da continuidade
+        \begin{answer}
+            \partial_{\mu}j^{\mu} = 0
+        \end{answer}
+    para $j^{\mu} \coloneqq \bar{\psi}(\vb{r},t)\gamma^{\mu}\psi(\vb{r},t)$. Mas qual o impacto deste resultado? Tendo que $\rho = j^{0}$, temos também que
+        \begin{align*}
+            \rho &\eq \bar{\psi}(\vb{r},t)\gamma^{0}\psi(\vb{r},t) \\
+            &\eq \psi^{\dagger}(\vb{r},t)\underbrace{\gamma^{0}\gamma^{0}}_{\boldone}\psi(\vb{r},t) \\
+            &\eq \psi^{\dagger}(\vb{r},t)\psi(\vb{r},t) \\
+            &\eq |\psi(\vb{r},t)|^{2}
+        \end{align*}
+    implicando então em
+        \begin{answer}\label{eq: rho is a probability density again}
+            \rho = j^{0} = |\psi(\vb{r},t)|^{2}
+        \end{answer}
+    ou seja, resgatamos a ideia de que $\rho$ é sempre positivo, o que vai equivaler a uma densidade de probabilidade, resolvendo o problema que a equação de Klein-Fock-Gordon possuía!
+
+    \begin{note}{}
+        Normalmente definimos $j^{\mu} \coloneqq \pm e\bar{\psi}(\vb{r},t)\gamma^{\mu}\bar{\psi}(\vb{r},t)$, onde $+e$ seria para partículas e $-e$ para antipartículas.
+    \end{note}
+
+    \begin{example}[Partícula de Dirac em um campo eletromagnético]
+        Antes de tratar de fato as equações, salientamos aqui que faremos a abordagem utilizando o potencial vetor $\vb{A}(\vb{r})$ (associado ao campo magnético por $\vb{B}(\vb{r}) = \vb{\nabla}\times\vb{A}(\vb{r})$) e o potencial escalar $\phi(\vb{r})$ (associado ao campo elétrico por $\vb{E}(\vb{r}) = -\vb{\nabla}V(\vb{r})$). Além disso, fazemos um deslocamento no vetor momento $\hat{\vb{p}} \mapsto \hat{\vb{p}} - q\vb{A}$, pois esta mudança é invariante de gauge e nos permite determinar o momento cinético da partícula de forma mais exata. 
+
+        Com estas ideias em mente, podemos passar de fato ao problema em questão. Utilizando as mudanças enunciadas, a equação \eqref{eq: Dirac proposals} se altera para forma
+            \begin{equation*}
+                \hat{\mathcal{H}}\psi(\vb{r},t) = \qty[\hat{\boldsymbol{\alpha}}\cdot(\hat{\vb{p}} - q\vb{A}) + \hat{\beta}m + q\phi]\psi(\vb{r},t)
+            \end{equation*}
+        que se estende para equação \eqref{eq: eigenenergy free particle Dirac equation} para assumir a forma
+            \begin{equation}\label{eq: eigenenergy for a dirac particle}
+                Eu = \qty[\hat{\boldsymbol{\alpha}}\cdot(\hat{\vb{p}} - q\vb{A}) + \hat{\beta}m + q\phi]u
+            \end{equation}
+
+        Sendo então
+            \begin{equation*}
+                \psi(\vb{r},t) \equiv \begin{pmatrix}
+                    \psi_{u}(\vb{r},t) \\ \psi_{d}(\vb{r},t)
+                \end{pmatrix}
+            \end{equation*}
+        podemos reescrever a equação \eqref{eq: eigenenergy for a dirac particle} por
+            \begin{equation*}
+                E \begin{pmatrix}
+                    \psi_{u} \\ \psi_{d}
+                \end{pmatrix} = \begin{pmatrix}
+                    0 & \hat{\boldsymbol{\sigma}} \\
+                    \hat{\boldsymbol{\sigma}} & 0
+                \end{pmatrix}[\hat{\vb{p}} - q\vb{A}]
+                \begin{pmatrix}
+                    \psi_{u} \\ \psi_{d}
+                \end{pmatrix} + 
+                \begin{pmatrix}
+                    m+q\phi & 0 \\
+                    0 & -m+q\phi
+                \end{pmatrix}
+                \begin{pmatrix}
+                    \psi_{u} \\
+                    \psi_{d}
+                \end{pmatrix}
+            \end{equation*}
+
+        Formamos então um sistema de equações tal que
+            \begin{equation*}
+                \begin{cases}
+                    E\psi_{d} = \hat{\boldsymbol{\sigma}}\cdot(\hat{\vb{p}} - q\vb{A})\psi_{d} + (m + q\phi)\psi_{u} \\
+                    E\psi_{u} = \hat{\boldsymbol{\sigma}}\cdot (\hat{\vb{p}} - q\vb{A})\psi_{u} - (m - q\phi)\psi_{d}
+                \end{cases}
+            \end{equation*}
+
+        A partir da segunda equação, temos 
+            \begin{equation*}
+                \psi_{d}(\vb{r},t) = \dfrac{\hat{\boldsymbol{\sigma}}\cdot(\hat{\vb{p}} - q\vb{A})}{E - q\phi + m}\psi_{u}(\vb{r},t)
+            \end{equation*}
+        de modo que colocando esta expressão na primeira equação, acabamos com
+            \begin{equation*}
+                E\psi_{u}(\vb{r},t) = \qty{
+                    \dfrac{[\hat{\boldsymbol{\sigma}}\cdot(\hat{\vb{p}} - q\vb{A})]^{2}}{E - q\phi + m} + m+q\phi
+                }\psi_{u}(\vb{r},t)
+            \end{equation*}
+
+        No limite não-relativístico, ou seja, para $E\sim m$ e $E \gg q\phi$, temos que o denominador $E-q\phi+m \approx 2m$ e portanto
+            \begin{equation*}
+                E\psi_{u}(\vb{r},t) = \qty{
+                    \dfrac{[\hat{\boldsymbol{\sigma}}\cdot(\hat{\vb{p}} - q\vb{A})]^{2}}{2m} + m + q\phi
+                }\psi_{u}(\vb{r},t)
+            \end{equation*}
+
+        Utilizando a relação
+            \begin{equation*}
+                (\hat{\boldsymbol{\sigma}}\cdot\vb{u})(\hat{\boldsymbol{\sigma}}\cdot\vb{v}) = \vb{u}\cdot\vb{v} + 
+                i\hat{\boldsymbol{\sigma}}\cdot(\vb{u}\times\vb{v})
+            \end{equation*}
+        obtemos
+            \begin{align*}
+                [\hat{\boldsymbol{\sigma}}\cdot(\hat{\vb{p}} - q\vb{A})]^{2} &\eq 
+                [\hat{\boldsymbol{\sigma}}\cdot(\hat{\vb{p}} - q\vb{A})][\hat{\boldsymbol{\sigma}}\cdot(\hat{\vb{p}} - q\vb{A})] \\
+                &\eq (\hat{\vb{p}} - q\vb{A})^2 + i\hat{\boldsymbol{\sigma}}\cdot(q\hat{\vb{p}}\times\vb{A} + q\vb{A}\times\hat{\vb{p}}) \\
+                &\eq (\hat{\vb{p}} - q\vb{A})^2 + iq\hat{\boldsymbol{\sigma}}(\hat{\vb{p}}\times\vb{A} + \vb{A}\times\hat{\vb{p}})
+            \end{align*}
+        implicando em
+            \begin{equation*}
+                E\psi_{u}(\vb{r},t) = \qty[
+                    \dfrac{(\hat{\vb{p}} - q\vb{A})^2}{2m} + \dfrac{iq\hat{\boldsymbol{\sigma}}}{2m}\cdot (\hat{\vb{p}}\times\vb{A} + \vb{A}\times\hat{\vb{p}}) + m + q\phi
+                ]\psi_{u}(\vb{r},t)
+            \end{equation*}
+
+        Podemos simplificar esta expressão usando $\hat{\vb{p}} = -i\vb{\nabla}$ no termo intermediário, tal que
+            \begin{align*}
+                \hat{\vb{p}}\times\vb{A} + \vb{A}\times\hat{\vb{p}} &\eq -i\vb{\nabla}\times\vb{A} -i\vb{A}\times\vb{\nabla} \\
+                &\eq -i\vb{B} - i\vb{A}\times\vb{\nabla}
+            \end{align*}
+
+        Note, porém, que tudo isto é aplicado a $\psi_{u}(\vb{r},t)$, de modo que ao tomarmos $\vb{A}\times\vb{\nabla}\psi_{u}(\vb{r},t)$ temos um termo identicamente nulo, pois $\vb{\nabla}\psi_{u}(\vb{r},t)$ vai ser paralelo ao potencial vetor, o que indica que a expressão se resume a
+            \begin{equation*}
+                E\psi_{u}(\vb{r},t) = \qty[
+                    \dfrac{(\hat{\vb{p}} - q\vb{A})^2}{2m} + \dfrac{q\hat{\boldsymbol{\sigma}}}{2m}\cdot \vb{B} + m + q\phi
+                ]\psi_{u}(\vb{r},t)
+            \end{equation*}
+
+        Neste limite não-relativístico, $E = m + E'$, logo 
+            \begin{equation*}
+                E'\psi_{u}(\vb{r},t) = \qty[\dfrac{1}{2m}(\hat{\vb{p}} - q\vb{A})^2 + q\phi]\psi_{u}(\vb{r},t) + \dfrac{q}{2m}(\hat{\boldsymbol{\sigma}}\cdot\vb{B})\psi_{u}(\vb{r},t)
+            \end{equation*}
+
+        Analisando esta expressão, temos no primeiro termo a estrutura da hamiltoniana não-relativística para partículas em um campo eletromagnético e no segundo termo uma quantidade que relaciona as matrizes de Pauli com o campo magnético. Então, definindo o spin como sendo $\hat{\vb{S}} = \dfrac{1}{2}\hat{\boldsymbol{\sigma}}$, caímos em
+            \begin{equation*}
+                E'\psi_{u}(\vb{r},t) = \qty[\dfrac{1}{2m}(\hat{\vb{p}} - q\vb{A})^2 + q\phi + \dfrac{q}{m}(\hat{\vb{S}}\cdot\vb{B})]\psi_{u}(\vb{r},t)
+            \end{equation*}
+        e assim vemos que a quantidade que conhecemos como spin aparece de forma automática, basicamente como uma propriedade puramente quântica intrínseca à característica relativística das partículas.
+    \end{example}

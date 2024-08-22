@@ -1,0 +1,171 @@
+Muitas vezes queremos mudar as bases de um vetor, como por exemplo passar de coordenadas cartesianas para cilíndricas ou esféricas, e para isso utilizávamos expressões que relacionavam as coordenadas, porém para bases gerais, as coisas não são tão simples assim.
+
+Suponha que conhecemos um vetor de estado $\ket{\psi}$ em uma base ortonormal $\ket{e_{i}}$, ou seja
+    \begin{equation*}
+        \ket{\psi} = \sum_{i}\psi_{i}\ket{e_{i}} \qquad \& \qquad 
+        \braket{e_{i}}{e_{j}} = \delta_{ij}
+    \end{equation*}
+e queremos expressar esse mesmo vetor em uma outra base ortonormal $\ket{b_{j}}$ tal que:
+    \begin{equation*}
+        \ket{\psi} = \sum_{j}\beta_{j}\ket{b_{j}}
+    \end{equation*}
+    
+\textbf{A questão é:} Como calcular os elementos $\beta_{i}$? E para responder isso, precisamos introduzir o conceito de \textit{operador de projeção}.
+
+\begin{definition}{}\label{def: projection operator}
+    (\textbf{Operador de projeção}) Dada uma base $\ket{e_{i}}$ qualquer, definimos o operador de projeção $\hat{\mathcal{P}}$ como sendo
+        \begin{answer}\label{eq: projection operador}
+            \hat{\mathcal{P}} = \sum_{i}\ket{e_{i}}\bra{e_{i}}
+        \end{answer}
+\end{definition}
+
+Note que aqui temos um produto \Acomment{ket--bra} e não um \Acomment{bra--ket}, isso muda completamente a quantidade resultante. No caso do produto \Acomment{bra--ket} como já vimos, isso nos retorna uma quantidade escalar, já o produto \Acomment{ket--bra} irá nos retornar uma matriz quadrada com a dimensão dos vetores de base. Esse produto é denominado \textit{produto direto entre vetores}.
+
+\begin{example}\label{exemple 1.3}
+    Considere o sistema de coordenadas cartesianas no espaço euclidiano $\mathbb{R}^3$. Neste caso os vetores de base são:
+        \begin{equation*}
+            \ket{e_{1}} = 
+            \begin{pmatrix}
+                1 \\
+                0 \\
+                0
+            \end{pmatrix} \qquad \& \qquad 
+            \ket{e_{2}} = 
+            \begin{pmatrix}
+                0 \\
+                1 \\
+                0
+            \end{pmatrix} \qquad \& \qquad 
+            \ket{e_{3}} = 
+            \begin{pmatrix}
+                0 \\
+                0 \\
+                1
+            \end{pmatrix}
+        \end{equation*}
+        
+    Com isso, podemos calcular $\hat{\mathcal{P}}$ diretamente:
+        \begin{align*}
+            \hat{\mathcal{P}} &\eq \sum_{i}\ket{e_{i}}\bra{e_{i}} \\
+            &\eq \begin{pmatrix}
+                1 \\
+                0 \\
+                0
+            \end{pmatrix} 
+            \begin{pmatrix}
+                1 & 0 & 0
+            \end{pmatrix} + 
+            \begin{pmatrix}
+                0 \\
+                1 \\
+                0
+            \end{pmatrix} 
+            \begin{pmatrix}
+                0 & 1 & 0
+            \end{pmatrix} + 
+            \begin{pmatrix}
+                0 \\
+                0 \\
+                1
+            \end{pmatrix} 
+            \begin{pmatrix}
+                0 & 0 & 1
+            \end{pmatrix} \\
+            &\eq 
+            \begin{pmatrix}
+                1 & 0 & 0 \\
+                0 & 0 & 0 \\
+                0 & 0 & 0
+            \end{pmatrix} +
+            \begin{pmatrix}
+                0 & 0 & 0 \\
+                0 & 1 & 0 \\
+                0 & 0 & 0
+            \end{pmatrix} +
+            \begin{pmatrix}
+                0 & 0 & 0 \\
+                0 & 0 & 0 \\
+                0 & 0 & 1
+            \end{pmatrix} \\
+            &\eq \boldone
+        \end{align*}
+\end{example}
+
+Ou seja, o operador de projeção é sempre uma matriz identidade, de modo que:
+    \begin{equation*}
+        \boldone\ket{\psi} = \ket{\psi} \qquad \& \qquad
+        \bra{\psi}\boldone = \bra{\psi}
+    \end{equation*}
+
+Voltemos então ao problema de transformar as componentes da base $\ket{e_{i}}$ para base $\ket{b_{i}}$. O fato da matriz de projeção ser a identidade, nos permite escrever que:
+    \begin{equation*}
+        \hat{\mathcal{P}} = \sum_{j} \ket{b_{j}}\bra{b_{j}} = \boldone
+    \end{equation*}
+
+Como conhecemos $\ket{\psi}$ na base $\ket{e_{i}}$, o mais concreto seria começar por ele.
+    \begin{align*}
+        \ket{\psi} &\eq \sum_{i}\psi_{i}\ket{e_{i}} \\
+        &\eq \sum_{i}\psi_{i}{\color{myLColor}\boldone}\ket{e_{i}} = 
+        \sum_{i}\psi_{i}{\color{myLColor!50}{\sum_{j}\ket{b_{j}}\bra{b_{j}}}}\ket{e_{i}}\\
+        &\eq \sum_{i,j}\psi_{i}\ket{b_{j}}\braket{b_{j}}{e_{i}} = 
+        \sum_{j}{\color{myLColor!50}\sum_{i}\psi_{i}\braket{b_{j}}{e_{i}}}\ket{b_{j}}
+    \end{align*}
+
+\begin{note}{}
+    Adicionar a matriz de projeção à expressão de $\ket{\psi}$ implica em dizermos que estamos projetando o elemento $j$ do vetor de base $\ket{e_{i}}$ no vetor de base $\ket{b_{j}}$. 
+\end{note}
+
+Dessa forma, como queremos escrever $\ket{\psi} = \displaystyle\sum_{j}\beta_{j}\ket{b_{j}}$, podemos comparar os resultados 
+    \begin{equation*}
+        \ket{\psi} = \sum_{j}\beta_{j}\ket{b_{j}} \qquad \& \qquad 
+        \ket{\psi} = \sum_{j}\sum_{i}\psi_{i}\braket{b_{j}}{e_{i}}\ket{b_{j}}
+    \end{equation*}
+e concluir que:
+    \begin{answer*}
+        \beta_{j} = \sum_{i}\psi_{i}\braket{b_{j}}{e_{i}}
+    \end{answer*}
+
+Expandindo um pouco essa ideia, existem vetores de estado que podem ser escritos em bases de dimensão infinita, isto é, a base torna-se um contínuo de vetores de base, de modo que:
+    \begin{equation*}
+        \ket{\psi} = \sum_{i}\psi_{i}\ket{e_{i}} \rightarrow 
+        \ket{\psi} = \int\psi(\xi)\ket{\xi}\dd\xi
+    \end{equation*}
+
+\begin{example}\label{exemple 1.4}
+Um exemplo importante que envolvem bases contínuas, é a \Acomment{base de autoestados de posição}, tal que dado um vetor de base $\ket{x}\in\{\ket{x}\}$, que designará um vetor posição e outro vetor de base $\ket{x'}\in\{\ket{x}\}$, a base de autoestados satisfaz que:
+    \begin{equation*}
+        \braket{x'}{x} = \delta(x' - x) \rightarrow {\color{myLColor}\text{Delta de Dirac}}
+    \end{equation*}
+
+\begin{note}{Delta de Dirac}
+    Uma das propriedades principais da Delta de Dirac se dá a partir de integrais:
+        \begin{equation*}
+            \int_{-\infty}^{\infty} f(x')\delta(x-x')\dd x' = f(x)
+        \end{equation*}
+    
+    Outra propriedade importante é que para $x=0$, sendo a função delta par, $\delta(x-x') = \delta(x')$, temos que:
+        \begin{equation*}
+            \delta(x') = 0,\ \forall x'\neq 0
+        \end{equation*}
+
+    Para mais detalhes acerca deste recurso matemático, recomendamos a leitura disponível em \textcite{Arfken,Barata38}
+\end{note}
+
+Dessa forma, qual seria o valor de um vetor de estado $\ket{\psi}$ qualquer na componente $\ket{x}$ da base $\{\ket{x}\}$? Constata-se facilmente que
+    \begin{align*}
+        \braket{x}{\psi} &\eq \bra{x}\int\psi(x')\ket{x'}\dd{x'} \\
+        &\eq \int \psi(x')\braket{x}{x'}\dd{x'} \\
+        &\eq \int \psi(x')\delta(x-x')\dd{x'} = \psi(x)    
+    \end{align*}
+\end{example}
+
+Uma consequência super importante que desenvolvemos neste simples exemplo é o fato de que para determinar a função de onda de uma partícula, ou de um sistema de partículas, em uma base qualquer de autoestados $\{\ket{x}\}$, basta calcular
+    \begin{answer}\label{eq: wavefunction eigenstate base}
+        \psi(x) = \braket{x}{\psi}
+    \end{answer}
+
+Temos nesse exemplo a ideia de operador intrínseca no problema, vamos então definir o que são e por que eles se relacionam com este exemplo.
+
+\begin{note}{}
+    Antes de prosseguir, vale salientar que no Apêndice \ref{apendice A} há uma discussão mais aprofundada sobre espaços de Hilbert e algumas de suas propriedades essenciais para mecânica quântica.
+\end{note}

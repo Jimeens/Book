@@ -1,0 +1,125 @@
+\begin{center}
+    \begin{tikzpicture}
+        \foreach \x in {0,1,2}{
+            \draw[->] (\x,0) -- (\x+0.9,0);
+            \shade[ball color = LinkColor] (\x,0) circle (2pt) node[above]{$t_{\x}$};
+        }
+        \shade[ball color = LinkColor] (3,0) circle (2pt) node[above]{$t_{3}$};
+
+        \draw[->] (0,-1) -- (2.9,-1);
+        \shade[ball color = LinkColor] (0,-1) circle (2pt) node[above]{$t_{0}$};
+        \shade[ball color = LinkColor] (3,-1) circle (2pt) node[above]{$t_{3}$};
+    \end{tikzpicture}
+\end{center}
+
+\divider
+
+\begin{center}
+    \begin{tikzpicture}
+        \foreach \x in {0,1}{
+            \draw[->] (\x,0) -- (\x+0.9,0) node[midway, below,myLColor!50]{$\dd{t}$};
+            \shade[ball color = LinkColor] (\x,0) circle (2pt);
+        }
+        \shade[ball color = LinkColor] (2,0) circle (2pt) node[right]{$t+\dd{t}$};
+        \node[left] at (0,0){\phantom{$+\dd{t}$}$t_{0}$};
+        \node[above] at (1,0){$t$};
+        
+    \end{tikzpicture}
+\end{center}
+
+\divider
+
+\begin{center}
+    \begin{tikzpicture}
+        \node[] at (0,0){$\hat{\mathcal{H}}\ket{n} = E_{n}\ket{n}$};
+        \draw[->, myLColor!50, xshift=-0.6cm, yshift=-0.35cm] (0,0) |- (-0.3,-0.3) node[left]{Autoestados de $\hat{\mathcal{H}}$};
+        \draw[->, myLColor!50, xshift=0.45cm, yshift=0.35cm] (0,0) |- (0.3,0.3) node[right]{Autovalores de $\hat{\mathcal{H}}$};
+    \end{tikzpicture}
+\end{center}
+
+\divider
+
+\begin{center}
+    \begin{tikzpicture}
+        \node[] at (0,0){$\hat{\mathcal{A}}\ket{a_{i}} = a_{i}\ket{a_{i}}$};
+        \draw[->, myLColor!50, xshift=-0.6cm, yshift=-0.35cm] (0,0) |- (-0.3,-0.3) node[left]{Autoestados de $\hat{\mathcal{A}}$};
+        \draw[->, myLColor!50, xshift=0.45cm, yshift=0.35cm] (0,0) |- (0.3,0.3) node[right]{Autovalores de $\hat{\mathcal{A}}$};
+    \end{tikzpicture}
+\end{center}
+
+\divider 
+
+\begin{center}
+    \begin{tikzpicture}
+        \draw[<->] (0,4.1) node[left]{$|\varepsilon_{n}|^2$} |- (4.1,0) node[right]{$E_{n}$};
+        \draw[step=0.5cm, draw opacity=0.15] (-0.05,-0.05) grid (4.05,4.05);
+
+        \draw[fill = myLColor] (0.5,0.34) circle (1pt);
+        \draw[fill = myLColor] (1,0.78) circle (1pt);
+        \draw[fill = myLColor] (1.5,1.38) circle (1pt);
+        \draw[fill = myLColor] (2,2.34) circle (1pt);
+        \draw[fill = myLColor] (2.5,3.18) circle (1pt);
+        \draw[fill = myLColor] (3,2.89) circle (1pt);
+        \draw[fill = myLColor] (3.5,2.18) circle (1pt);
+        \draw[fill = myLColor] (4,1.28) circle (1pt);
+        
+        \node[below] at (2.5,0){$\expval*{\hat{\mathcal{H}}}$};
+
+        \draw[<->, myLLColor] (2,2) -- (3.5,2) node[midway, below]{$2\sigma_{\hat{\mathcal{H}}}$};
+        
+    \end{tikzpicture}
+\end{center}
+
+\divider 
+
+\begin{center}
+    \begin{tikzpicture}
+        \draw[<->] (0,4.1) node[left]{$|\alpha_{i}|^2$} |- (4.1,0) node[right]{$a_{i}$};
+        \draw[step=0.5cm, draw opacity=0.15] (-0.05,-0.05) grid (4.05,4.05);
+
+        \draw[fill = myLColor] (0.5,0.42) circle (1pt);
+        \draw[fill = myLColor] (1,0.63) circle (1pt);
+        \draw[fill = myLColor] (1.5,1.12) circle (1pt);
+        \draw[fill = myLColor] (2,1.61) circle (1pt);
+        \draw[fill = myLColor] (2.5,2.24) circle (1pt);
+        \draw[fill = myLColor] (3,1.71) circle (1pt);
+        \draw[fill = myLColor] (3.5,1.23) circle (1pt);
+        \draw[fill = myLColor] (4,0.24) circle (1pt);
+        
+        \node[below] at (2.5,0){$\expval*{\hat{\mathcal{A}}}$};
+
+        \draw[<->, myLLColor] (2,1.5) -- (3,1.5) node[midway, below]{$2\sigma_{\hat{\mathcal{A}}}$};
+        
+    \end{tikzpicture}
+\end{center}
+
+\divider
+\begin{center}
+    \begin{tikzpicture}
+        \draw[step = 1cm, draw opacity = 0.15] (0,0) grid (3,3);
+        \draw[<->] (0,3) node[left]{$\expval*{\hat{\mathcal{A}}}$} |- (3,0) node[right]{$t$};
+    
+        \draw[fill = myLColor] (1,1) circle (1pt);
+        \draw[fill = myLColor] (2,2) circle (1pt);
+    
+        \node[left] at (0,1){$A_{n}$};
+        \node[left] at (0,2){$A_{n+1}$};
+    
+        \node[below] at (1,0){$t_{n}$};
+        \node[below] at (2,0){$t_{n+1}$};
+    \end{tikzpicture}
+\end{center}
+
+\divider 
+
+\begin{center}
+    \begin{tikzpicture}
+        \draw[fill = myLColor!50] plot[domain=0:4, samples = 300](\x,{4*exp(-70*0.4*((\x - 2.5)^2))});
+        \draw[<->] (0,4.1) node[left]{$|\varepsilon_{n}|^2$} |- (4.1,0) node[right]{$E_{n}$};
+        
+        \draw[step=0.5cm, draw opacity=0.15] (-0.05,-0.05) grid (4.05,4.05);
+        
+        \node[below] at (2.5,0){$\expval*{\hat{\mathcal{H}}}$};
+        
+    \end{tikzpicture}
+\end{center}

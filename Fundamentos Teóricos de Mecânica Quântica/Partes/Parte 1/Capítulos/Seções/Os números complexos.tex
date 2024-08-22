@@ -1,0 +1,77 @@
+Afim de construir uma definição formal dos números complexos, utilizamos como referência o trabalho de diversos grandes nomes como Bombelli\footnote{Rafael Bombelli (1526--1572).}, Cardano\footnote{Gerolamo Cardano (1501--1576).}, Descartes\footnote{René Descartes (1596--1650).}, Gau\ss\footnote{Johann Carl Friedrich Gaus\ss (1777--1855).}, Euler\footnote{Leonhard Euler (1707--1783).} e muitos outros nomes que contribuíram no desenvolvimento da teoria. Começamos inicialmente definindo o que são \textit{números imaginários}:
+    \begin{definition}\label{def: numeros imaginarios}
+        (\textbf{Números imaginários}) Um número imaginário é definido em termos de uma unidade imaginária definida por
+            \begin{answer}\label{eq: unidade imaginaria}
+                i^2 = -1
+            \end{answer}
+        de modo que todo número imaginário é aquele cujo quadrado é negativo.
+    \end{definition}
+
+Em prol desta definição, definimos o que são de modo geral números complexos.
+    \begin{definition}\label{def: numeros complexos}
+        (\textbf{Números complexos}) Um número $z$ é dito ser complexos se para quaisquer $a,b\in\mathbb{R}$ ele puder ser escrito como
+            \begin{answer}\label{eq: numero complexo}
+                z \coloneqq a + ib
+            \end{answer}
+
+        O conjunto de todos os números complexos é denotado por $\mathbb{C}$. Pode-se também definir o \textit{complexo conjugado} deste número, tal que
+            \begin{answer}\label{eq: complexo conjugado}
+                z^{\ast} \equiv \bar{z} \coloneqq a - ib
+            \end{answer}
+
+        E por fim, o módulo de um número complexo é da forma
+            \begin{answer}\label{eq: modulo}
+                |z|^2 \coloneqq \mathfrak{Re}^2(z) + \mathfrak{Im}^2(z) = a^2 + b^2
+            \end{answer}
+    \end{definition}
+    
+    \begin{note}{}
+        Em termos de notação, $a$ é dito ser a parte real de $z$, comumente denotado por $\mathfrak{Re}(z) = a$ e $b$ é dito ser a parte imaginária de $z$, comumente denotado por $\mathfrak{Im}(z) = b$.
+    \end{note}
+    
+    \begin{corollary}\label{cor: contencao dos reais em C}
+        Como um número real $x\in\mathbb{R}$ é tal que a parte imaginária é nula, ou seja $\mathfrak{Im}(x) = 0$, vale a relação de contenção $\mathbb{R}\subset\mathbb{C}$.
+    \end{corollary}
+    \begin{corollary}\label{cor: modulo}
+        Em termos das definições, constata-se que $|z|^2 = z^{\ast}z$
+    \end{corollary}
+    \begin{proof}
+        A demonstração é simples:
+            \begin{align*}
+                z^{\ast}z &\eq (a-ib)(a+ib) = a^2 + iab - iab - i^2b^2 \\
+                &\eq a^2 + b^2
+            \end{align*}
+        logo
+            \begin{equation*}
+                |z|^2 = z^{\ast}z
+            \end{equation*}
+    \end{proof}
+
+Além destas definições e conceitos básicos, existem algumas propriedades básicas que podem ser úteis em diversos casos e cujas demonstrações são deixadas como exercícios ao final do capítulo.
+    \begin{properties}
+        Sejam $z,w\in\mathbb{C}$ dois números complexos quaisquer. Constata-se que:
+        \begin{enumerate}[(1)]
+            \item $z+w = w+z$; 
+            \hfill (comutatividade da adição)
+            \item $zw = wz$; 
+            \hfill (comutatividade da multiplicação)
+            \item $(z+w)^{\ast} = z^{\ast} + w^{\ast}$; 
+            \hfill (conjugação é distributiva sob adição)
+            \item $(zw)^{\ast} = z^{\ast}w^{\ast}$; 
+            \hfill (conjugação é distributiva sob multiplicação)
+            \item $z^{\ast}z = zz^{\ast} = |z|^2$;
+            \hfill (conjugação é comutativa sob multiplicação)
+            \item $(z^{\ast})^{\ast} = z$;
+            \hfill (conjugação é uma involução)
+            \item $|z| = |z^{\ast}|$; 
+            \hfill (módulo invariante sob conjugação)
+            \item $|zw| = |z||w|$; 
+            \hfill (módulo é distributivo sob multiplicação)
+            \item $|z+w|\leqslant |z| + |w|$; 
+            \hfill (desigualdade triangular)
+            \item $\dfrac{1}{z} = \dfrac{z^{\ast}}{|z|^2},\ z\neq 0+i0$.
+            \hfill (inverso multiplicativo)
+        \end{enumerate}
+    \end{properties}
+
+    

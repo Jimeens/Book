@@ -1,0 +1,639 @@
+    Em mecânica clássica, temos que os eventos são determinísticos, de modo que conhecendo as variáveis do problema, podemos prever o resultado final do evento, ou seja, existe sempre uma equação que rege o problema. No mundo quântico a situação muda. Não exitem equações que determinem exatamente o resultado final de um evento. Em mecânica quântica, as medidas são tomadas de forma completamente \textit{probabilística}.
+    
+    Em 1954, Born\footnote{Max Born (1882--1970).} publicou um artigo, \textcite{Born}, onde propôs que a probabilidade de ocorrência de um evento quântico está intrinsecamente atrelada ao módulo quadrado da função de onda $\psi(x)$, isto é, a probabilidade de um dado evento $X$ ocorrer num intervalo $[x,x+\dd{x}]$, onde $\dd{x}$ é o tamanho do detector, dado um certo conjunto de informações $\mathcal{I}$ é dada por:
+        \begin{equation*}
+            \prob{X\in[x,x+\dd{x}]}{\mathcal{I}}\dd{x} = \abs{\psi(x)}^2\dd{x}
+        \end{equation*}
+    
+    Utilizando essa ideia, dizemos que para variáveis discretas, o valor esperado de uma dada quantidade $x$ é:
+        \begin{equation*}
+            \expval*{x} = \sum_{i}x_{i}\prob{x_{i}}{\mathcal{I}}
+        \end{equation*}
+    
+    Já para variáveis contínuas, analisamos a probabilidade em intervalos infinitesimais, de modo que:
+        \begin{equation*}
+            \expval*{x} = \int x\prob{x}{\mathcal{I}}\dd{x} = \int x\abs{\psi(x)}^2\dd{x}
+        \end{equation*}
+    
+    Como podemos abrir $\abs{\psi(x)}^2 = \psi^{\ast}(x)\psi(x)$ e comutá-los da maneira que quisermos, chegamos em:
+        \begin{equation*}
+            \expval*{x} = \int x\psi^{\ast}(x)\psi(x)\dd{x} = \int\psi^{\ast}(x)x\psi(x)\dd{x}
+        \end{equation*}
+    
+    Que é um resultado já conhecido em cursos básicos de física quântica, mais especificamente, recomenda-se a leitura do Cap. 5 de \textcite{Eisberg}. Além da posição, existem outros observáveis importantes em mecânica quântica como momento ou energia, tal que é útil escrevermos o valor esperado de um observável num estado qualquer como sendo:
+        \begin{answer}\label{eq: expected value of an observable}
+            \expval*{\mathcal{\hat{A}}} = \bra{\psi}\hat{\mathcal{A}}\ket{\psi}
+        \end{answer}
+    
+    Uma vez que queremos o valor esperado $\expval*{\hat{\mathcal{A}}}$, precisamos determinar quais são os elementos da matriz $\hat{\mathcal{A}}$, o que pode ser feito a partir da introdução operadores de projeção:
+        \begin{align*}
+            \boldone\hat{\mathcal{A}}\boldone &\eq 
+            \sum_{i}\ket{e_{i}}\bra{e_{i}}\hat{\mathcal{A}}\sum_{j}\ket{e_{j}}\bra{e_{j}} \\
+            &\eq \sum_{i,j}\ket{e_{i}}\bra{e_{i}}\hat{\mathcal{A}}\ket{e_{j}}\bra{e_{j}}
+        \end{align*}
+    
+    Definindo o elemento de matriz $A_{ij}\coloneqq \bra{e_{i}}\hat{\mathcal{A}}\ket{e_{j}}$, obtemos que: 
+        \begin{answer}\label{eq: matrix form of an operator}
+            \hat{\mathcal{A}} = \boldone\hat{\mathcal{A}}\boldone = \sum_{i,j}\bra{e_{i}}\hat{\mathcal{A}}\ket{e_{j}}\ket{e_{i}}\bra{e_{j}} = \sum_{i,j}A_{ij}\ket{e_{i}}\bra{e_{j}}
+        \end{answer}
+    
+    \begin{example}\label{example 1.6}
+        Para visualizar o resultado acima, considere o espaço euclidiano $\mathbb{R}^2$ de tal forma que:
+            \begin{align*}
+                \hat{\mathcal{A}} &\eq 
+                A_{11}\ket{e_{1}}\bra{e_{1}} + 
+                A_{12}\ket{e_{1}}\bra{e_{2}} +
+                A_{21}\ket{e_{2}}\bra{e_{1}} + 
+                A_{22}\ket{e_{2}}\bra{e_{2}} \\
+                &\eq 
+                A_{11}\begin{bmatrix}
+                    1 & 0 \\ 0 & 0
+                \end{bmatrix} + 
+                A_{12}\begin{bmatrix}
+                    0 & 1 \\ 0 & 0
+                \end{bmatrix} +
+                A_{21}\begin{bmatrix}
+                    0 & 0 \\ 1 & 0 
+                \end{bmatrix} +
+                A_{22}\begin{bmatrix}
+                    0 & 0 \\ 0 & 1
+                \end{bmatrix} \\
+                &\eq \begin{bmatrix}
+                    A_{11} & A_{12} \\ A_{21} & A_{22}
+                \end{bmatrix}
+            \end{align*}
+    \end{example}
+    
+    De cara não é fácil ver que escrever o valor esperado na forma \eqref{eq: expected value of an observable} é o mesmo que escrever a conhecida forma integral. No entanto, para ver isso melhor, podemos analisar por exemplo o operador posição $\hat{x}$, de modo que consideramos o operador de projeção de uma base contínua como sendo:
+        \begin{equation*}
+            \boldone = \int \ket{x}\bra{x}\dd{x}
+        \end{equation*}
+    
+    Com isso, temos que:
+        \begin{align*}
+            \expval*{\hat{x}} &\eq \bra{\psi}\hat{x}\ket{\psi} \\
+            &\eq \bra{\psi}\boldone \hat{x}\boldone\ket{\psi} \\
+            &\eq \bra{\psi}
+            {{\color{myLColor!50}\int\ket{x}\bra{x}\dd{x}}}\ 
+            \hat{x} 
+            {{\color{myLColor!50}\int\ket{x'}\bra{x'}\dd{x'}}}
+            \ket{\psi} \\
+            &\eq \int\int \braket{\psi}{x}\bra{x}\hat{x}\ket{x'}\braket{x'}{\psi}\dd{x'}\dd{x}
+        \end{align*}
+    
+    Note que $\braket{\psi}{x}$ corresponde à função de onda conjugada, ou seja $\psi^{\ast}(x)$. Já $\braket{x'}{\psi}$ é a função de onda em $x'$, ou seja $\psi(x')$, portanto:
+        \begin{align*}
+            \expval*{\hat{x}} &\eq \int\int \psi^{\ast}(x)\bra{x}\hat{x}\ket{x'}\psi(x')\dd{x}'\dd{x} \\
+            &\eq \int\int \psi^{\ast}(x)\hat{x}\braket{x}{x'}\psi(x')\dd{x'} \dd{x} \\
+            &\eq \int\int \psi^{\ast}(x)\hat{x}\delta(x-x')\psi(x')\dd{x'}\dd{x}
+        \end{align*}
+    
+    Separando as integrais em $\dd{x}'$ e $\dd{x}$:
+        \begin{equation*}
+            \expval*{\hat{x}} = \int\psi^{\ast}(x)\hat{x}\underbrace{\left[\int\psi(x')\delta(x-x')\dd{x}'\right]}_{\psi(x)}\dd{x}
+        \end{equation*}
+    
+    Concluímos então que:
+        \begin{answer}\label{eq: expectated value of x}
+                \expval*{\hat{x}} = \int\psi^{\ast}(x)\hat{x}\psi(x)\dd{x} = \bra{\psi}\hat{x}\ket{\psi}
+        \end{answer}
+    
+    % \subsection{Operadores Hermitianos}
+    
+    % Um fato importante sobre os observáveis é que o valor esperado de um operador que se relaciona diretamente a ele deve sempre ser um número real, isto é, para um dado evento $A$ que está associado a um operador $\hat{\mathcal{A}}$, temos que:
+    %     \begin{equation*}
+    %         \expval*{\hat{\mathcal{A}}}^{\ast} = \expval*{\hat{\mathcal{A}}} \in\mathbb{R}
+    %     \end{equation*}
+    
+    % Como consequência, podemos escrever:
+    %     \begin{align*}
+    %         \expval*{\hat{\mathcal{A}}}^{\ast} = (\bra{\psi}\hat{\mathcal{A}}\ket{\psi})^{\ast} &= \bra{\psi}^{\ast}\hat{\mathcal{A}}^{\ast}\ket{\psi}^{\ast} \\
+    %         &= (\hat{\mathcal{A}}^{\ast}\ket{\psi}^{\ast})^{\mathtt{T}}(\bra{\psi}^{\ast})^{\mathtt{T}} \\
+    %         &= \bra{\psi}\hat{\mathcal{A}}^{\dagger}\ket{\psi}
+    %     \end{align*}
+    %     \begin{align*}
+    %         \expval*{\hat{\mathcal{A}}} = \bra{\psi}\hat{\mathcal{A}}\ket{\psi}
+    %     \end{align*}
+    
+    % Mas então, como $\expval*{\hat{\mathcal{A}}}^{\ast} = \expval*{\hat{\mathcal{A}}}$, podemos concluir que quando um operador está associado a um observável, vale que:
+    %     \begin{equation}\label{operadores hermitianos}
+    %         \resp{
+    %             \hat{\mathcal{A}}^{\dagger} = \hat{\mathcal{A}}
+    %         }   
+    %     \end{equation}
+    
+    % Esses operadores são denominados \textit{operadores hermitianos} e são de suma importância para a realização de uma medida em mecânica quântica, de modo que operadores hermitianos são condição necessária para caracterizar um observável.
+    
+    % Vamos supor então que iremos realizar um experimento qualquer no qual pretendemos medir um observável relacionado a um operador $\hat{\mathcal{A}}$, de tal forma que conseguimos determinar o valor esperado desse operador ($\expval*{\hat{\mathcal{A}}} = a$). Nesse experimento, obtemos que todas as medidas são equivalentes ao valor esperado, isto implica diretamente que a variância do valor esperado de $\hat{\mathcal{A}}$ é zero, ou seja:
+    %     \begin{equation*}
+    %         \sigma^2 = \expval*{(\hat{\mathcal{A}} - \expval*{\hat{\mathcal{A}}})^2} = 0 \Rightarrow \bra{\psi}(\hat{\mathcal{A}} - \expval*{\hat{\mathcal{A}}})^2\ket{\psi} = 0
+    %     \end{equation*}
+    
+    % Expandindo essa relação, temos que:
+    %     \begin{equation*}
+    %         \bra{\psi}(\hat{\mathcal{A}} - \expval*{\hat{\mathcal{A}}})^{\dagger}(\hat{\mathcal{A}} - \expval*{\hat{\mathcal{A}}})\ket{\psi} = 0
+    %     \end{equation*}
+    
+    % De tal forma que podemos definir:
+    %     \begin{equation*}
+    %         \bra{\phi} \coloneqq \bra{\psi}(\hat{\mathcal{A}} - \expval*{\hat{\mathcal{A}}})^{\dagger} \hspace{1cm} \& \hspace{1cm} 
+    %         \ket{\phi} \coloneqq (\hat{\mathcal{A}} - \expval*{\hat{\mathcal{A}}})\ket{\psi}
+    %     \end{equation*}
+    
+    % Portanto, para que a equação seja verdadeira:
+    %     \begin{equation*}
+    %         \bra{\phi} = 0 \hspace{1cm} \textrm{ou} \hspace{1cm} \ket{\phi} = 0
+    %     \end{equation*}
+    
+    % O que implica diretamente em:
+    %     \begin{equation*}
+    %         (\hat{\mathcal{A}} - \expval*{\hat{\mathcal{A}}})\ket{\psi} = 0 \Rightarrow 
+    %         (\hat{\mathcal{A}} - a)\ket{\psi} = 0 \Rightarrow \hat{\mathcal{A}}\ket{\psi} = a\ket{\psi}
+    %     \end{equation*}
+    %     \begin{equation*}
+    %         \bra{\psi}(\hat{\mathcal{A}} - \expval*{\hat{\mathcal{A}}})^{\dagger} = 0 \Rightarrow 
+    %         \bra{\psi}(\hat{\mathcal{A}} - a)^{\dagger} = 0 \Rightarrow 
+    %         \bra{\psi}\hat{\mathcal{A}}^{\dagger} = \bra{\psi}a^{\ast}
+    %     \end{equation*}
+    
+    % Ou seja, independente do caso, caímos em uma equação de autovetores e autovalores, de modo que isso ocorre somente quanto $\ket{\psi}$ for um autovetor de $\hat{\mathcal{A}}$ e $a$ um autovalor de $\hat{\mathcal{A}}$. 
+    
+    % Resumindo, se a variância de um observável for nula (zero) o estado do sistema é um autoestado do operador relacionado ao observável implicando que:
+    %     \begin{equation}\label{eq autoestados}
+    %         \resp{
+    %             \hat{\mathcal{A}}\ket{\psi} = a\ket{\psi}
+    %         }
+    %     \end{equation}
+    
+    % \begin{theorem}{}{}
+    %     Os autovetores (autoestados) de um operador hermitiano são sempre ortogonais entre si. De modo que o conjunto de autoestados podem ser usados como uma base.
+    % \end{theorem}
+    
+    % \begin{proof}
+    %     Seja $\hat{\mathcal{A}}$ um operador hermitiano com dois autovalores $a_{1}$ e $a_{2}$, de modo que ele possui dois autoestados $\ket{1}$ e $\ket{2}$. Tomemos então os seguintes resultados:
+    %         \begin{equation}\label{1}
+    %             \bra{1}\underbrace{\hat{\mathcal{A}}\ket{2}}_{a_{2}\ket{2}} = \bra{1}a_{2}\ket{2} = a_{2}\braket{1}{2}
+    %         \end{equation}
+            
+    %         \begin{equation}\label{2}
+    %             \bra{2}\underbrace{\hat{\mathcal{A}}\ket{1}}_{a_{1}\ket{1}} = \bra{2}a_{1}\ket{1} = a_{1}\braket{2}{1}
+    %         \end{equation}
+    %     \begin{note}{}
+    %         Aplicando o fato de ser hermitiano: $\overset{h}{=}$.
+    %     \end{note}
+        
+    %     Calculando então o conjugado transposto de (\ref{1}):
+    %         \begin{equation}\label{3}
+    %             (\bra{1}\hat{\mathcal{A}}\ket{2})^{\ast} = \bra{2}\hat{\mathcal{A}}^{\dagger}\ket{1} \overset{h}{=} \bra{2}\hat{\mathcal{A}}\ket{1} = a_{1}\braket{2}{1}
+    %         \end{equation}
+        
+    %     Vemos então que se $\hat{\mathcal{A}}$ for hermitiano:
+    %         \begin{equation*}
+    %             (\bra{1}\hat{\mathcal{A}}\ket{2})^{\ast} = \bra{2}\hat{\mathcal{A}}\ket{1}
+    %         \end{equation*}
+        
+    %     Então aplicando (\ref{1}) em (\ref{3}):
+    %         \begin{equation*}
+    %             (a_{2}\braket{1}{2})^{\ast} = a_{1}\braket{2}{1} \Rightarrow 
+    %             a_{2}\braket{2}{1} = a_{1}\braket{2}{1}
+    %         \end{equation*}
+    %         \begin{equation*}
+    %             (a_{2} - a_{1})\braket{2}{1} = 0
+    %         \end{equation*}
+        
+    %     Portanto, se $a_{2}\neq a_{1}$, temos obrigatoriamente que $\braket{2}{1} = 0$, ou seja os autoestados são ortogonais.
+        
+        
+    % \end{proof}
+    
+    % Vamos supor agora que tenhamos um estado $\ket{\phi}$ e um observável relacionado a um dado operador $\hat{\mathcal{A}}$ de tal forma que temos um conjunto de autoestados $\ket{a_{i}}$ e autovalores $a_{i}$. Escrevendo $\ket{\phi}$ em termos dos autoestados:
+    %     \begin{equation*}
+    %         \ket{\phi} = \sum_{i}\phi_{i}\ket{a_{i}}
+    %     \end{equation*}
+    
+    % Com isso, queremos saber como determinar $\expval*{\hat{\mathcal{A}}}$ no estado $\ket{\phi}$:
+    %     \begin{align*}
+    %         \expval*{\hat{\mathcal{A}}} &= \bra{\phi}\hat{\mathcal{A}}\ket{\phi} 
+    %         = \sum_{i}\phi_{i}^{\ast}\mel**{a_{i}}{\hat{\mathcal{A}}\sum_{j}\phi_{j}}{a_{j}} \\
+    %         &= \sum_{i,j}\phi_{i}^{\ast}\phi_{j}\bra{a_{i}}\hat{\mathcal{A}}\ket{a_{j}} 
+    %         = \sum_{i,j}\phi_{i}^{\ast}\phi_{j}\bra{a_{i}}a_{j}\ket{a_{j}} \\
+    %         &= \sum_{i,j}\phi_{i}^{\ast}\phi_{j}a_{j}\braket{a_{i}}{a_{j}} 
+    %         = \sum_{i,j}\phi_{i}^{\ast}\phi_{j}a_{j}\delta_{ij} \\
+    %         &= \sum_{i}\phi_{i}^{\ast}\phi_{i}a_{i}
+    %     \end{align*}
+    %     \begin{equation*}
+    %         \resp{
+    %             \expval*{\hat{\mathcal{A}}} = \sum_{i}\abs{\phi_{i}}^2a_{i}
+    %         }
+    %     \end{equation*}
+        
+    % Imaginemos então que o estado $\ket{\phi}$ esteja normalizado, ou seja $\braket{\phi}{\phi} = 1$:
+    %     \begin{align*}
+    %         \braket{\phi}{\phi} &= \sum_{i}\phi_{i}^{\ast}\mel**{a_{i}}{\sum_{j}\phi_{j}}{a_{j}} \\
+    %         &= \sum_{i,j}\phi_{i}^{\ast}\phi_{j}\braket{a_{i}}{a_{j}} \\
+    %         &= \sum_{i,j}\phi_{i}^{\ast}\phi_{j}\delta_{ij} \\
+    %         &= \sum_{i}\phi_{i}^{\ast}\phi_{i}
+    %     \end{align*}
+    %     \begin{equation*}
+    %         \resp{
+    %             \braket{\phi}{\phi} = 1 = \sum_{i}\abs{\phi_{i}}^2
+    %         }
+    %     \end{equation*}
+    
+    % Isso nos dá uma ideia de média ponderada pelas probabilidades. Voltando diretamente ao processo de medidas, temos que quando fazemos uma única medida, vamos obter uma resposta dentre os possíveis valores de um observável, que são os \textit{autovalores}. Ou seja, o estado $\ket{\psi}$ se transforma no autoestado correspondente ao autovalor obtido.
+    
+    % \subsection{Medidas simultâneas em mecânica quântica}
+    
+    % \begin{example}
+    %     Vamos supor que tenhamos um operador $\hat{\mathcal{A}}$ que representa um observável e possui dois autoestados atribuídos a ele:
+    %         \begin{equation*}
+    %             \ket{1}\rightarrow a_{1} \hspace{1cm} \& \hspace{1cm} 
+    %             \ket{2}\rightarrow a_{2} 
+    %         \end{equation*}
+        
+    %     Seja também o vetor de estado $\ket{\psi}$ conhecido e dado por uma combinação dos autoestados, tal que:
+    %         \begin{equation*}
+    %             \ket{\psi} = \dfrac{1}{\sqrt{5}}(2\ket{1} + \ket{2})
+    %         \end{equation*}
+        
+    %     Escrevendo $\ket{\psi}$ como um somatório podemos explicitar as componentes desse vetor de estado:
+    %         \begin{equation*}
+    %             \ket{\psi} = \sum_{i}\psi_{i}\ket{i} \Rightarrow 
+    %             \begin{cases}
+    %             \begin{aligned}
+    %                 \psi_{1} &= \dfrac{2}{\sqrt{5}} \\
+    %                 \psi_{2} &= \dfrac{1}{\sqrt{5}}
+    %             \end{aligned}
+    %             \end{cases}
+    %         \end{equation*}
+        
+    %     Com tudo isso, queremos saber o valor esperado do operador $\hat{\mathcal{A}}$ relacionado ao observável de interesse. Para isso, devemos primeiro saber se o vetor de estado está normalizado.
+    %         \begin{align*}
+    %             \braket{\psi}{\psi} &= 
+    %             \dfrac{1}{\sqrt{5}}(2\bra{1} + \bra{2})\dfrac{1}{\sqrt{5}}(2\ket{1}+\ket{2}) \\
+    %             &= \dfrac{1}{5}(4\braket{1}{1} + 2\braket{1}{2} + 2\braket{2}{1} + \braket{2}{2})
+    %         \end{align*}
+        
+    %     Dado então que os vetores de base $\ket{1}$ e $\ket{2}$ são ortonormais, temos que os produtos escalares $\braket{1}{2} = \braket{2}{1} = 0$, além de que $\braket{1}{1} = \braket{2}{2} = 1$, portanto:
+    %         \begin{equation*}
+    %             \braket{\psi}{\psi} = \dfrac{1}{5}(4+1) = 1
+    %         \end{equation*}
+        
+    %     Logo o vetor de estado está normalizado e não serão necessárias constantes para normalizá-lo. Calculemos então o valor esperado $\hat{\mathcal{A}}$:
+    %         \begin{align*}
+    %             \expval*{\hat{\mathcal{A}}} &= 
+    %             \bra{\psi}\hat{\mathcal{A}}\ket{\psi} 
+    %             = \dfrac{1}{\sqrt{5}}(2\bra{1} + \bra{2})\hat{\mathcal{A}}\dfrac{1}{\sqrt{5}}(2\ket{1} + \ket{2}) \\
+    %             &= \dfrac{1}{5}(4\bra{1}\hat{\mathcal{A}}\ket{1} + 2\bra{1}\hat{\mathcal{A}}\ket{2} + 2\bra{2}\hat{\mathcal{A}}\ket{1} + \bra{2}\hat{\mathcal{A}}\ket{2})
+    %         \end{align*}
+        
+    %     Mas como $\ket{1}$ e $\ket{2}$ são vetores de base que possuem autovalores relacionados, temos que:
+    %         \begin{equation*}
+    %             \hat{\mathcal{A}}\ket{1} = a_{1}\ket{1} \hspace{1cm} \& \hspace{1cm} 
+    %             \hat{\mathcal{A}}\ket{2} = a_{2}\ket{2}
+    %         \end{equation*}
+        
+    %     Usando isso na expressão acima, temos:
+    %         \begin{align*}
+    %             \expval*{\hat{\mathcal{A}}} &= 
+    %             \dfrac{1}{5}(4\bra{1}a_{1}\ket{1} + 2\bra{1}a_{2}\ket{2} + 2\bra{2}a_{1}\ket{1} + \bra{2}a_{2}\ket{2}) \\
+    %             &= 
+    %             \dfrac{1}{5}(4a_{1}\braket{1}{1} + 2a_{2}\braket{1}{2} + 2a_{1}\braket{2}{1} + a_{2}\braket{2}{2})
+    %         \end{align*}
+    %         \begin{equation*}
+    %             \resp{
+    %                 \expval*{\hat{\mathcal{A}}} = \dfrac{1}{5}(4a_{1} + a_{2})
+    %             }
+    %         \end{equation*}
+        
+    %     Vemos então uma ideia de média ponderada entre os valores possíveis do operador. A grosso modo, podemos dizer que a cada 5 medidas feitas, 4 serão relacionadas ao autoestado $\ket{1}$ que possui como autovalor $a_{1}$ e 1 deles relacionado ao autoestado $\ket{2}$ que possui $a_{2}$ como autovalor.
+    % \end{example}
+    
+    % \begin{note}{}
+    %     Após a realização de uma medida, o vetor de estado $\ket{\psi}$ se torna um dos autoestados possíveis, de modo que se fizermos uma medida logo após a primeira medida, obteremos o mesmo resultado que está relacionado com o mesmo autoestado.
+    % \end{note}
+    
+    % \begin{example}
+    %     Vamos supor que tenhamos como base $\mathscr{B} = \{\ket{1},\ket{2}\}$, que é uma base ortonormal. Além disso, sabemos por algum motivo a forma do operador $\hat{\mathcal{B}}$ relacionado a um observável qualquer, tal que:
+    %         \begin{equation*}
+    %             \hat{\mathcal{B}} = 
+    %             \begin{bmatrix}
+    %                 0   &   1   \\
+    %                 1   &   0   
+    %             \end{bmatrix}
+    %         \end{equation*}
+        
+    %     Queremos então saber que são os autoestados do sistema, de modo a satisfazer as equações:
+    %         \begin{equation*}
+    %             \hat{\mathcal{B}}\ket{b_{1}} = b_{1}\ket{b_{1}} \hspace{1cm} \& \hspace{1cm}
+    %             \hat{\mathcal{B}}\ket{b_{2}} = b_{2}\ket{b_{2}}
+    %         \end{equation*}
+        
+    %     De modo geral, para determinar os autovalores fazemos:
+    %         \begin{equation*}
+    %             \det(\hat{\mathcal{B}} - \mathfrak{b}\boldone) = 0
+    %         \end{equation*}
+    %     onde $\mathfrak{b}$ representa o conjunto de autovalores possíveis. Portanto:
+    %         \begin{equation*}
+    %             \abs{\begin{bmatrix}
+    %                 0   &   1   \\
+    %                 1   &   0
+    %             \end{bmatrix} - 
+    %             \begin{bmatrix}
+    %                 \mathfrak{b}   &   0   \\
+    %                 0   &   \mathfrak{b}
+    %             \end{bmatrix}} = 0 \Rightarrow 
+    %             \begin{vmatrix*}[r]
+    %                 -\mathfrak{b}  &   1   \\
+    %                 1   &   -\mathfrak{b}  
+    %             \end{vmatrix*} = 0 \Rightarrow 
+    %             \mathfrak{b}^2 - 1 = 0
+    %         \end{equation*}
+    %         \begin{equation*}
+    %             \resp{b_{1} = 1} \hspace{1cm} \& \hspace{1cm}
+    %             \resp{b_{2} = -1}
+    %         \end{equation*}
+        
+    %     Para o autoestado relacionado a $b_{1}=1$ é então:
+    %         \begin{equation*}
+    %             \hat{\mathcal{B}}\ket{b_{1}} = 1\ket{b_{1}} \Rightarrow 
+    %             \begin{bmatrix}
+    %                 0   &   1   \\
+    %                 1   &   0
+    %             \end{bmatrix}
+    %             \begin{bmatrix}
+    %                 c_{1} \\
+    %                 c_{2}
+    %             \end{bmatrix} = 1
+    %             \begin{bmatrix}
+    %                 c_{1} \\
+    %                 c_{2}
+    %             \end{bmatrix} \Rightarrow 
+    %             \begin{cases}
+    %                 0\cdot c_{1} + 1\cdot c_{2} = c_{1} \\
+    %                 1\cdot c_{1} + 0\cdot c_{2} = c_{2}
+    %             \end{cases}
+    %         \end{equation*}
+    %         \begin{equation*}
+    %             c_{1} = c_{2} \equiv k_{1}
+    %         \end{equation*}
+        
+    %     Então de modo geral o autoestado relacionado a $b_{1}$ pode ser escrito como sendo:
+    %         \begin{equation*}
+    %             \ket{b_{1}} = k_{1}
+    %             \begin{bmatrix}
+    %                 1 \\ 1
+    %             \end{bmatrix}
+    %         \end{equation*}
+        
+    %     Afim de fazermos uma base ortonormal com os autoestados, podemos impor a normalização de modo que:
+    %         \begin{equation*}
+    %             \braket{b_{1}}{b_{1}} = 1 \Leftrightarrow k_{1}^{\ast}
+    %             \begin{bmatrix}
+    %                 1 & 1
+    %             \end{bmatrix} k_{1}
+    %             \begin{bmatrix}
+    %                 1 \\ 1
+    %             \end{bmatrix} = 1 \Rightarrow 2\abs{k_{1}}^2 = 1 \Rightarrow \abs{k_{1}} = \dfrac{1}{\sqrt{2}}
+    %         \end{equation*} 
+        
+    %     Sendo assim, o autoestado $\ket{b_{1}}$ é dado simplesmente por:
+    %         \begin{equation*}
+    %             \resp{
+    %                 \ket{b_{1}} = \dfrac{1}{\sqrt{2}}
+    %                 \begin{bmatrix}
+    %                     1 \\ 1
+    %                 \end{bmatrix}
+    %             }
+    %         \end{equation*}
+        
+    %     Analogamente para $b_{2} = -1$, temos que:
+    %         \begin{equation*}
+    %             \hat{\mathcal{B}}\ket{b_{2}} = -1\ket{b_{2}} \Rightarrow 
+    %             \begin{bmatrix}
+    %                 0   &   1   \\
+    %                 1   &   0
+    %             \end{bmatrix}
+    %             \begin{bmatrix}
+    %                 c_{3} \\
+    %                 c_{4}
+    %             \end{bmatrix} = -1
+    %             \begin{bmatrix}
+    %                 c_{3} \\
+    %                 c_{4}
+    %             \end{bmatrix} \Rightarrow 
+    %             \begin{cases}
+    %                 0\cdot c_{3} + 1\cdot c_{4} = -c_{3} \\
+    %                 1\cdot c_{3} + 0\cdot c_{4} = -c_{4}
+    %             \end{cases}
+    %         \end{equation*}
+    %         \begin{equation*}
+    %             c_{3} = -c_{4} \equiv k_{2}
+    %         \end{equation*}
+        
+    %     Portanto:
+    %         \begin{equation*}
+    %             \ket{b_{2}} = k_{2}
+    %             \begin{bmatrix*}[r]
+    %                 1 \\ -1
+    %             \end{bmatrix*}
+    %         \end{equation*}
+        
+    %     Normalizando:
+    %         \begin{equation*}
+    %             \braket{b_{2}}{b_{2}} = 1 \Leftrightarrow k_{2}^{\ast}
+    %             \begin{bmatrix}
+    %                 1 & -1
+    %             \end{bmatrix} k_{2}
+    %             \begin{bmatrix*}[r]
+    %                 1 \\ -1
+    %             \end{bmatrix*} = 1 \Rightarrow 2\abs{k_{2}}^2 = 1 \Rightarrow \abs{k_{2}} = \dfrac{1}{\sqrt{2}}
+    %         \end{equation*}
+        
+    %     Logo, o autoestado $\ket{b_{2}}$ é dado por:
+    %         \begin{equation*}
+    %             \resp{
+    %                 \ket{b_{2}} = \dfrac{1}{\sqrt{2}}
+    %                 \begin{bmatrix*}[r]
+    %                     1 \\ -1
+    %                 \end{bmatrix*}
+    %             }
+    %         \end{equation*}
+        
+    %     \begin{note}{}
+    %         Podemos escrever tanto o operador $\hat{\mathcal{B}}$ quanto os autoestados $\ket{b_{1}}$ e $\ket{b_{2}}$ na forma de combinações lineares de \textit{bra's} e \textit{ket's}, tal que:
+    %             \begin{equation*}
+    %                 \hat{\mathcal{B}} = \ket{2}\bra{1} + \ket{1}\bra{2}
+    %             \end{equation*}
+    %             \begin{equation*}
+    %                 \ket{b_{1}} = \dfrac{1}{\sqrt{2}}(\ket{1} + \ket{2}) \hspace{1cm} \& \hspace{1cm}
+    %                 \ket{b_{2}} = \dfrac{1}{\sqrt{2}}(\ket{1} - \ket{2})
+    %             \end{equation*}
+    %     \end{note}
+        
+    % \end{example}
+    
+    % Dados os exemplos acima, podemos fazer uma análise simples sobre o processo de medida em mecânica quântica. Olhando para o Exemplo 5, temos os autoestados $\ket{1}$ e $\ket{2}$ cujos autovalores relacionados são respectivamente $a_{1}$ e $a_{2}$, já no Exemplo 6 temos os autoestados $\ket{b_{1}}$ e $\ket{b_{2}}$ compostos por uma combinação linear entre $\ket{1}$ e $\ket{2}$, e possuem autovalores $b_{1}$ e $b_{2}$.
+    
+    % Vamos então supor que exista um aparelho que meça o operador $\hat{\mathcal{B}}$, de modo que ele nos retorna um dos autovalores do operador:
+    %     \begin{figure}[H]
+    %         \centering
+    %         \includegraphics{Figuras/Operators measurement.pdf}
+    %         \caption{Representação esquemática de como um operador atua em sob um estado quântico.}
+    %         \label{Operators measurement}
+    %     \end{figure}
+    
+    % Então se obtivermos $b_{1}=1$, teremos associado o autoestado $\ket{b_{1}}$ que é composto pelos vetores $\ket{1}$ e $\ket{2}$, e isto nos indica que não podemos medir os dois operadores simultaneamente, pois quando fazemos a medida de $\hat{\mathcal{B}}$, não conseguimos determinar qual dos autoestados de $\hat{\mathcal{A}}$ teremos, isto pelo simples motivo de que $\ket{b_{1}}$ depende de $\ket{1}$ \textit{\textbf{e}} $\ket{2}$. 
+    
+    % Da mesma forma, podemos manipular $\ket{b_{1}}$ e $\ket{b_{2}}$ para isolarmos $\ket{1}$ e $\ket{2}$, tal que estes dependerão de $\ket{b_{1}}$ e $\ket{b_{2}}$, o que gera uma espécie de looping quando tentamos medir os dois operadores ao mesmo tempo.
+    
+    % Sabemos que com base em um vetor de estado $\ket{\psi}$, podemos calcular os valores esperados dos operadores $\hat{\mathcal{A}}$ e $\hat{\mathcal{B}}$ como sendo:
+    %     \begin{equation*}
+    %         \expval*{\hat{\mathcal{A}}} = \bra{\psi}\hat{\mathcal{A}}\ket{\psi} \hspace{1cm} \& \hspace{1cm}
+    %         \expval*{\hat{\mathcal{B}}} = \bra{\psi}\hat{\mathcal{B}}\ket{\psi}
+    %     \end{equation*}
+    
+    % Com isso, medir as variâncias $\sigma_{\hat{\mathcal{A}}}^2$ e $\sigma_{\hat{\mathcal{B}}}^{2}$ fica inteiramente determinada, já que:
+    %     \begin{equation*}
+    %         \sigma_{\hat{\mathcal{A}}}^2 = \expval*{(\hat{\mathcal{A}} - \expval*{\hat{\mathcal{A}}})^2} \hspace{1cm} \& \hspace{1cm} 
+    %         \sigma_{\hat{\mathcal{B}}}^2 = \expval*{(\hat{\mathcal{B}} - \expval*{\hat{\mathcal{B}}})^2}
+    %     \end{equation*}
+    
+    % As variâncias vão nos dizes o quão boas são as medidas, se comparadas com o valor esperado, dessa forma, calcular o produto entre as variâncias nos fornecerá informações extras sobre as medidas. Antes disso, temos:
+    %     \begin{align*}
+    %         \sigma_{\hat{\mathcal{A}}}^2 &= \expval*{(\hat{\mathcal{A}} - \expval*{\hat{\mathcal{A}}})^2} \\
+    %         &= \bra{\psi}(\hat{\mathcal{A}} - \expval*{\hat{\mathcal{A}}})^2\ket{\psi} \\
+    %         &= \bra{\psi}(\hat{\mathcal{A}} - \expval*{\hat{\mathcal{A}}})^{\dagger}(\hat{\mathcal{A}} - \expval*{\hat{\mathcal{A}}})\ket{\psi} \\
+    %         &= \braket{f}{f}
+    %     \end{align*}
+    % onde $\ket{f} \coloneqq (\hat{\mathcal{A}} - \expval*{\hat{\mathcal{A}}})\ket{\psi}$. Analogamente para $\sigma_{\hat{\mathcal{B}}}^2$:
+    %     \begin{align*}
+    %         \sigma_{\hat{\mathcal{B}}}^2 &= \expval*{(\hat{\mathcal{B}} - \expval*{\hat{\mathcal{B}}})^2} \\
+    %         &= \bra{\psi}(\hat{\mathcal{B}} - \expval*{\hat{\mathcal{B}}})^2\ket{\psi} \\
+    %         &= \bra{\psi}(\hat{\mathcal{B}} - \expval*{\hat{\mathcal{B}}})^{\dagger}(\hat{\mathcal{B}} - \expval*{\hat{\mathcal{B}}})\ket{\psi} \\
+    %         &= \braket{g}{g}
+    %     \end{align*}
+    % onde $\ket{g} \coloneqq (\hat{\mathcal{B}} - \expval*{\hat{\mathcal{B}}})\ket{\psi}$. Então o produto entre as variâncias pode ser escrito simplesmente por:
+    %     \begin{equation*}
+    %         \sigma_{\hat{\mathcal{A}}}^2\sigma_{\hat{\mathcal{B}}}^2 = \braket{f}{f}\braket{g}{g}
+    %     \end{equation*}
+    
+    % Porém, se não soubermos o vetor de estado $\ket{\psi}$, não conseguimos determinar as variâncias, tampouco o produto entre elas, dessa forma, utilizaremos a \textit{desigualdade de Cauchy-Schwarz}, dada por:
+    %     \begin{equation}\label{desigualdade de CS}
+    %         \resp{\braket{\alpha}{\alpha}\braket{\beta}{\beta} \geqslant \abs{\braket{\alpha}{\beta}}^2}
+    %     \end{equation}
+    %     \begin{proof}
+    %         Dados dois vetores quaisquer $\ket{\alpha}$ e $\ket{\beta}$, podemos construir um vetor $\ket{\gamma}$ utilizando Gram-Schmidt tal que:
+    %             \begin{equation*}
+    %                 \ket{\gamma} = \ket{\beta} - \dfrac{\braket{\alpha}{\beta}}{\braket{\alpha}{\alpha}}\ket{\alpha}
+    %             \end{equation*}
+            
+    %         De modo que impomos $\braket{\alpha}{\alpha}>0$. Calculando então o produto escalar $\braket{\beta}{\gamma}$, temos:
+    %             \begin{align*}
+    %                 \braket{\beta}{\gamma} &= 
+    %                 \bra{\beta}\left(
+    %                     \ket{\beta} - \dfrac{\braket{\alpha}{\beta}}{\braket{\alpha}{\alpha}}\ket{\alpha}
+    %                 \right) \\
+    %                 &= \braket{\beta}{\beta} - \dfrac{\braket{\alpha}{\beta}}{\braket{\alpha}{\alpha}}\braket{\beta}{\alpha} \\
+    %                 &= \braket{\beta}{\beta} - \dfrac{\braket{\alpha}{\beta}}{\braket{\alpha}{\alpha}}(\braket{\alpha}{\beta})^{\dagger} \\
+    %                 &= \braket{\beta}{\beta} - \dfrac{\abs{\braket{\alpha}{\beta}}^2}{\braket{\alpha}{\alpha}}
+    %             \end{align*}
+            
+    %         Sendo então $\braket{\beta}{\gamma}\geqslant0$, podemos multiplicar ambos os lados por $\braket{\alpha}{\alpha}$ e concluir que:
+    %             \begin{equation*}
+    %                 \braket{\beta}{\gamma} \braket{\alpha}{\alpha} \geqslant 0 
+    %             \end{equation*}
+            
+    %         Portanto:
+    %             \begin{equation*}
+    %                 \braket{\alpha}{\alpha}\braket{\beta}{\beta} \geqslant\abs{\braket{\alpha}{\beta}}^2
+    %             \end{equation*}
+    %     \end{proof}
+    
+    % Então aplicando (\ref{desigualdade de CS}):
+    %     \begin{align*}
+    %         \sigma_{\hat{\mathcal{A}}}^2\sigma_{\hat{\mathcal{B}}}^2 = 
+    %         \braket{f}{f}\braket{g}{g} &\geqslant \abs{\braket{f}{g}}^2 \\
+    %         &= \abs{\bra{\psi}(\hat{\mathcal{A}} - \expval*{\hat{\mathcal{A}}})^{\dagger}(\hat{\mathcal{B}} - \expval*{\hat{\mathcal{B}}})\ket{\psi}}^2 \\
+    %         &= \abs{\bra{\psi}(\hat{\mathcal{A}} - \expval*{\hat{\mathcal{A}}})(\hat{\mathcal{B}} - \expval*{\hat{\mathcal{B}}})\ket{\psi}}^2 \\ 
+    %         &= \abs{\bra{\psi} \hat{\mathcal{A}}\hat{\mathcal{B}} - \expval*{\hat{\mathcal{A}}}\hat{\mathcal{B}} - \expval*{\hat{\mathcal{B}}}\hat{\mathcal{A}} + \expval*{\hat{\mathcal{A}}}\expval*{\hat{\mathcal{B}}} \ket{\psi}}^2 \\
+    %         &= \abs{
+    %         \bra{\psi}\hat{\mathcal{A}}\hat{\mathcal{B}}\ket{\psi} - 
+    %         \expval*{\hat{\mathcal{A}}}\bra{\psi}\hat{\mathcal{B}}\ket{\psi} - 
+    %         \expval*{\hat{\mathcal{B}}}\bra{\psi}\hat{\mathcal{A}}\ket{\psi} +
+    %         \expval*{\hat{\mathcal{A}}}\expval*{\hat{\mathcal{B}}}\braket{\psi}{\psi}
+    %         }^2 \\
+    %         &= \abs{
+    %         \bra{\psi}\hat{\mathcal{A}}\hat{\mathcal{B}} - \expval*{\hat{\mathcal{A}}}\expval*{\hat{\mathcal{B}}}\ket{\psi} - 
+    %         \expval*{\hat{\mathcal{A}}}\expval*{\hat{\mathcal{B}}} + 
+    %         \expval*{\hat{\mathcal{B}}}\expval*{\hat{\mathcal{A}}}
+    %         }^2 \\
+    %         &= \abs{\bra{\psi}\hat{\mathcal{A}}\hat{\mathcal{B}} - \expval*{\hat{\mathcal{A}}}\expval*{\hat{\mathcal{B}}}\ket{\psi}}^2
+    %     \end{align*}
+    
+    % Seja então $\hat{\mathcal{Z}} \coloneqq \hat{\mathcal{A}}\hat{\mathcal{B}} - \expval*{\hat{\mathcal{A}}}\expval*{\hat{\mathcal{B}}}$ um novo operador, tal que ele não é necessariamente hermitiano, ou seja, $\expval*{\hat{\mathcal{Z}}}\in\mathbb{C}$:
+    %     \begin{equation*}
+    %         \expval*{\hat{\mathcal{Z}}} = \mathfrak{Re}[\expval*{\hat{\mathcal{Z}}}] + i\mathfrak{Im}[\expval*{\hat{\mathcal{Z}}}]
+    %     \end{equation*}
+    
+    % Temos portanto que:
+    %     \begin{equation*}
+    %          \sigma_{\hat{\mathcal{A}}}^2\sigma_{\hat{\mathcal{B}}}^2 \geqslant \abs{\bra{\psi}\hat{\mathcal{Z}}\ket{\psi}}^2 = \abs{\expval*{\hat{\mathcal{Z}}}}^2 \geqslant \abs{\mathfrak{Im}[\expval*{\hat{\mathcal{Z}}}]}^2
+    %     \end{equation*}
+    
+    % Lembrando que a parte imaginária de um número complexo $z$ pode ser escrita como sendo:
+    %     \begin{equation*}
+    %         \mathfrak{Im}[z] = \dfrac{1}{2i}(z - z^{\ast})
+    %     \end{equation*}
+    
+    % Portanto:
+    %     \begin{align*}
+    %         \sigma_{\hat{\mathcal{A}}}^2\sigma_{\hat{\mathcal{B}}}^2 &\geqslant 
+    %         \abs{\dfrac{1}{2i}(\expval*{\hat{\mathcal{Z}}} - \expval*{\hat{\mathcal{Z}}^{\ast}})}^2 \\
+    %         &= \abs{\dfrac{1}{2i}(\bra{\psi}\hat{\mathcal{A}}\hat{\mathcal{B}} - \expval*{\hat{\mathcal{A}}}\expval*{\hat{\mathcal{B}}} - \hat{\mathcal{B}}^{\dagger}\hat{\mathcal{A}}^{\dagger} +\expval*{\hat{\mathcal{A}}}\expval*{\hat{\mathcal{B}}}\ket{\psi})}^2 \\
+    %         &= \abs{\dfrac{1}{2i}\bra{\psi}\hat{\mathcal{A}}\hat{\mathcal{B}} - \hat{\mathcal{B}}\hat{\mathcal{A}} \ket{\psi}}^2 \\
+    %         &= \abs{
+    %             \dfrac{1}{2i}\bra{\psi}[\hat{\mathcal{A}},\hat{\mathcal{B}}]\ket{\psi}
+    %         }^2 \\
+    %         &= \dfrac{1}{2^2}\abs{\expval*{[\hat{\mathcal{A}},\hat{\mathcal{B}}]}}^2
+    %     \end{align*}
+    
+    % Logo, tirando a raiz quadrada em ambos os lados, obtemos o \textit{princípio da incerteza entre dois operadores}:
+    %     \begin{equation}\label{principio da incerteza operadores}
+    %         \resp{
+    %             \sigma_{\hat{\mathcal{A}}}\sigma_{\hat{\mathcal{B}}} \geqslant \dfrac{1}{2}\abs{\expval*{[\hat{\mathcal{A}},\hat{\mathcal{B}}]}}
+    %         }
+    %     \end{equation}
+    
+    % Esse resultado é importante devido ao fato de que caso os operadores comutem entre si, existe a possibilidade de medirmos simultaneamente os observáveis relacionados. No entanto, se não comutarem, eles nunca poderão ser medidos de forma simultânea, mesmo que o aparato de medida seja o mais tecnológico de todos. Essa restrição é intrínseca à relação de comutação entre os operadores e nada pode mudar isso.
+
+    % Para a situação de precisão infinita temos um importante teorema a destacar:
+    % \begin{theorem}{}{}
+    %     Dados dois operadores $\mathcal{\hat{A}}$ e $\mathcal{\hat{B}}$ que comutam entre si:
+    %     \begin{equation*}
+    %         [\mathcal{\hat{A}},\mathcal{\hat{B}}] = 0
+    %     \end{equation*}
+    %     Sempre existe uma base de autoestados $\{\ket{\psi}\}$ comum tanto para $\mathcal{\hat{A}}$ quanto para $\mathcal{\hat{B}}$.
+    % \end{theorem}
+    % \begin{proof}
+    %     Seja $\{\ket{\psi}\}$ uma base de autoestados de $\mathcal{\hat{A}}$ sem autovalores degenerados, isto é,
+    %     \begin{equation*}
+    %         \mathcal{\hat{A}}\ket{\psi} = a\ket{\psi}
+    %     \end{equation*}
+    %     Como $\mathcal{\hat{A}}$ e $\mathcal{\hat{B}}$ comutam, podemos escrever
+    %     \begin{equation*}
+    %         \mathcal{\hat{A}}\mathcal{\hat{B}} = \mathcal{\hat{B}}\mathcal{\hat{A}}
+    %     \end{equation*}
+    %     Podemos escrever portanto
+    %     \begin{equation*}
+    %         \mathcal{\hat{A}}\mathcal{\hat{B}}\ket{\psi} = \mathcal{\hat{B}}\mathcal{\hat{A}}\ket{\psi} = \mathcal{\hat{B}}\left(a\ket{\psi}\right) = a\mathcal{\hat{B}}\ket{\psi}
+    %     \end{equation*}
+    %     \begin{equation*}
+    %         \mathcal{\hat{A}}(\mathcal{\hat{B}}\ket{\psi}) = a(\mathcal{\hat{B}}\ket{\psi})
+    %     \end{equation*}
+    %     ou seja, $\mathcal{\hat{B}}\ket{\psi}$ é um autoestado de $\mathcal{\hat{A}}$ associado ao mesmo autovalor $a$. Isso significa que, dado que $a$ não é degenerado, $\mathcal{\hat{B}}\ket{\psi}$ deve ser o mesmo autoestado que $\ket{\psi}$, o que só pode ocorrer se um for o outro a menos de uma constante $b$:
+    %     \begin{equation*}
+    %         \mathcal{\hat{B}}\ket{\psi} = b\ket{\psi}
+    %     \end{equation*}
+    %     o que constitui uma equação de autovalores, concluindo nossa demonstração.
+    % \end{proof}

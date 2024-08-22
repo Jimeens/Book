@@ -1,0 +1,31 @@
+Durante muitos anos, ficou estabelecido que a física era uma ciência próxima de sua conclusão, em que haviam apenas algumas lacunas a serem preenchidas. Um dos fenômenos de onde originavam questionamentos era o da \Acomment{radiação de corpo negro}, que foi profundamente estudada por grandes cientistas que viriam a se tornar os \Acomment{pais} da mecânica quântica. Nomes como Kirchhoff\footnote{Gustav Robert Kirchhoff (1824--1887).}, Wien\footnote{Wilhelm Carl Werner Otto Fritz Franz Wien (1864--1928).}, Planck\footnote{Max Karl Ernst Ludwig Planck (1858--1947).}, Einstein\footnote{Albert Einstein (1879--1955).} e muitos outros se tornaram muito importantes ao longo de seus estudos sobre esse fenômeno.
+
+Em especial Planck, quando em 1900 apresentou quatro artigos propondo resoluções para o problema da radiação de corpo negro. Em seu primeiro artigo, \textcite{Planck1} expressava uma nova equação, que em suas palavras, representava a \Acomment{lei da distribuição de energia de radiação em todo o espectro}, sendo ela dada por
+    \begin{equation*}
+        E = \dfrac{C\lambda^{-5}}{e^{c/\lambda T} - 1}
+    \end{equation*}
+onde $\lambda$ é o comprimento de onda, $c$ a velocidade da luz, $T$ a temperatura e $C$ uma constante. Em seus próximos 3 artigos, \textcite{Planck2, Planck3, Planck4}, ele viria a desenvolver e determinar mais resultados que culminariam em muitos outros fenômenos que se originaram do estudo aprofundado deste problema. Alguns de grande renome são: Efeito fotoelétrico, Efeito Compton\footnote{Arthur Holly Compton (1892--1962).}, descoberta dos raios-X por Röntgen\footnote{Wilhelm Conrad Röntgen (1845--1923).}, e muitos outros de extrema importância que podem ser estudados com mais profundidade em livros como \textcite{Eisberg}, que contextualizam muito bem historicamente o surgimento da mecânica quântica e muitos dos experimentos que solidificaram a teoria.
+
+Neste livro, abordaremos as bases para um estudante de mecânica quântica, começando por exemplo com a definição de estados quânticos, operadores e como utilizamos eles para descrever fenômenos quânticos, o que são espaços de Hilbert\footnote{David Hilbert (1862--1943).}, como o tempo evolui quanticamente e muitos outros conteúdos que exigem uma boa base de Álgebra Linear e todo o ciclo básico de um curso de física. Um curso introdutório de física quântica também é útil para contextualizar alguns conteúdos que veremos mais adiante.
+
+Em um contexto geral, podemos descrever qualquer sistema quântico completamente utilizando-se de cinco princípios não--triviais.
+    \begin{myitemize}
+        \item Um sistema quântico é caracterizado por um \textbf{vetor de estado} $\ket{\psi}$;
+        
+        \item Todo observável $A$ é representado por um \textbf{operador hermitiano} $\hat{\mathcal{A}}$;
+        
+        \item O processo de medida é descrito através da atuação de um operador sobre o estado e resulta sempre em um \textbf{autovalor} do operador;
+        
+        \item O \textbf{valor esperado} de um observável $\hat{\mathcal{A}}$ é dado por:
+            \begin{answer*}
+                \langle \hat{\mathcal{A}} \rangle = \bra{\psi}\hat{\mathcal{A}}\ket{\psi}
+            \end{answer*}
+        
+        \item Um sistema quântico evolui no tempo de acordo com a equação de Schrödinger:
+            \begin{answer*}
+                i\hbar\pdv{}{t}\ket{\psi(t)} = \hat{\mathcal{H}}\ket{\psi(t)}
+            \end{answer*}
+    \end{myitemize}
+
+    Obviamente que esses princípios básicos não são as únicas ferramentas que utilizamos na descrição da teoria quântica, no entanto eles são essenciais para entender qualquer outro artifício que iremos aplicar, como por exemplo teoria de perturbações, que utiliza-se basicamente de todos esses princípios.
+    
