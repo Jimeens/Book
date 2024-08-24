@@ -1,0 +1,161 @@
+Em 1939, foi publicado um breve artigo de \textcite{Dirac-notation}\footnote{Paul Adrien Maurice Dirac (1902--1984).} introduzindo uma nova notação para facilitar a forma em que as equações na mecânica quântica são escritas. Esta notação foi denomida por ele como “notação de bracket”, e é comumente denotada por “notação de Dirac”.
+
+A notação de Dirac é de extrema importância para descrevermos a mecânica quântica com eficiência e de forma intuitiva e diante disto construiremos agora dois espaços vetoriais complexos de dimensão arbitrária que chamaremos de “espaço de kets” $\mathscr{V}$ (como veremos será especificada de acordo com o sistema físico) e “espaço de bras” $\mathscr{V}^{\ast}$ (o motivo desta notação ficará claro adiante). Descreveremos nestes espaços vetores na forma de \textit{kets}, denotados por $\ket{\ \cdot\ }$ e vetores na forma de \textit{bras}, denotados por $\bra{\ \cdot\ }$. 
+\begin{definition}
+    \label{def: ket space}
+    Seja $\mathscr{V}$ um espaço vetorial de dimensão arbitrária sobre $\mathbb{C}$. O conjunto de elementos deste espaço são vetores ket da forma $\ket{v}\in\mathscr{V}$, com as seguintes propriedades:
+    \begin{enumerate}
+        \item Dois kets podem ser somados para formar um novo ket: para todo $\ket{v},\ket{u}\in\mathscr{V}$, existe um único elemento $\ket{w}\in\mathscr{V}$ tal que $\ket{v} + \ket{u} = \ket{w}$;
+        \item A multiplicação por escalar forma um novo ket: para todo $\ket{v}\in\mathscr{V}$ e $\alpha\in\mathbb{C}$, existe um único elemento $\ket{u}\in\mathscr{V}$ tal que $\ket{u} = \alpha\ket{v}$;
+        \item Existe um ket nulo: para todo $\ket{v}\in\mathscr{V}$, quando multiplicado por $\alpha = 0$, retorna o ket nulo, que denotaremos simplesmente por $\vb{0}$.
+    \end{enumerate}
+\end{definition}
+
+Dentro do espaço de kets, existem kets particulares que são de suma importância para toda teoria que são os chamados “autokets” $\{\ket*{a^{(1)}}, \ket*{a^{(2)}},...\} \equiv \{\ket*{a^{(i)}}\}$, que veremos mais a frente de onde surgem, responsáveis por gerar todo o espaço. São essencialmente os conhecidos autovetores da álgebra linear.
+
+Construido o espaço de kets $\mathscr{V}$, somos capazes de construir o espaço de bras $\mathscr{V}^{\ast}$, que é basicamente um espelho de $\mathscr{V}$, porém com algumas características particulares que devem ser enfatizadas para melhor compreensão do que estamos fazendo.
+
+O espaço de bras é formalmente denominado como o “espaço dual do espaço de kets”, isto é, vai existir uma correspondência um-pra-um entre $\mathscr{V}$ e $\mathscr{V}^{\ast}$, chamada \textit{correspondência dual} que pode ser vista sem qualquer rigor da seguinte forma: sendo $\ket{v}$ um elemento de $\mathscr{V}$ e $\alpha\in\mathbb{C}$, o correspondente dual do ket $\alpha\ket{v}\in\mathscr{V}$ é o bra $\alpha^{\ast}\bra{v}\in\mathscr{V}^{\ast}$. Com esta ideia em mente, a construção do espaço de bras se torna a seguinte:
+\begin{definition}
+    \label{def: bra space}
+    Seja $\mathscr{V}$ um espaço vetorial de dimensão arbitrária sobre $\mathbb{C}$. Seja então $\mathscr{V}^{\ast}$ o espaço dual de $\mathscr{V}$, cujos elementos desse espaço são vetores bra da forma $\bra{v}\in\mathscr{V}^{\ast}$, com as seguintes propriedades:
+    \begin{enumerate}
+        \item Dois bras podem ser somados para formar um novo bra: para todo $\bra{v},\bra{u}\in\mathscr{V}^{\ast}$, existe um único elemento $\bra{w}\in\mathscr{V}^{\ast}$ tal que $\bra{v} + \bra{u} = \bra{w}$;
+        \item A multiplicação por escalar forma um novo bra: para todo $\bra{v}\in\mathscr{V}^{\ast}$ e $\alpha\in\mathbb{C}$, existe um único elemento $\bra{u}\in\mathscr{V}^{\ast}$ tal que $\bra{u} = \alpha\bra{v}$;
+        \item Existe um bra nulo: para todo $\bra{v}\in\mathscr{V}^{\ast}$, quando multiplicado por $\alpha = 0$, retorna o bra nulo, que denotaremos simplesmente por $\vb{0}$.
+    \end{enumerate}
+\end{definition}
+onde dentro deste espaço temos os “autobras” $\{\bra*{a^{(i)}}\}$, responsáveis por gerar todo o espaço. A título de comparação, ou seja, as correspondências duais entre $\mathscr{V}$ e $\mathscr{V}^{\ast}$, temos
+    \begin{equation}\label{eq: dual correspondence brackets}
+        \alpha\ket{v} + \beta\ket{u} \leftrightarrow \alpha^{\ast}\bra{v} + \beta^{\ast}\bra{u}
+    \end{equation}
+
+Dizemos que o bra $\bra{v}$ é a versão adjunta complexa (ou o hermitiano) do ket $\ket{v}$, sendo a operação de transposição seguida por conjugação complexa das componentes de $\ket{v}$ expressada por meio da notação \textit{dagger} ($\dagger$):
+\begin{equation*}
+    \bra{v} = (\ket{v}^*)^\mathtt{T} \equiv \ket{v}^\dagger
+\end{equation*}
+
+Note que se $\mathscr{V}$ for construido sobre $\mathbb{R}$, então o adjunto complexo se torna apenas a operação de transposição. 
+% Ao trabalharmos com o espaço de kets $\mathscr{V}$, estamos lidando com um espaço vetorial linear, no qual precisamos satisfazer a Definição~\ref{def: vector space}, isto é, um conjunto de vetores $\ket{v},\ket{u},...\in\mathscr{V}$ e um conjunto de escalares $\alpha,\beta,...\in\mathbb{C}$ que satisfazem as regras \textit{1} e \textit{2} da definição.
+
+Por fim, definimos um produto interno entre dois vetores, um $\ket{u}\in\mathscr{V}$ e um  $\bra{v}\in\mathscr{V}^{\ast}$. Na notação de Dirac, escrevemos o bra à esquerda e o ket à direita, tal que
+    \begin{equation}
+    \label{inner product in Dirac notation}
+        \braket{v}{u} \coloneqq (\bra{v})\cdot(\ket{u})
+    \end{equation}
+em que este produto é em geral um número complexo
+
+Vale ressaltar, que da mesma maneira que para um espaço vetorial nos reais, temos que se um ket $\ket{u}\in\mathscr{V}$ e um bra $\bra{v}\in\mathscr{V}^{\ast}$ respeitarem
+    \begin{equation*}
+        \braket{v}{u} = 0
+    \end{equation*}
+estes são ditos ortogonais.
+
+Podemos da mesma forma que fizemos na seção anterior (para $\vb{v}$ na base de vetores $\{\vb{e}_i\}$), expandir os vetores $\ket{v}\in\mathscr{V}$ e $\bra{v}\in\mathscr{V}^{\ast}$ em uma base $\{\ket{e_i}\}$ e seu correspondente dual $\{\bra{e_{i}}\}$ (sendo da mesma forma uma base ortonormal, $\braket{e_i}{e_k} = \delta_{ik}$):
+    \begin{equation}
+    \label{ket expansion in ortonormal basis}
+        \ket{v} = \sum_{i} v_{i} \ket{e_i} 
+    \end{equation}
+e
+    \begin{equation}
+        \label{bra expansion in ortonormal basis}
+        \bra{v} = (\ket{v})^\dagger = \sum_{i} v_{i}^{\ast}\bra{e_{i}}.
+    \end{equation}
+    
+    % \begin{note}{}
+    %     De uma maneira mais formal, o termo $\vb{v}^{\dagger} = \bra{v}$ corresponde ao conjunto de todos os covetores (uma transformação linear que mapeia vetores a escalares) que formam um subespaço de um espaço vetorial dual. Para mais detalhes consulte o apêndice ao final do capítulo.
+    % \end{note}
+    
+    Usemos as expansões na base $\{\ket{e_i}\}$ para demonstrar quatro propriedades facilmente deriváveis, que nos serão úteis ao longo do texto e nos permitirão praticar um pouco a nova notação:
+    \begin{properties}
+        \label{proper: projection under base vector}
+        Dado um  espaço de kets $\mathscr{V}$ e seu espaço dual $\mathscr{V}^{\ast}$, sobre os vetores da base $\{\ket{e_{i}}\}$ e os correspondentes duais $\{\bra{e_{i}}\}$, podemos projetar tanto $\ket{v}\in\mathscr{V}$ quanto $\bra{v}\in\mathscr{V}^{\ast}$ nestas bases, tal que 
+            \begin{equation*}
+                \braket*{e_{i}}{v} = v_{i} \hsp \braket{v}{e_{i}} = v_{i}^{\ast}
+            \end{equation*}
+    \end{properties}
+    \begin{proof}
+        Atuando com um elemento da base ortonormal $\bra{e_j}$ pela esquerda em (\ref{ket expansion in ortonormal basis}):
+        \begin{equation*}
+            \braket{e_j}{v} = \sum_i v_i \braket{e_j}{e_i} = \sum_i v_i \delta_{ij} = v_j
+        \end{equation*}
+        e da mesma forma atuando com $\ket{e_j}$ pela direita em (\ref{bra expansion in ortonormal basis}):
+        \begin{equation*}
+            \braket{v}{e_j} = \sum_i v_i^*\braket{e_{i}}{e_j} = \sum_i v_i^* \delta_{ij} = v_j^*
+        \end{equation*}
+    \end{proof}
+
+    \begin{properties}
+        \label{proper: anti-commutation}
+        Dado um espaço de kets $\mathscr{V}$ e seu espaço dual $\mathscr{V}^{\ast}$, o produto escalar entre $\ket{v}\in\mathscr{V}$ e $\bra{u}\in\mathscr{V}^{\ast}$ é anti-comutativo, ou seja 
+            \begin{equation*}
+                \braket{u}{v} = \braket{v}{u}^{\ast}
+            \end{equation*}
+    \end{properties}
+    \begin{proof}
+        Aqui podemos utilizar o resultado anterior, considerando primeiramente vetor $\bra{u}$ atuando sobre (\ref{ket expansion in ortonormal basis}):
+        \begin{equation*}
+            \braket{u}{v} = \sum_{i} v_{i} \braket{u}{e_{i}} = \sum_{i} v_{i} u_{i}^{\ast}
+        \end{equation*}
+        e da mesma forma atuando $\ket{u}$ sobre (\ref{bra expansion in ortonormal basis}):
+        \begin{equation*}
+            \braket{v}{u} = \sum_{i} v_{i}^{\ast} \braket{e_{i}}{u} = \sum_{i} v_{i}^{\ast} u_{i} = \left(\sum_{i} v_{i} u_{i}\right)^{\ast}
+        \end{equation*}
+        sendo portanto
+        \begin{equation*}
+            \braket{v}{u} = \braket{u}{v}^{\ast}
+        \end{equation*}
+
+        Perceba que poderíamos chegar nessa conclusão abrindo a notação de Dirac nos vetores de notação usual
+        \begin{equation*}
+            \braket{u}{v} = (\vb{u}^{\ast})^\mathtt{T}\vb{v} = (\vb{u}^{\mathtt{T}} \vb{v}^{\ast})^{\ast} = [(\vb{v}^{\ast})^{\mathtt{T}}\vb{u}]^{\ast} = \braket{v}{u}^{\ast}
+        \end{equation*}
+    \end{proof}
+
+    \begin{properties}
+        \label{proper: scalar product geq 0}
+        Dado um espaço de kets $\mathscr{V}$ e seu espaço dual $\mathscr{V}^{\ast}$, para cada vetor $\ket{v}\in\mathscr{V}$, vale que
+            \begin{equation*}
+                \braket*{v} \geqslant 0
+            \end{equation*}
+        onde $\braket{v} = 0 \Leftrightarrow \ket{v} = \vb{0}$. Propriedade esta conhecida como métrica definida positiva.
+    \end{properties}
+    \begin{proof}
+        Utilizando as formas \eqref{ket expansion in ortonormal basis} e \eqref{bra expansion in ortonormal basis}, temos:
+            \begin{align*}
+                \braket{v}{v} &\eq \left(\sum_{i} v_{i}^{\ast} \bra{e_{i}} \right) \left(\sum_{i} v_{i} \ket{e_{i}} \right) 
+                = \sum_{i, j} v_{i}^{\ast} v_{j} \braket{e_{i}}{e_{j}} \\
+                &\eq \sum_{i, j} v_{i}^{\ast} v_{j} \delta_{ij} 
+                = \sum_{i} v_{i}^{\ast} v_{i}^{\phantom\ast} 
+                = \sum_{i} \abs{v_{i}}^{2} \geq 0
+            \end{align*}
+    \end{proof}
+
+    \begin{properties}
+        \label{proper: inner product is real}
+        Dado um espaço de kets $\mathscr{V}$ e seu espaço dual $\mathscr{V}^{\ast}$, o produto interno de todo $\ket{v}\in\mathscr{V}$ com si mesmo é sempre um número real.
+    \end{properties}
+    \begin{proof}
+        A partir de $\braket{u}{v} = \braket{v}{u}^{\ast}$:
+        \begin{equation*}
+            \braket{v}{v} = \braket{v}{v}^{\ast}
+        \end{equation*}
+        o que coincide com a definição de um número real.
+    \end{proof}
+
+Note que a partir destas propriedades, podemos definir a norma $\norm{\ket{v}}$ do vetor $\ket{v}$ de tal forma que seu resultado seja real e positivo (analogamente à norma euclidiana $\norm{\vb{v}} = \sqrt{\expval{\vb{v},\vb{v}}}$). Através da Propriedade~\ref{proper: inner product is real}, temos a norma definida por
+\begin{equation}
+\label{eq: definition of norm in Dirac notation}
+    \braket{v}{v} \in \mathbb{R} \Rightarrow \norm{\ket{v}} \coloneqq \sqrt{\braket{v}}
+\end{equation}
+
+Atente-se para o fato de que não escolhemos $\braket{v}{v}$ de forma a não assumir valores complexos e ser positivo despropositadamente, definimos o produto como \eqref{eq: definition of norm in Dirac notation} de maneira que essa fosse uma consequência. Caso definíssemos o produto como fizemos anteriormente para os reais, isto é $\braket{u}{v}\in\mathbb{C}$, haveria brecha para que os valores não fossem reais. O motivo da escolha do valor da norma ser real e positivo ficará claro mais a frente, ao associarmos a esta grandeza o conceito de probabilidade.
+
+Por fim, da mesma forma que para um espaço vetorial real, se tivermos uma norma 
+\begin{equation*}
+    \norm{\ket{v}} = \sqrt{\braket{v}{v}} = 1,
+\end{equation*}
+dizemos que o vetor está normalizado e analogamente à versão real é possível construir um vetor normalizado $\ket{\tilde{v}}\in\mathscr{V}$ a partir de sua versão original $\ket{v}\in\mathscr{V}$ (não normalizada) ao dividirmos este pela norma (caso não estejamos falando de um vetor nulo $\ket{v} = \vb{0}$):
+    \begin{equation*}
+        \ket{\Tilde{v}} = \frac{1}{\sqrt{\braket{v}{v}}}\ket{v} \implies \norm{\ket{\tilde{v}}} = 1
+    \end{equation*}
